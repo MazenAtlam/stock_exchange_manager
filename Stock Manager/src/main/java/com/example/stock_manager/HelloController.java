@@ -1,4 +1,4 @@
-package org.example.demo;
+package com.example.stock_manager;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.fxml.Initializable;
@@ -12,9 +12,8 @@ import java.util.TimeZone;
 public class HelloController implements  Initializable {
     @FXML
     private LineChart<?, ?> chart;
-    @FXML
-    private Button plot;
-     Stock mystock ;
+
+    Stock mystock ;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -36,5 +35,3 @@ public class HelloController implements  Initializable {
     }
 
 }
-
-

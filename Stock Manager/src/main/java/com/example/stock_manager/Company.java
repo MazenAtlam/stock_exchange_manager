@@ -1,27 +1,26 @@
-package org.example.demo;
+package com.example.stock_manager;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Company {
-   private String name, industry ;
+    private String name, industry ;
     private static HashMap<String,Stock> company_map = new HashMap<>();
     private int stock_price;
     int size;
-   private float value = size * stock_price;
+    private float value = size * stock_price;
     public static void set_company(String company_name,int price,int available_stocks){
         company_map.put(company_name,new Stock());
     }
     public float  req_value(){
-     //  return value;
-       return value;
+        //  return value;
+        return value;
     }
     public HashMap<String,Stock> get_company_map() {
         return company_map;
     }
     public int get_price() {
         // getting stock price
-         return stock_price;
+        return stock_price;
     }
     public void set_price(int price){
         //setting stock price

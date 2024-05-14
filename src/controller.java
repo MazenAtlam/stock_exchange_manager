@@ -14,10 +14,6 @@ import java.util.regex.Pattern;
 
 public class controller {
     boolean CheckerUsername, CheckerPassword ;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private String name;
     @FXML
     private TextField UserNameField;
     @FXML
@@ -30,9 +26,9 @@ public class controller {
     public String TempForPassword;
 
     private void ShowStage(String name ,ActionEvent event ) throws IOException{
-        root = (FXMLLoader.load(getClass().getResource(name)));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = (FXMLLoader.load(getClass().getResource(name)));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -40,21 +36,11 @@ public class controller {
 
     @FXML
     public void SwitchToUserLogin(ActionEvent event) throws IOException {
-//        root = (FXMLLoader.load(getClass().getResource("LoginScene.fxml")));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
         ShowStage("LoginScene.fxml",event);
     }
 
     @FXML
     public void SwitchToAdminLogin(ActionEvent event) throws IOException {
-//        root = (FXMLLoader.load(getClass().getResource("AdminLogin.fxml")));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
         ShowStage("AdminLogin.fxml",event);
     }
 
@@ -67,12 +53,7 @@ public class controller {
         CheckerPassword = Pattern.matches("\\w{8,}",TempForPassword);
         if (CheckerUsername && CheckerPassword) {
             if ( Data.VerifyLogin(TempForUsername, TempForPassword)) {
-//                root = (FXMLLoader.load(getClass().getResource("NormalUserScene.fxml")));
-//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
-                ShowStage("NormalUserScene.fxml",event);
+             ShowStage("NormalUserScene.fxml",event);
             } else {
                 LabelField.setText("Invalid User name or password ");
             }
@@ -88,11 +69,6 @@ public class controller {
 
     @FXML
     public void CreateNewAccount(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("createNewaccount.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
         ShowStage("createNewaccount.fxml",event);
     }
 
@@ -103,14 +79,8 @@ public class controller {
         TempForPassword = PasswordField.getText();
         CheckerPassword = Pattern.matches("\\w{8}",TempForPassword);
         if (CheckerUsername && CheckerPassword && TempForPassword.equals(ConfirmPasswordField.getText())) {
-//            System.out.println(TempForUsername +"  " + TempForPassword);
             if (Data.UsernameIsAvailable(TempForUsername)) {
                 Data.setUsers(TempForUsername, TempForPassword);
-//                root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
-//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
                 ShowStage("LoginScene.fxml",event);
             } else {
                 LabelField.setText("Invalid User name Please Try Again");
@@ -123,11 +93,6 @@ public class controller {
 
     @FXML
     public void AfterCancel(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
         ShowStage("hello-view.fxml",event);
     }
 
@@ -141,12 +106,7 @@ public class controller {
         CheckerPassword = Pattern.matches("\\w{8}",TempForPassword);
         if (CheckerUsername && CheckerPassword) {
             if (Data.VerifyAdminLogin(TempForUsername, TempForPassword)) {
-//                root = (FXMLLoader.load(getClass().getResource("NormalUserScene.fxml")));
-//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
-                ShowStage("NormalUserScene.fxml",event);
+                ShowStage("AdminScene.fxml",event);
             }
         }
         else{
@@ -155,7 +115,7 @@ public class controller {
     }
 
     @FXML
-    public void ShowNameForAdmin() throws IOException{
-        LabelField.setText("Data.Admins.get(Data.getAdminIndex()).username)");
+    public void ShowNameForAdmin(){
+        LabelField.setText(Data.Admins.get(Data.getAdminIndex()).username);
     }
 }

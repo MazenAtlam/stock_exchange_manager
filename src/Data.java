@@ -10,11 +10,8 @@ public abstract class Data {
     public static ArrayList <User> DeletedUsers = new ArrayList<>();
     public static ArrayList <User> PremiumUsers =new ArrayList<>();
 //    private static Market market; // until market class created
-//    private static int AdminIndex;
+    private static int AdminIndex;
     private static int UserIndex;
-
-
-
 
 
 
@@ -44,7 +41,7 @@ public abstract class Data {
         System.out.println(Admins);
         for (User value : Admins) {
             if (Objects.equals(username, value.username) && Objects.equals(password, value.password)) {
-//                AdminIndex = Admins.indexOf(value);
+                AdminIndex = Admins.indexOf(value);
                 return true;
             }
         }
@@ -55,9 +52,9 @@ public abstract class Data {
         return UserIndex;
     }
 
-//    public static int getAdminIndex() {
-//        return AdminIndex;
-//    }
+    public static int getAdminIndex() {
+        return AdminIndex;
+    }
 
 
 

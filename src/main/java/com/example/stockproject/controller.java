@@ -62,10 +62,10 @@ public class controller {
         }
     }
 
-    @FXML
-    public void ShowName(){
-        LabelField.setText(Data.Users.get(Data.getUserIndex()).GetUsername());
-    }
+//    @FXML
+//    public void ShowName(){
+//        LabelField.setText(Data.Users.get(Data.getUserIndex()).GetUsername());
+//    }
 
     @FXML
     public void CreateNewAccount(ActionEvent event) throws IOException {

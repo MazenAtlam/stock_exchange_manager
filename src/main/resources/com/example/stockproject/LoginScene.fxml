@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.controller">
+   <children>
+      <PasswordField fx:id="PasswordField" layoutX="205.0" layoutY="200.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="70.0" layoutY="195.0" text="Password:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="123.0" text="Username:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="152.0" layoutY="325.0" mnemonicParsing="false" onAction="#LogIn" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="388.0" layoutY="325.0" mnemonicParsing="false" onAction="#CreateNewAccount" text="create new account">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="LabelField" layoutX="194.0" layoutY="28.0" text="welcome to Stock world">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="UserNameField" layoutX="205.0" layoutY="128.0" />
+      <Label layoutX="123.0" layoutY="275.0" text="pattern must be 8 characters [1-9][a-z][A-Z]">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

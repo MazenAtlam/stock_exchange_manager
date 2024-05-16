@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.MarketController">
+   <children>
+      <Button layoutX="195.0" layoutY="14.0" mnemonicParsing="false" onAction="#up" text="Up" textAlignment="CENTER" />
+      <Button layoutX="14.0" layoutY="175.0" mnemonicParsing="false" onAction="#left" text="Left" />
+      <Button layoutX="185.0" layoutY="362.0" mnemonicParsing="false" onAction="#down" text="Down" />
+      <Button layoutX="363.0" layoutY="175.0" mnemonicParsing="false" onAction="#right" text="Right" textAlignment="RIGHT" />
+      <Polygon fx:id="myRectangle" fill="DODGERBLUE" layoutX="210.0" layoutY="198.0" points="-50.0, 40.0, 51.99998474121094, 40.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

@@ -7,6 +7,16 @@
  */
 
  public class AdminGenerator {
+    public AdminGenerator adminGenerator = null;
+
+    private AdminGenerator(){}
+    public AdminGenerator getAdminGenerator() {
+        if (adminGenerator == null)
+            return new AdminGenerator();
+
+        return adminGenerator;
+    }
+
     /**
      * This method is used to add a new admin to our data
      * @param admin

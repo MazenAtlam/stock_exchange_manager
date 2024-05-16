@@ -5,9 +5,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public Parent root;
-    public Scene currScene;
-    public Stage currStage;
+    AdminController adminController = new AdminController();
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -15,6 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //draw
+        adminController.setStage(primaryStage);
+        adminController.display("temp.fxml");
     }
 }

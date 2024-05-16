@@ -3,8 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00469b;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
    <children>
-      <Button fx:id="temp" layoutX="274.0" layoutY="188.0" mnemonicParsing="false" onAction="#temp" style="-fx-background-color: RED;" text="temp" textFill="WHITE" />
+      <Button fx:id="temp" layoutX="274.0" layoutY="187.0" mnemonicParsing="false" onAction="#T" text="temp" />
    </children>
-</fx:root>
+</AnchorPane>

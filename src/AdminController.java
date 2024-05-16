@@ -11,12 +11,11 @@ import javafx.scene.control.MenuItem;
 // import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class AdminController {
-    private Stage stage;
-    // private Image image;
-    public Parent root;
-    public Scene currScene;
-    public Stage currStage;
+public class AdminController implements Controller {
+    private static Parent root;
+    private static Scene currScene;
+    private static Stage currStage;
+    // private static Image image;
 
     @FXML
     private Button logout;
@@ -41,16 +40,19 @@ public class AdminController {
 
     public void logOut(ActionEvent e) throws IOException {
         display("hello-view.fxml");
-
     }
 
-    public void display(String sceneName) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(sceneName));
+    @Override
+    public void display(String sceneName) {
+        try {
+            root = FXMLLoader.load(getClass().getResource(sceneName));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         currScene = new Scene(root);
 
         String[] title = sceneName.split("\\.", 2);
-        System.out.println("start");
-        System.out.println(title[0] + " " + title[1]);
         currStage.setTitle(title[0]);
         // stage.getIcons().add(image);
         currStage.setScene(currScene);
@@ -58,13 +60,8 @@ public class AdminController {
         currStage.show();
     }
 
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        if (stage != null)
-            this.stage = stage;
+    public void setCurrStage(Stage stage) {
+        AdminController.currStage = stage;
     }
 
     public void T(ActionEvent e) throws IOException {

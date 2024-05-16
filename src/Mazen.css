@@ -13,10 +13,14 @@
 -fx-border-color:  #2196f3;
 -fx-border-width: 1px;
 }
- .text{
+ .text,.current-name,.changing-text{
 -fx-font-weight:bold;
+-fx-font-family: SansSerif;
 }
-.button,.logout_but{
+.current-name{
+-fx-font-size:18px;
+}
+.button,.logout_but,.newadmin-but{
   -fx-text-fill: #7a2048;
   -fx-background-color: #c4dfe6;
   -fx-font-size: 12px;
@@ -33,8 +37,8 @@
 .logout_but{
   -fx-pref-width: 80px;
 }
-.head{
--fx-font-size: 17px;
+.head,.newadmin-head,.changing-head{
+ -fx-font-size: 17px;
  -fx-text-fill: #f599c2;
  -fx-text-alignment: center;
  -fx-font-weight:bold;
@@ -50,4 +54,30 @@
 .profile_head{
 -fx-background-color:#e3867d;
 }
+.newadmin-head{
+ -fx-font-size: 20px;
+}
+.newadmin-label{
+-fx-font-size: 20px;
+-fx-text-fill: #003448;
+}
+.newadmin-but{
+-fx-font-size:14px;
+-fx-pref-width: 100px;
+}
+.fields{
+-fx-background-color:#fbeaeb;
+}
+.changing-head{
+-fx-font-size: 25px;
+-fx-fill:#f599c2;
+}
+.changing-text{
+-fx-fill: #763626;
+}
+.orders-but{
+-fx-pref-width:70px;
+}
+
+
 

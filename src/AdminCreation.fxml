@@ -8,46 +8,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="401.0" prefWidth="435.0" styleClass="root" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminGeneratorController">
+<AnchorPane prefHeight="401.0" prefWidth="435.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
    <children>
-      <Label fx:id="LabelField" layoutX="205.0" layoutY="13.0" styleClass="loginhead" stylesheets="@Mazen.css" text="Create New Admin ">
+      <ToolBar layoutX="5.0" layoutY="6.0" prefHeight="48.0" prefWidth="617.0" style="-fx-background-color: #003448;" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.rightAnchor="1.0" />
+      <Label fx:id="LabelField" layoutX="199.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New Admin ">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="190.0" layoutY="113.0" styleClass="newaccount_label" stylesheets="@Mazen.css" text="Username:">
+      <Label layoutX="70.0" layoutY="113.0" styleClass="newadmin-label" stylesheets="@Mazen.css" text="Username:">
+         <font>
+            <Font name="SansSerif Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="161.0" styleClass="newadmin-label" stylesheets="@Mazen.css" text="Password:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="166.0" styleClass="newaccount_label" stylesheets="@Mazen.css" text="Password:">
+      <Label layoutX="73.0" layoutY="211.0" styleClass="newadmin-label" stylesheets="@Mazen.css" text="Confirm password:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="120.0" layoutY="215.0" styleClass="newaccount_label" stylesheets="@Mazen.css" text="Confirm password:">
+      <PasswordField fx:id="passwordField" layoutX="264.0" layoutY="164.0" stylesheets="@Mazen.css" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="265.0" layoutY="214.0" stylesheets="@Mazen.css">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="passwordField" layoutX="295.0" layoutY="168.0" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="295.0" layoutY="218.0" />
-      <TextField fx:id="usernameField" layoutX="295.0" layoutY="115.0" />
-      <Button fx:id="create" layoutX="120.0" layoutY="326.0" mnemonicParsing="false" onAction="#AfterCreation" stylesheets="@Mazen.css" text="Create">
+            <Font name="Arial" size="12.0" />
+         </font></PasswordField>
+      <TextField fx:id="usernameField" layoutX="264.0" layoutY="117.0" />
+      <Button fx:id="create" layoutX="120.0" layoutY="330.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancel" layoutX="421.0" layoutY="326.0" mnemonicParsing="false" onAction="#AfterCancel" stylesheets="@Mazen.css" text="cancel">
+      <Button fx:id="cancel" layoutX="421.0" layoutY="333.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="141.0" layoutY="272.0" styleClass="newaccount_note" stylesheets="@Mazen.css" text="pattern must be 8 characters [1-9] [a-z] [A-Z]">
+      <Label layoutX="111.0" layoutY="280.0" styleClass="newadmin-label" stylesheets="@Mazen.css" text="pattern must be 8 characters or more">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ToolBar layoutX="7.0" layoutY="7.0" opacity="0.51" prefHeight="48.0" prefWidth="617.0" styleClass="newaccount_toolbar" stylesheets="@Mazen.css" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

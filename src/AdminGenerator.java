@@ -7,10 +7,11 @@
  */
 
  public class AdminGenerator {
-    public AdminGenerator adminGenerator = null;
+    public static AdminGenerator adminGenerator = null;
 
     private AdminGenerator(){}
-    public AdminGenerator getAdminGenerator() {
+
+    public static AdminGenerator getAdminGenerator() {
         if (adminGenerator == null)
             return new AdminGenerator();
 

@@ -27,4 +27,3 @@ replay_pid*
 .vscode/
 .idea/
 .mvn/
-*.fxml

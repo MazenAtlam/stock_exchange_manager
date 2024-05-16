@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -8,49 +10,66 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #003448;" />
-      <Button defaultButton="true" layoutX="260.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: #2196f3;" text="Create New Admin" />
-      <Button fx:id="start_session" layoutX="15.0" layoutY="350.0" mnemonicParsing="false" text="Start Session" />
-      <Button defaultButton="true" layoutX="123.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: #2196f3;" text="Create New User" />
-      <ListView editable="true" layoutX="184.0" layoutY="154.0" prefHeight="178.0" prefWidth="242.0" style="-fx-background-color: #003448;" />
-      <Button layoutX="15.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: #a34fd8;" text="Log out" />
-      <Text fill="WHITE" layoutX="130.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Stock Exchange Manager" wrappingWidth="176.45314025878906">
+      <ToolBar layoutX="5.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="600.0" style="-fx-background-color: #003448;" styleClass="login_toolbar" stylesheets="@Mazen.css" />
+      <Button layoutX="424.0" layoutY="350.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Create New Admin" />
+      <Button cacheShape="false" layoutX="86.0" layoutY="350.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Start Session" />
+      <Button layoutX="246.0" layoutY="350.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Create New User" />
+      <Button alignment="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" styleClass="logout_but" stylesheets="@Mazen.css" text="Log out">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text fill="#f599c2" layoutX="108.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="head" text="Welcome to Stock Exchange Manager" wrappingWidth="176.45314025878906">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="227.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Orders">
+      <Text fill="#440557" layoutX="85.0" layoutY="118.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="New Orders">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <TitledPane layoutX="370.0" layoutY="17.0" prefHeight="174.0" prefWidth="173.0" text="View Profile">
+      <TitledPane layoutX="310.0" layoutY="5.0" prefHeight="262.0" prefWidth="286.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="0.0">
          <content>
-            <AnchorPane>
+            <AnchorPane prefHeight="235.0" prefWidth="268.0" styleClass="profile" stylesheets="@Mazen.css">
                <children>
-                  <Label layoutX="82.0" layoutY="100.0" text="adminID" />
-                  <Label layoutX="118.0" layoutY="126.0" text="no_fo_stocks" />
-                  <SplitMenuButton layoutX="11.0" layoutY="152.0" mnemonicParsing="false" text="Edit Profile">
+                  <View disable="true" layoutX="5.0" layoutY="137.0" prefHeight="29.0" prefWidth="123.0" stylesheets="@Mazen.css">
+                     <center>
+                        <Text fill="#e3867d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Available Stocks:" wrappingWidth="103.58073425292969" BorderPane.alignment="CENTER" />
+                     </center>
+                  </View>
+                  <View disable="true" layoutX="5.0" layoutY="109.0" prefHeight="20.0" prefWidth="87.0" stylesheets="@Mazen.css" />
+                  <View disable="true" layoutX="5.0" layoutY="78.0" prefHeight="20.0" prefWidth="67.0" stylesheets="@Mazen.css" />
+                  <View disable="true" layoutX="5.0" layoutY="49.0" prefHeight="20.0" prefWidth="58.0" stylesheets="@Mazen.css" />
+                  <View disable="true" layoutX="5.0" layoutY="17.0" prefHeight="22.0" prefWidth="73.0" stylesheets="@Mazen.css" />
+                  <Label layoutX="98.0" layoutY="110.0" stylesheets="@Mazen.css" text="adminID" />
+                  <Label layoutX="140.0" layoutY="141.0" stylesheets="@Mazen.css" text="no_fo_stocks" />
+                  <SplitMenuButton layoutX="12.0" layoutY="175.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" styleClass="menu" stylesheets="@Mazen.css" text="Edit Profile" AnchorPane.rightAnchor="136.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Change Username" />
                       <MenuItem mnemonicParsing="false" text="Change Password" />
                     </items>
                   </SplitMenuButton>
-                  <Label layoutX="58.0" layoutY="14.0" text="username" />
-                  <Text layoutX="10.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin ID:" />
-                  <Text layoutX="9.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Stocks:" />
-                  <Text layoutX="10.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" />
-                  <Text layoutX="9.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
-                  <Text layoutX="10.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
-                  <Label layoutX="67.0" layoutY="47.0" text="gender" />
+                  <Label layoutX="86.0" layoutY="17.0" stylesheets="@Mazen.css" text="username" />
+                  <Text fill="#e3867d" layoutX="10.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin ID:" wrappingWidth="67.66536331176758" />
+                  <Text fill="#e3867d" layoutX="14.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin:" wrappingWidth="44.72526168823242" />
+                  <Text fill="#e3867d" layoutX="13.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Name:">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </Text>
+                  <Text fill="#e3867d" layoutX="10.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Gender:" />
+                  <Label layoutX="74.0" layoutY="49.0" stylesheets="@Mazen.css" text="gender" />
                </children>
             </AnchorPane>
          </content>
       </TitledPane>
+      <ListView editable="true" fixedCellSize="0.0" layoutX="45.0" layoutY="139.0" prefHeight="178.0" prefWidth="242.0" styleClass="orderlist" stylesheets="@Mazen.css" />
    </children>
 </AnchorPane>

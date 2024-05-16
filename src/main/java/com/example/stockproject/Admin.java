@@ -1,21 +1,23 @@
 package com.example.stockproject;
 
 public class Admin extends User{
-    @Override
-    public void DisplayTransactionHistory() {
-
-    }
-
-    @Override
-    public void ExportStockHistory() {
-
-    }
-
-    @Override
-    public void UpdateOrder() {
-
-    }
-
+//    @Override
+//    public void DisplayTransactionHistory() {
+//
+//    }
+//
+//
+//
+//    @Override
+//    public void ExportStockHistory() {
+//
+//    }
+//
+//    @Override
+//    public void UpdateOrder() {
+//
+//    }
+//
 
 //    @Override
 //    public void RetrieveUser(String username) {

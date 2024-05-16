@@ -1,7 +1,5 @@
-package com.example.stock_manager;
-
+package com.example.stockproject;
 import java.util.HashMap;
-
 public class Company {
     private String name, industry ;
     private static HashMap<String,Stock> company_map = new HashMap<>();
@@ -29,3 +27,4 @@ public class Company {
 
 
 }
+

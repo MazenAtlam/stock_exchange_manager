@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Normal_User extends User implements Initializable  {
@@ -20,15 +19,20 @@ public class Normal_User extends User implements Initializable  {
     private ChoiceBox<String> choiceBox;
     @FXML
     private Label LabelField ;
+    Stage stage;
+    Parent root;
+    Scene scene;
+    FXMLLoader loader = new FXMLLoader();
 
     private String chosedOption;
+    private String username ;
 
     private final String[] Options = {"DisplayTransactionHistory", "ExportStockHistory", "UpdateOrder"};
 
     private void ShowStage(String name ,ActionEvent event ) throws IOException{
-        Parent root = (FXMLLoader.load(getClass().getResource(name)));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
+         root = (FXMLLoader.load(getClass().getResource(name)));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -83,89 +87,45 @@ public class Normal_User extends User implements Initializable  {
 
     }
 
-   @Override
-    public void  DisplayTransactionHistory(){
+
+
+    @FXML
+    public void changeToMarket(ActionEvent event) throws IOException{
+        ShowStage("Market.fxml",event);
+    }
+    @FXML
+    public void changeToAccount(ActionEvent event) throws IOException{
+        ShowStage("Market.fxml",event);
+    }
+
+    @FXML
+    public void changeName(ActionEvent event) throws IOException{
+        ShowStage("ChangeName.fxml",event);
+//            FXMLLoader loader =new FXMLLoader( getClass().getClassLoader().getResource("ChangeName.fxml"));
+//            root = loader.load();
+//            controller controller = loader.getController();
+//            controller.showName(Data.Users.get(Data.getUserIndex()).username);
+//            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+    }
+    @FXML
+    public void changePassword(ActionEvent event) throws IOException{
+        ShowStage("ChangePassword.fxml",event);
 
     }
-    @Override
-    public void ExportStockHistory(){ //Stock class parameter
-
-    }
-
-   @Override
-   public void UpdateOrder() {
-
-   }
-
-
-
-//   @Override
-//   public void RetrieveUser(String username) {
 //
-//   }
+//    public void  DisplayTransactionHistory() {
 //
-//   @Override
-//   public void UpdateUser(User user) {
+//    }
 //
-//   }
+//    public void ExportStockHistory(){ //Stock class parameter
 //
-//   @Override
-//    public void DeleteUser(User user) {
+//    }
 //
-//   }
 //
-//   @Override
-//   public void CreateStock() {
-//
-//   }
-//
-//   @Override
-//   public void RetrieveStock() {
-//
-//   }
-//
-//   @Override
-//   public void UpdateStock() {
-//
-//   }
-//
-//   @Override
-//   public void DeleteStock() {
-//
-//   }
-//
-//   @Override
-//   public void UpdateStockPrice(double price) {
-//
-//   }
-//
-//   @Override
-//   public void UpdateLabel() {
-//
-//   }
-//
-//   @Override
-//   public void DefineDividend() {
-//
-//   }
-//
-//   @Override
-//   public void ApprovalSystem() {
-//
-//   }
-//
-//   @Override
-//   public void InitiateTradingSession() {
-//
-//   }
-//
-//   @Override
-//   public void CloseTradingSession() {
-//
-//   }
-//
-//   @Override
-//   public void MovingToNextDay() {
+//   public void UpdateOrder() {
 //
 //   }
 

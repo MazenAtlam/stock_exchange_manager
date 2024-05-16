@@ -1,28 +1,26 @@
 package com.example.stockproject;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class HelloApplication extends Application {
     static User temp = Data.userFactory.GetUser(UserFactory.ADMIN);
     static User temp1 = Data.userFactory.GetUser(UserFactory.NORMAL);
+
+    static HelloController controller ;
+    Stock mystock = new Stock();
     @Override
-    public void start(Stage stage) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-            Scene scene = new Scene(root, 600, 400);
-            scene.getStylesheets().add(getClass().getResource("Mazen.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    public void start(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        Scene scene = new Scene(root, 600, 400);
+        stage.setScene(scene);
+        stage.show();
+
+//        draw_chart(mystock,stage);
     }
 
     public static void main(String[] args)
@@ -33,6 +31,16 @@ public class HelloApplication extends Application {
         temp1.setPassword("11111111");
         Data.Admins.add(temp);
         Data.Users.add(temp1);
-        launch();
+       launch(args);
     }
+
+//    public static void draw_chart(Stock stock,Stage stage) throws IOException {
+//         controller = new HelloController(stock);
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("D:\\SBME\\oop\\stock\\stock_exchange_manager\\UI\\hello-view.fxml"));
+//        fxmlLoader.setController(controller);
+//        Scene scene = new Scene(fxmlLoader.load(), 600, 600, Color.LIGHTBLUE);
+//        stage.setTitle("Hello!");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 }

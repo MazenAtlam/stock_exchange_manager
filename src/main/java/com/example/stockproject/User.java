@@ -1,12 +1,5 @@
 package com.example.stockproject;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import java.io.IOException;
+import java.util.Objects;
 
 
 public abstract class User {
@@ -29,6 +22,7 @@ public abstract class User {
         this.id = Id;
     }
     public int getId() {return id;}
+    public String getPassword(){return password;}
 
 
 
@@ -37,35 +31,55 @@ public abstract class User {
     }
 
 
-    public void ChangeUsername(){
+    public static boolean  ChangeUsername(String New_name, String type){
+        if(type.equalsIgnoreCase("normal")) {
+              if (New_name != null) {
+                  for(User user : Data.Users){
+                      if (Objects.equals(user.username, New_name)) {
+                          return false;
+                      }
+                  }
+                  Data.Users.get(Data.getUserIndex()).setUsername(New_name);
+                  return true;
+              }
 
+        }
+        else if (type.equalsIgnoreCase("Admin")) {
+                if (New_name != null) {
+                    for(User admin : Data.Admins){
+                        if (Objects.equals(admin.username, New_name)) {
+                            return false;
+                        }
+                    }
+                    Data.Admins.get(Data.getAdminIndex()).setUsername(New_name);
+                    return true;
+                }
+
+        }
+        return false;
     }
 
-    public void ChangePassword(){
-
+    public static boolean ChangePassword(String current_password, String New_password , String type){
+        if(type.equalsIgnoreCase("normal")) {
+            if (Objects.equals(Data.Users.get(Data.getUserIndex()).password, current_password)) {
+                if (New_password != null) {
+                    Data.Users.get(Data.getUserIndex()).setPassword(New_password);
+                    return true;
+                }
+            }
+        }
+        else if (type.equalsIgnoreCase("Admin")) {
+            if (Objects.equals(Data.Admins.get(Data.getAdminIndex()).password, current_password)) {
+                if (New_password != null) {
+                    Data.Admins.get(Data.getAdminIndex()).setPassword(New_password);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    // normal users abstract methods.
-
-    public abstract void DisplayTransactionHistory();
-    public abstract void ExportStockHistory(); // there will a parameter from Stock class
-    public abstract void UpdateOrder();
-
-    // Admins abstract methods
-
-//    public abstract void RetrieveUser(String username);
-//    public abstract void UpdateUser(User user); // Ask about  Parameter Data Type
-//    public abstract void DeleteUser(User user);
-//    public abstract void CreateStock(); // there will be a parameter from Stock class
-//    public abstract void RetrieveStock(); // there will be a parameter from Stock class
-//    public abstract void UpdateStock(); // there will be a parameter from Stock class
-//    public abstract void DeleteStock(); // there will be a parameter from Stock class
-//    public abstract void UpdateStockPrice(double price); // there will be a parameter from Stock class
-//    public abstract void UpdateLabel();// there will be a parameter from Stock class and label
-//    public abstract void DefineDividend();// there will be a parameter from Stock class and dividend
-//    public abstract void ApprovalSystem();// request or order parameter
-//    public abstract void InitiateTradingSession();
-//    public abstract void CloseTradingSession();
-//    public abstract void MovingToNextDay();
 
 }
+
+

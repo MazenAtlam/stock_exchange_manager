@@ -13,13 +13,31 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <Button layoutX="455.0" layoutY="332.0" mnemonicParsing="false" onAction="#AfterCancel" text="Exit" />
-        <Button layoutX="109.0" layoutY="332.0" mnemonicParsing="false" onAction="#ShowName" text="Show name" />
-      <ChoiceBox fx:id="choiceBox" layoutX="398.0" layoutY="97.0" prefWidth="150.0" />
-      <Label layoutX="437.0" layoutY="69.0" text="My actions">
+        <Button layoutX="446.0" layoutY="332.0" mnemonicParsing="false" onAction="#AfterCancel" text="Exit">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+        <Button layoutX="97.0" layoutY="332.0" mnemonicParsing="false" onAction="#ShowName" text="Show name">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button layoutX="259.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeToMarket" text="Market">
          <font>
             <Font size="15.0" />
          </font>
-      </Label>
+      </Button>
+      <Button layoutX="117.0" layoutY="95.0" mnemonicParsing="false" onAction="#changeToAccount" text="My account">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="choiceBox" layoutX="385.0" layoutY="98.0" prefWidth="150.0" />
+      <Label layoutX="428.0" layoutY="77.0" text="My actions" />
+      <Button layoutX="77.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeName" text="Change user name" />
+      <Button layoutX="428.0" layoutY="200.0" mnemonicParsing="false" onAction="#changePassword" text="change password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

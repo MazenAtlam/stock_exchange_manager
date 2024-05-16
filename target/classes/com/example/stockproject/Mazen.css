@@ -1,0 +1,57 @@
+.root
+{
+-fx-background-color:#577B87;
+-fx-border-color: #e7e8d1;
+-fx-border-width: 7px;
+}
+.start_toolbar,.login_toolbar{
+-fx-pref-width:586px;
+-fx-background-color: #408ec6;
+}
+.newaccount_toolbar{
+-fx-pref-width:610px;
+-fx-background-color: #408ec6;
+}
+#credits{
+-fx-font-size: 10px;
+-fx-font-family: Tahoma;
+-fx-text-fill: #8cabff;
+-fx-font-weight:bold;
+}
+.button{
+  -fx-text-fill: #344c64;
+  -fx-background-color:linear-gradient(#bed7dc,#ace2e1);
+  -fx-font-size: 13px;
+  -fx-text-alignment: center;
+  -fx-pref-width:100px;
+  -fx-pref-height: 20px;
+  -fx-background-radius: 50px;
+  -fx-font-weight: 600;
+  -fx-transition-duration: -fx-background-color 3s;
+}
+.button:hover{
+  -fx-background-color: #344c64;
+  -fx-text-fill: linear-gradient(#bed7dc,#ace2e1);
+  -fx-scale-X: 1.1;
+  -fx-scale-y: 1.1;
+}
+.loginhead{
+ -fx-font-size: 25px;
+ -fx-text-fill: #083445;
+}
+.head{
+-fx-font-size: 30px;
+ -fx-text-fill: #1e2761;
+}
+.login_label,.newaccount_label{
+ -fx-font-size: 20px;
+ -fx-text-fill: #cae6b2;
+}
+.login_note,.newaccount_note{
+ -fx-font-size: 15px;
+ -fx-text-fill: #cae6b2;
+}
+.button1{
+-fx-pref-width:150px;
+}
+

@@ -1,0 +1,53 @@
+.root
+{
+-fx-background-color:#66a5ad;
+-fx-border-color: #f1f1f2;
+-fx-border-width: 5px;
+}
+.start_toolbar,.login_toolbar{
+-fx-pref-width:590px;
+-fx-background-color:#003448;
+}
+.orderlist{
+-fx-background-color: #003448;
+-fx-border-color:  #2196f3;
+-fx-border-width: 1px;
+}
+ .text{
+-fx-font-weight:bold;
+}
+.button,.logout_but{
+  -fx-text-fill: #7a2048;
+  -fx-background-color: #c4dfe6;
+  -fx-font-size: 12px;
+  -fx-text-alignment: center;
+  -fx-background-radius: 40px;
+  -fx-font-weight: bold;
+}
+.button:hover {
+  -fx-background-color: #344c64;
+  -fx-text-fill: #2196f3;
+  -fx-scale-X: 1.1;
+  -fx-scale-y: 1.1;
+}
+.logout_but{
+  -fx-pref-width: 80px;
+}
+.head{
+-fx-font-size: 17px;
+ -fx-text-fill: #f599c2;
+ -fx-text-alignment: center;
+ -fx-font-weight:bold;
+}
+.profile{
+-fx-background-color:#90afc5;
+-fx-border-color: #763626;
+-fx-border-width: 5px;
+}
+.view{
+-fx-background-color:#763626;
+}
+.profile_head{
+-fx-background-color:#e3867d;
+}
+

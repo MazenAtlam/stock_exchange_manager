@@ -58,7 +58,7 @@ public class controller {
                 LabelField.setText("Invalid User name or password ");
             }
         } else {
-            LabelField.setText("plz enter username and password pattern must be [1-9][a-z][A-Z] ");
+            LabelField.setText("Invalid input");
         }
     }
 
@@ -86,7 +86,7 @@ public class controller {
                 LabelField.setText("Invalid User name Please Try Again");
             }
         } else {
-            LabelField.setText("Plz enter the three fields and make sure pass == confirm pass");
+            LabelField.setText("Invalid input");
         }
 
     }

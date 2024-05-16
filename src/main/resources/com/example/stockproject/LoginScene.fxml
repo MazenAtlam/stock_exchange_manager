@@ -4,46 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.controller">
    <children>
-      <PasswordField fx:id="PasswordField" layoutX="205.0" layoutY="200.0">
+      <Label fx:id="LabelField" layoutX="160.0" layoutY="13.0" styleClass="loginhead" stylesheets="@Mazen.css" text="welcome to Stock world">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="PasswordField" layoutX="238.0" layoutY="206.0" prefHeight="21.0" prefWidth="149.0">
          <font>
             <Font size="10.0" />
          </font>
       </PasswordField>
-      <Label layoutX="70.0" layoutY="195.0" text="Password:">
+      <Label layoutX="131.0" layoutY="201.0" styleClass="login_label" stylesheets="@Mazen.css" text="Password:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="123.0" text="Username:">
+      <Label layoutX="131.0" layoutY="125.0" styleClass="login_label" stylesheets="@Mazen.css" text="Username:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="152.0" layoutY="325.0" mnemonicParsing="false" onAction="#LogIn" text="Login">
+      <Button layoutX="262.0" layoutY="308.0" mnemonicParsing="false" onAction="#LogIn" stylesheets="@Mazen.css" text="Login">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="388.0" layoutY="325.0" mnemonicParsing="false" onAction="#CreateNewAccount" text="create new account">
+      <Button layoutX="45.0" layoutY="308.0" mnemonicParsing="false" onAction="#CreateNewAccount" styleClass="button1" stylesheets="@Mazen.css" text="create new account">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="LabelField" layoutX="194.0" layoutY="28.0" text="welcome to Stock world">
+      <TextField fx:id="UserNameField" layoutX="238.0" layoutY="127.0" prefHeight="21.0" prefWidth="149.0" />
+      <Label layoutX="156.0" layoutY="264.0" styleClass="login_note" stylesheets="@Mazen.css" text="pattern must be 8 characters [1-9] [a-z] [A-Z]">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="UserNameField" layoutX="205.0" layoutY="128.0" />
-      <Label layoutX="123.0" layoutY="275.0" text="pattern must be 8 characters [1-9][a-z][A-Z]">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+      <Button layoutX="453.0" layoutY="308.0" mnemonicParsing="false" onAction="#AfterCancel" text="back" />
+      <ToolBar layoutX="7.0" layoutY="8.0" opacity="0.47" prefHeight="47.0" prefWidth="288.0" styleClass="login_toolbar" stylesheets="@Mazen.css" />
    </children>
 </Pane>

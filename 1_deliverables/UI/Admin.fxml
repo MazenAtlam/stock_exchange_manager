@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -30,43 +29,43 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#440557" layoutX="85.0" layoutY="118.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="New Orders">
+      <Text fill="#640880" layoutX="77.0" layoutY="118.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="changing-text" text="New Orders">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <TitledPane layoutX="310.0" layoutY="5.0" prefHeight="262.0" prefWidth="286.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane layoutX="345.0" layoutY="57.0" prefHeight="259.0" prefWidth="254.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="351.0" AnchorPane.rightAnchor="0.0">
          <content>
             <AnchorPane prefHeight="235.0" prefWidth="268.0" styleClass="profile" stylesheets="@Mazen.css">
                <children>
-                  <View disable="true" layoutX="5.0" layoutY="137.0" prefHeight="29.0" prefWidth="123.0" stylesheets="@Mazen.css">
-                     <center>
-                        <Text fill="#e3867d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Available Stocks:" wrappingWidth="103.58073425292969" BorderPane.alignment="CENTER" />
-                     </center>
-                  </View>
-                  <View disable="true" layoutX="5.0" layoutY="109.0" prefHeight="20.0" prefWidth="87.0" stylesheets="@Mazen.css" />
-                  <View disable="true" layoutX="5.0" layoutY="78.0" prefHeight="20.0" prefWidth="67.0" stylesheets="@Mazen.css" />
-                  <View disable="true" layoutX="5.0" layoutY="49.0" prefHeight="20.0" prefWidth="58.0" stylesheets="@Mazen.css" />
-                  <View disable="true" layoutX="5.0" layoutY="17.0" prefHeight="22.0" prefWidth="73.0" stylesheets="@Mazen.css" />
-                  <Label layoutX="98.0" layoutY="110.0" stylesheets="@Mazen.css" text="adminID" />
-                  <Label layoutX="140.0" layoutY="141.0" stylesheets="@Mazen.css" text="no_fo_stocks" />
-                  <SplitMenuButton layoutX="12.0" layoutY="175.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="115.0" styleClass="menu" stylesheets="@Mazen.css" text="Edit Profile" AnchorPane.rightAnchor="136.0">
+                  <ToolBar layoutX="5.0" layoutY="142.0" prefHeight="22.0" prefWidth="121.0" style="-fx-background-color: #763626;" />
+                  <ToolBar layoutX="5.0" layoutY="111.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <ToolBar layoutX="5.0" layoutY="15.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <ToolBar layoutX="5.0" layoutY="47.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <ToolBar layoutX="5.0" layoutY="77.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <Label layoutX="93.0" layoutY="114.0" stylesheets="@Mazen.css" text="adminID" />
+                  <Label layoutX="134.0" layoutY="143.0" stylesheets="@Mazen.css" text="no_of_stocks" />
+                  <SplitMenuButton layoutX="81.0" layoutY="191.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="121.0" styleClass="menu" stylesheets="@Mazen.css" text="Edit Profile" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="176.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Change Username" />
                       <MenuItem mnemonicParsing="false" text="Change Password" />
                     </items>
                   </SplitMenuButton>
-                  <Label layoutX="86.0" layoutY="21.0" stylesheets="@Mazen.css" text="username" textFill="#650707" />
-                  <Text fill="#e3867d" layoutX="10.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin ID:" wrappingWidth="67.66536331176758" />
-                  <Text fill="#e3867d" layoutX="14.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin:" wrappingWidth="44.72526168823242" />
+                  <Label layoutX="91.0" layoutY="19.0" stylesheets="@Mazen.css" text="username" textFill="#650707" />
+                  <Text fill="#e3867d" layoutX="12.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin ID:" wrappingWidth="67.66536331176758" />
+                  <Text fill="#e3867d" layoutX="11.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin" wrappingWidth="53.72526168823242" />
                   <Text fill="#e3867d" layoutX="13.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Name:">
                      <rotationAxis>
                         <Point3D />
                      </rotationAxis>
                   </Text>
                   <Text fill="#e3867d" layoutX="10.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Gender:" />
-                  <Label layoutX="74.0" layoutY="49.0" stylesheets="@Mazen.css" text="gender" />
+                  <Label layoutX="93.0" layoutY="49.0" stylesheets="@Mazen.css" text="gender" />
+                  <Text fill="#e3867d" layoutX="10.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Available Stocks:" wrappingWidth="121.00000000000011" />
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </AnchorPane>
          </content>
       </TitledPane>

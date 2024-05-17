@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="401.0" prefWidth="435.0" stylesheets="@../../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
+<AnchorPane prefHeight="401.0" prefWidth="435.0" stylesheets="@../../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ToolBar layoutX="5.0" layoutY="6.0" prefHeight="48.0" prefWidth="617.0" style="-fx-background-color: #003448;" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.rightAnchor="1.0" />
-      <Label fx:id="LabelField" layoutX="199.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New Admin ">
+      <Label fx:id="LabelField" layoutX="199.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New User">
          <font>
             <Font size="20.0" />
          </font>

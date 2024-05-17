@@ -19,7 +19,7 @@
             <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #a34fd8;" styleClass="orders-but" stylesheets="@Mazen.css" text="Back" textFill="WHITE" />
             <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: GREEN;" styleClass="orders-but" stylesheets="@Mazen.css" text="Approve" textFill="WHITE" />
          </items></ToolBar>
-      <ListView layoutX="35.0" layoutY="124.0" prefHeight="219.0" prefWidth="277.0" styleClass="orderlist" stylesheets="@Mazen.css" />
+      <ListView editable="true" layoutX="35.0" layoutY="124.0" prefHeight="219.0" prefWidth="277.0" styleClass="orderlist" stylesheets="@Mazen.css" />
       <TitledPane layoutX="387.0" layoutY="76.0" prefHeight="174.0" prefWidth="173.0" stylesheets="@Mazen.css" text="View Profile">
          <content>
             <AnchorPane styleClass="profile" stylesheets="@Mazen.css">
@@ -51,7 +51,7 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#c95d5d" />
+      <Button layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#ab1c1c" />
       <Text fill="WHITE" layoutX="276.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="changing-head" text="Orders">
          <font>
             <Font size="24.0" />

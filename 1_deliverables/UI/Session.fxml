@@ -12,11 +12,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ToolBar layoutX="6.0" layoutY="344.0" prefHeight="26.0" prefWidth="240.0" style="-fx-background-color: #003448;" stylesheets="@Mazen.css" />
-      <ToolBar layoutX="5.0" layoutY="6.0" prefHeight="52.0" prefWidth="589.0" styleClass="login_toolbar" stylesheets="@Mazen.css" />
-      <TitledPane layoutX="341.0" layoutY="59.0" prefHeight="259.0" prefWidth="254.0" stylesheets="@User/Admin/Mazen.css" text="View Profile">
+      <ToolBar layoutY="2.0" prefHeight="52.0" prefWidth="600.0" />
+      <TitledPane layoutX="345.0" layoutY="54.0" prefHeight="259.0" prefWidth="254.0" stylesheets="@User/Admin/Mazen.css" text="View Profile">
          <content>
             <AnchorPane prefHeight="202.0" prefWidth="253.0" styleClass="profile" stylesheets="@User/Admin/Mazen.css">
                <children>
@@ -25,7 +24,7 @@
                   <ToolBar layoutX="5.0" layoutY="47.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="5.0" layoutY="77.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
                   <Label fx:id="adminID" layoutX="93.0" layoutY="114.0" stylesheets="@User/Admin/Mazen.css" text="adminID" />
-                  <SplitMenuButton layoutX="81.0" layoutY="191.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="121.0" stylesheets="@User/Admin/Mazen.css" text="Edit Profile" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="174.0">
+                  <SplitMenuButton layoutX="81.0" layoutY="191.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="121.0" styleClass="menu" stylesheets="@User/Admin/Mazen.css" text="Edit Profile" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="176.0">
                      <items>
                         <MenuItem fx:id="changeName" mnemonicParsing="false" text="Change Username" />
                         <MenuItem fx:id="changePassword" mnemonicParsing="false" text="Change Password" />
@@ -49,24 +48,24 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button layoutX="54.0" layoutY="114.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Go to Approval System" />
-      <Button layoutX="461.0" layoutY="20.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="End Session" />
-      <Button layoutX="31.0" layoutY="18.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
-      <Label layoutX="233.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Day Session">
+      <Button layoutX="47.0" layoutY="157.0" mnemonicParsing="false" text="Go to Approval System" />
+      <Button layoutX="31.0" layoutY="349.0" mnemonicParsing="false" text="End Session" />
+      <Button layoutX="31.0" layoutY="68.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="205.0" layoutY="130.0" text="Day Session">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="156.0" layoutY="338.0" prefHeight="36.0" prefWidth="149.0" style="-fx-text-fill: #66a5ad;" stylesheets="@Mazen.css" text="sessionTime">
+      <Label layoutX="472.0" layoutY="348.0" prefHeight="36.0" prefWidth="100.0" text="sessionTime">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="3.0" layoutY="338.0" prefHeight="36.0" prefWidth="149.0" style="-fx-text-fill: #66a5ad;" styleClass="changing-text" stylesheets="@Mazen.css" text="Session Time:">
+      <Label layoutX="334.0" layoutY="348.0" prefHeight="36.0" prefWidth="120.0" text="Session Time:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="57.0" layoutY="173.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Mange Market Stocks" />
+      <Button layoutX="50.0" layoutY="226.0" mnemonicParsing="false" text="Mange Market Stocks" />
    </children>
 </AnchorPane>

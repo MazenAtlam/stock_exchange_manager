@@ -1,9 +1,11 @@
+package App;
+import App.User.Admin.AdminSceneController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private AdminController adminController = new AdminController();
+    private AdminSceneController adminSceneController = new AdminSceneController();
 
     public static void main(String[] args) {
         launch(args);
@@ -11,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        adminController.setCurrStage(primaryStage);
-        adminController.display("Temp.fxml");
+        adminSceneController.setCurrStage(primaryStage);
+        adminSceneController.display("Temp.fxml");
     }
 }

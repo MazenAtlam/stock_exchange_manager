@@ -27,6 +27,7 @@
   -fx-text-alignment: center;
   -fx-background-radius: 40px;
   -fx-font-weight: bold;
+  
 }
 .button:hover {
   -fx-background-color: #344c64;
@@ -78,6 +79,3 @@
 .orders-but{
 -fx-pref-width:70px;
 }
-
-
-

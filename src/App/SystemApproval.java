@@ -1,3 +1,4 @@
+package App;
 /**
  * A class that allows an admin to approve or reject the users' requests
  *
@@ -6,6 +7,8 @@
  * @scince 2024-05-12
  */
 import java.util.ArrayList;
+
+import App.User.User;
 
 public class SystemApproval {
     public static ArrayList<Order> requests = new ArrayList<>();

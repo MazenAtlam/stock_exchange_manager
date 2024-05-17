@@ -1,3 +1,7 @@
+package App;
+
+import App.User.User;
+
 /**
  * A class that allows an admin to change a user premium status
  *

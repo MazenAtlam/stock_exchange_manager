@@ -1,3 +1,8 @@
+package App.User.Admin;
+
+import App.Data;
+import App.User.User;
+
 /**
  * A class that allows an admin to add a new admin
  *

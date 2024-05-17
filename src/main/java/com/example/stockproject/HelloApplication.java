@@ -10,15 +10,18 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     static User temp = Data.userFactory.GetUser(UserFactory.ADMIN);
     static User temp1 = Data.userFactory.GetUser(UserFactory.NORMAL);
-
+    public static Stage stage;
     static HelloController controller ;
     Stock mystock = new Stock();
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        Scene scene = new Scene(root, 600, 400);
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//        Scene scene = new Scene(root, 600, 400);
+//        stage.setScene(scene);
+//        stage.show();
+        HelloApplication.stage = stage;
+        ChangeSceneController controller1 = new ChangeSceneController();
+        controller1.display("hello-view.fxml");
 
 //        draw_chart(mystock,stage);
     }

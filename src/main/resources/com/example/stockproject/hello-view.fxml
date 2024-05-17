@@ -6,33 +6,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="firstview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="startscene" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="602.0" styleClass="startscene" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
    <children>
-      <Label layoutX="160.0" layoutY="11.0" styleClass="head" stylesheets="@Mazen.css" text="Gamma stock market">
+      <ToolBar layoutX="6.0" layoutY="6.0" prefHeight="54.0" prefWidth="586.0" styleClass="start_toolbar" stylesheets="@Mazen.css" />
+      <Label layoutX="175.0" layoutY="17.0" styleClass="changing-head" stylesheets="@Mazen.css" text="Gamma Stock Market">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button id="about_button" layoutX="225.0" layoutY="294.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="105.0" styleClass="button1" stylesheets="@Mazen.css" text="About project">
+      <Button layoutX="244.0" layoutY="293.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="127.0" styleClass="about-but" stylesheets="@Mazen.css" text="About project">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="admin_button" layoutX="54.0" layoutY="294.0" mnemonicParsing="false" onAction="#SwitchToAdminLogin" stylesheets="@Mazen.css" text="Admin">
+      <Button layoutX="54.0" layoutY="294.0" mnemonicParsing="false" onAction="#SwitchToAdminLogin" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Admin">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="user_button" layoutX="451.0" layoutY="294.0" mnemonicParsing="false" onAction="#SwitchToUserLogin" stylesheets="@Mazen.css" text="User">
+      <Button layoutX="448.0" layoutY="297.0" mnemonicParsing="false" onAction="#SwitchToUserLogin" styleClass="newadmin-but" stylesheets="@Mazen.css" text="User">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label id="credits" layoutX="217.0" layoutY="367.0" stylesheets="@Mazen.css" text="© Made by MASA All rights reserved">
+      <Label layoutX="200.0" layoutY="367.0" stylesheets="@Mazen.css" text="© Made by GAMMA All rights reserved">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <ToolBar layoutX="7.0" layoutY="7.0" opacity="0.51" prefHeight="54.0" prefWidth="581.0" styleClass="start_toolbar" stylesheets="@Mazen.css" />
    </children>
 </AnchorPane>

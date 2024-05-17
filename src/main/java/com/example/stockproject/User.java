@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class User {
 
-    public static int Id = 0;
+
     protected String username;
     protected String password;
     protected int  id ;
@@ -18,10 +18,10 @@ public abstract class User {
     public void setPassword(String password){
         this.password = password;
     }
-    public void setId() {
-        this.id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
-    public int getId() {return id;}
+    public int getId() {return this.id;}
     public String getPassword(){return password;}
 
 

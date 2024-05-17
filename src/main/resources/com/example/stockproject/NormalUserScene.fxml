@@ -3,41 +3,40 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.Normal_User">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66a5ad;" styleClass="newadmin-head" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.Normal_User_Scene">
     <children>
-        <Label fx:id="LabelField" layoutX="216.0" layoutY="14.0" text="Normal User Scene">
+      <ToolBar layoutX="6.0" layoutY="25.0" prefHeight="34.0" prefWidth="588.0" styleClass="login_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="337.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label fx:id="LabelField" layoutX="207.0" layoutY="21.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Normal User Scene">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Button layoutX="446.0" layoutY="332.0" mnemonicParsing="false" onAction="#AfterCancel" text="Exit">
+        <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#AfterCancel" styleClass="exit-but" stylesheets="@Mazen.css" text="Exit">
          <font>
             <Font size="15.0" />
          </font></Button>
-        <Button layoutX="97.0" layoutY="332.0" mnemonicParsing="false" onAction="#ShowName" text="Show name">
-         <font>
-            <Font size="15.0" />
-         </font></Button>
-      <Button layoutX="259.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeToMarket" text="Market">
+      <Button layoutX="61.0" layoutY="327.0" mnemonicParsing="false" onAction="#changeToMarket" styleClass="about-but" stylesheets="@Mazen.css" text="Market" AnchorPane.bottomAnchor="40.0">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="117.0" layoutY="95.0" mnemonicParsing="false" onAction="#changeToAccount" text="My account">
+      <Button layoutX="61.0" layoutY="266.0" mnemonicParsing="false" onAction="#changeToAccount" styleClass="about-but" stylesheets="@Mazen.css" text="My Account" AnchorPane.bottomAnchor="105.0">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="choiceBox" layoutX="385.0" layoutY="98.0" prefWidth="150.0" />
-      <Label layoutX="428.0" layoutY="77.0" text="My actions" />
-      <Button layoutX="77.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeName" text="Change user name" />
-      <Button layoutX="428.0" layoutY="200.0" mnemonicParsing="false" onAction="#changePassword" text="change password">
+      <ChoiceBox fx:id="choiceBox" layoutX="222.0" layoutY="115.0" prefWidth="150.0" />
+      <Label layoutX="245.0" layoutY="78.0" text="My Actions" />
+      <Button layoutX="418.0" layoutY="331.0" mnemonicParsing="false" onAction="#changeName" stylesheets="@Mazen.css" text="Change User Name" AnchorPane.bottomAnchor="40.0" />
+      <Button layoutX="413.0" layoutY="269.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="26.0" prefWidth="135.0" styleClass="big-but" stylesheets="@Mazen.css" text="Change Password" AnchorPane.bottomAnchor="105.0">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
+      <Button layoutX="245.0" layoutY="290.0" mnemonicParsing="false" onAction="#JoinSession" styleClass="about-but" stylesheets="@Mazen.css" text="Join session" />
     </children>
 </AnchorPane>

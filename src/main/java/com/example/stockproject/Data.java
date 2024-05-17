@@ -12,6 +12,7 @@ public abstract class Data {
 //    private static Market market; // until market class created
     private static int AdminIndex;
     private static int UserIndex;
+    private static int Id ;
 
 
 
@@ -19,10 +20,21 @@ public abstract class Data {
     public static boolean UsernameIsAvailable(String username){
         for (User value : Users) {
             if (Objects.equals(username, value.username)) {
+
                 return false;
             }
         }
-        User.Id++;
+        Id++;
+        return true;
+    }
+
+    public static boolean AdminNameIsAvailable(String username){
+        for (User admin : Admins){
+            if (Objects.equals(admin.username , username)){
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -70,9 +82,10 @@ public abstract class Data {
     public static void setUsers(String username , String password){
         User user = userFactory.GetUser(userFactory.NORMAL);
         Users.add(user);
+
         user.setUsername(username);
         user.setPassword(password);
-        user.setId();
+        user.setId(Id);
         System.out.println(Users);
     }
 

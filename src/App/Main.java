@@ -4,8 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-    private AdminSceneController adminSceneController = new AdminSceneController();
+    public static Stage currStage;
 
     public static void main(String[] args) {
         launch(args);
@@ -13,7 +12,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        adminSceneController.setCurrStage(primaryStage);
+        Main.currStage = primaryStage;
+        AdminSceneController adminSceneController = new AdminSceneController();
         adminSceneController.display("Temp.fxml");
     }
 }

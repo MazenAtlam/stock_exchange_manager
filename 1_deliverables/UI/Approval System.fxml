@@ -51,7 +51,7 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#ab1c1c" />
+      <Button layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#c95d5d" />
       <Text fill="WHITE" layoutX="276.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="changing-head" text="Orders">
          <font>
             <Font size="24.0" />

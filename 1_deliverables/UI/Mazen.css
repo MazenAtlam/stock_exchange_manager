@@ -78,6 +78,14 @@
 .orders-but{
 -fx-pref-width:70px;
 }
+.about-but{
+-fx-pref-width:120px;
+-fx-font-size: 14px;
+}
+.exit-but{
+-fx-pref-width: 80px;
+}
+
 
 
 

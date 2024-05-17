@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="480.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.OrderController">
+   <children>
+      <TableView fx:id="tableViewOrders" layoutX="14.0" layoutY="119.0" prefHeight="242.0" prefWidth="390.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Type" />
+          <TableColumn prefWidth="75.0" text="Symbol" />
+            <TableColumn prefWidth="95.19993591308594" text="No. Of Stocks" />
+            <TableColumn prefWidth="69.60003662109375" text="Amount" />
+            <TableColumn prefWidth="72.00006103515625" text="State" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableViewOwnedAssets" layoutX="515.0" layoutY="119.0" prefHeight="242.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="91.20001220703125" text="Symbol" />
+          <TableColumn prefWidth="107.99993896484375" text="No. Of Stocks" />
+        </columns>
+      </TableView>
+      <Label layoutX="158.0" layoutY="86.0" text="Order History">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="563.0" layoutY="86.0" text="Owned Assets">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

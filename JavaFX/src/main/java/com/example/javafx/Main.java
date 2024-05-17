@@ -14,7 +14,8 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         stage.setTitle("Market");
-        stage.setScene(Account.getAccountScene());
+        stage.setScene(Market.getMarketScene());
+        stage.setResizable(false);
         stage.show();
 
         AccountController accountController =  new AccountController();

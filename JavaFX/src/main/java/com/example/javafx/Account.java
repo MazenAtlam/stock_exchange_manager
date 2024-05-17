@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Account {
 
-    private final DoubleProperty balance;
+    private final DoubleProperty balance = new SimpleDoubleProperty();
     private final IntegerProperty numberOfOrders = new SimpleIntegerProperty(0);
     private static int id = 0;
     private final int accountId;
@@ -27,11 +27,11 @@ public class Account {
     }
 
     public int getNumberOfOrders() {
-        return numberOfOrders.get();
+        return this.numberOfOrders.get();
     }
 
     public IntegerProperty numberOfOrdersProperty() {
-        return numberOfOrders;
+        return this.numberOfOrders;
     }
 
     public void setNumberOfOrders(int numberOfOrders) {
@@ -51,26 +51,26 @@ public class Account {
      * @return
      */
     public double getBalance() {
-        return balance.get();
+        return this.balance.get();
     }
 
     /**
      * @return
      */
     public DoubleProperty balanceProperty() {
-        return balance;
+        return this.balance;
     }
 
     public Account() {
         this.accountId = Account.id++;
-        this.balance = new SimpleDoubleProperty(0.00);
+        this.balance.setValue(0.0);
         Account.accountList.add(this);
        AccountController.account = this;
     }
 
     public Account(double balance) {
         this.accountId = Account.id++;
-        this.balance = new SimpleDoubleProperty(balance);
+        this.balance.setValue(balance);
         Account.accountList.add(this);
         AccountController.account = this;
     }
@@ -95,5 +95,9 @@ public class Account {
             AccountController.account = Account.accountList.get(userIndex - 1);
         }
     }
+
+}
+
+class Asset extends Account {
 
 }

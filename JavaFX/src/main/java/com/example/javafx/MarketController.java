@@ -26,6 +26,9 @@ public class MarketController {
     @FXML
     private TableColumn<Market, Integer> numStockColumn;
 
+    /**
+     *
+     */
     public void initialize() {
         Image image = new Image("file:OIP.jpeg");
         BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
@@ -45,4 +48,5 @@ public class MarketController {
 
         tableView.setItems(stockList);
     }
+
 }

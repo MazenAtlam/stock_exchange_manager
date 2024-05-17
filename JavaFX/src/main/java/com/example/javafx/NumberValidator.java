@@ -1,6 +1,9 @@
 package com.example.javafx;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 /**
  *
@@ -40,10 +43,19 @@ public class NumberValidator {
         return number;
     }
 
-    public static void validatePriceAvailability(double enteredPrice, Account account, Label errorMessage) {
-        if (enteredPrice > account.getBalance()) {
-            errorMessage.setText("Account Balance Insufficient");
+    public static void validatePriceAvailability(double totalPrice, Account account, Label errorMessage) throws IOException {
+        if (totalPrice > account.getBalance()) {
+            MessageBox.show("Warning", "Insufficient Account Balance");
+            errorMessage.setText("");
             errorMessage.setVisible(true);
+        }
+    }
+
+    public static void validateMarketStocksAvailability(int requestedStockAmount, String companySymbol, Label errorMessage) throws IOException {
+        if (requestedStockAmount > Market.getInstance(companySymbol).getNumStocks()) {
+                MessageBox.show("Warning", "Specified Stock Amount Not Available");
+                errorMessage.setText("");
+                errorMessage.setVisible(true);
         }
     }
 }

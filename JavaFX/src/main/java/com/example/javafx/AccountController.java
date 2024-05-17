@@ -1,5 +1,7 @@
 package com.example.javafx;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -49,16 +51,20 @@ public class AccountController {
 
     @FXML
     Label balanceLabel;
-
+    private static int flag = 0;
     private static Stage stage;
 
     /**
      *
      */
     public void initialize() {
-        new Account(20.00);
-        new Market("AAPL", 20.0, 12);
+        if (flag == 0)
+        {
+        new Account(400);
+        new Market("AAPL", 20.0, 3);
         new Market("Ahmed", 4321, 3224);
+        flag++;
+        }
 
 
         //For Original Scene
@@ -98,7 +104,7 @@ public class AccountController {
      * @throws IOException
      */
     @FXML
-    public void placeOrder() throws IOException {
+    public void placeOrderScene() throws IOException {
         AccountController.stage.setScene(new Scene(new FXMLLoader(AccountController.class.getResource("PlaceOrder.fxml")).load()));
         AccountController.stage.setTitle("PlaceOrder");
     }
@@ -240,9 +246,10 @@ public class AccountController {
          emptyFieldValidation();
          try {
              if (getChosenType().contains("Buy")) {
-//             NumberValidator.validatePriceAvailability(getPrice(), account, errorMessage3);
+             NumberValidator.validatePriceAvailability(calculateTotalPrice(), account, errorMessage3);
+             NumberValidator.validateMarketStocksAvailability(getStockAmount(), getChosenSymbol(), errorMessage3);
              }
-         } catch (IllegalArgumentException _) {}
+         } catch (IllegalArgumentException | IOException _) {}
 
     }
 
@@ -251,8 +258,31 @@ public class AccountController {
     public void addOrder() throws IOException {
         if (!(errorMessage1.isVisible() || errorMessage.isVisible() || errorMessage2.isVisible() || errorMessage3.isVisible())) {
             // Entries Is Correct And Valid, Return to previous scene and add the order
-            account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
+
+            executeBuyOrder();
+            executeSellOrder();
+            // To Update Market
+            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() - getStockAmount());
             setPreviousScene();
         }
     }
+
+    private double calculateTotalPrice() {
+        return (Market.getInstance(getChosenSymbol()).getPricePerStock() * getStockAmount());
+    }
+
+    private void executeBuyOrder() {
+        if (getChosenType().equals("Buy")) {
+            account.setBalance(account.getBalance() - calculateTotalPrice());
+            account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
+        }
+    }
+
+    private void executeSellOrder() {
+        if (getChosenSymbol().equals("Sell")) {
+            account.setBalance(account.getBalance() + calculateTotalPrice());
+            account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
+        }
+    }
+
 }

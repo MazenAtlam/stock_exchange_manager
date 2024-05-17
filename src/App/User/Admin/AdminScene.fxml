@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,27 +30,26 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="retrieveUser" layoutX="326.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Retreive User" />
-      <Button fx:id="delete" layoutX="167.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Delete selected" />
-      <TitledPane layoutX="14.0" layoutY="61.0" prefHeight="222.0" prefWidth="151.0" text="Select Admin">
+      <Button fx:id="retrieveUser" layoutX="423.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Retreive User" />
+      <Button fx:id="delete" layoutX="67.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Delete selected" />
+      <TitledPane layoutX="14.0" layoutY="61.0" prefHeight="230.0" prefWidth="151.0" text="Select Admin">
          <content>
             <ListView fx:id="admins" editable="true" prefHeight="203.0" prefWidth="150.0" styleClass="profile" stylesheets="@../../Mazen.css" />
          </content>
       </TitledPane>
-      <TitledPane layoutX="181.0" layoutY="61.0" prefHeight="221.0" prefWidth="151.0" text="Select User">
+      <TitledPane layoutX="181.0" layoutY="61.0" prefHeight="230.0" prefWidth="151.0" text="Select User">
          <content>
-            <ListView fx:id="users" editable="true" prefHeight="205.0" prefWidth="150.0" styleClass="profile" stylesheets="@../../Mazen.css" />
+            <ListView fx:id="users" editable="true" prefHeight="210.0" prefWidth="150.0" styleClass="profile" stylesheets="@../../Mazen.css" />
          </content>
       </TitledPane>
-      <TitledPane layoutX="340.8" layoutY="32.0" prefHeight="266.0" prefWidth="254.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="336.0" AnchorPane.rightAnchor="10.0">
+      <TitledPane layoutX="349.6" layoutY="67.0" prefHeight="245.0" prefWidth="251.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="4.0">
          <content>
             <AnchorPane prefHeight="242.0" prefWidth="246.0" styleClass="profile" stylesheets="@Mazen.css">
                <children>
-                  <ToolBar layoutX="5.0" layoutY="111.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <ToolBar layoutX="5.0" layoutY="84.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="5.0" layoutY="15.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
-                  <ToolBar layoutX="5.0" layoutY="47.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
-                  <ToolBar layoutX="5.0" layoutY="77.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
-                  <Label fx:id="adminID" layoutX="93.0" layoutY="114.0" stylesheets="@Mazen.css" text="adminID" />
+                  <ToolBar layoutX="5.0" layoutY="50.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
+                  <Label fx:id="adminID" layoutX="93.0" layoutY="87.0" stylesheets="@Mazen.css" text="adminID" />
                   <SplitMenuButton layoutX="81.0" layoutY="191.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="121.0" styleClass="menu" stylesheets="@Mazen.css" text="Edit Profile" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="176.0">
                     <items>
                       <MenuItem fx:id="changeName" mnemonicParsing="false" text="Change Username" />
@@ -58,15 +58,13 @@
                     </items>
                   </SplitMenuButton>
                   <Label fx:id="username" layoutX="91.0" layoutY="19.0" stylesheets="@Mazen.css" text="username" />
-                  <Text fill="#e3867d" layoutX="12.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin ID:" wrappingWidth="67.66536331176758" />
-                  <Text fill="#e3867d" layoutX="11.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin" wrappingWidth="53.72526168823242" />
+                  <Text fill="#e3867d" layoutX="12.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin ID:" wrappingWidth="67.66536331176758" />
+                  <Text fill="#e3867d" layoutX="11.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Admin" wrappingWidth="53.72526168823242" />
                   <Text fill="#e3867d" layoutX="13.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Name:">
                      <rotationAxis>
                         <Point3D />
                      </rotationAxis>
                   </Text>
-                  <Text fill="#e3867d" layoutX="10.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Gender:" />
-                  <Label fx:id="gender" layoutX="93.0" layoutY="49.0" stylesheets="@Mazen.css" text="gender" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -74,5 +72,6 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <TextField fx:id="nameToRetrieve" layoutX="266.0" layoutY="312.0" promptText="Enter Username" />
    </children>
 </AnchorPane>

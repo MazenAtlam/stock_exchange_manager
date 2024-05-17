@@ -1,10 +1,10 @@
 .root
 {
--fx-background-color:#66a5ad;
+-fx-background-color:#279c94;
 -fx-border-color: #f1f1f2;
 -fx-border-width: 5px;
 }
-.start_toolbar,.login_toolbar{
+.start_toolbar,.login_toolbar,.order-toolbar{
 -fx-pref-width:590px;
 -fx-background-color:#003448;
 }
@@ -84,6 +84,12 @@
 }
 .exit-but{
 -fx-pref-width: 80px;
+}
+.order-toolbar{
+-fx-pref-width: 670px;
+}
+.tablecolumn{
+-fx-border-color:#2196f3;
 }
 
 

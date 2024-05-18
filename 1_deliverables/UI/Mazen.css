@@ -46,7 +46,7 @@
 .profile{
 -fx-background-color:#90afc5;
 -fx-border-color: #763626;
--fx-border-width: 5px;
+-fx-border-width: 2px;
 }
 .view{
 -fx-background-color:#763626;

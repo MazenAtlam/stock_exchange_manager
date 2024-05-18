@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="401.0" prefWidth="435.0" stylesheets="@../../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minWidth="-Infinity" prefHeight="381.0" prefWidth="485.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ToolBar layoutX="5.0" layoutY="6.0" prefHeight="48.0" prefWidth="617.0" style="-fx-background-color: #003448;" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.rightAnchor="1.0" />
-      <Label fx:id="LabelField" layoutX="199.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New User">
+      <ToolBar layoutX="-52.0" layoutY="6.0" prefHeight="48.0" prefWidth="617.0" style="-fx-background-color: #003448;" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="LabelField" layoutX="165.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New User">
          <font>
             <Font size="20.0" />
          </font>
@@ -31,23 +31,23 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordField" layoutX="264.0" layoutY="164.0" stylesheets="@Mazen.css" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="265.0" layoutY="214.0" stylesheets="@Mazen.css">
+      <PasswordField fx:id="passwordField" layoutX="264.0" layoutY="164.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="265.0" layoutY="211.0" styleClass="fields" stylesheets="@Mazen.css">
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-      <TextField fx:id="usernameField" layoutX="264.0" layoutY="117.0" />
-      <Button fx:id="create" layoutX="120.0" layoutY="330.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Create">
+      <TextField fx:id="usernameField" layoutX="264.0" layoutY="117.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <Button fx:id="create" layoutX="100.0" layoutY="330.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancel" layoutX="421.0" layoutY="333.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Cancel">
+      <Button fx:id="cancel" layoutX="293.0" layoutY="331.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="111.0" layoutY="280.0" styleClass="newadmin-label" stylesheets="@Mazen.css" text="pattern must be 8 characters or more">
+      <Label layoutX="144.0" layoutY="292.0" stylesheets="@Mazen.css" text="pattern must be 8 characters or more">
          <font>
             <Font size="20.0" />
          </font>

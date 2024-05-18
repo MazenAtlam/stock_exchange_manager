@@ -27,3 +27,6 @@ Install my-project with npm
 ## UML sequence diagrams
 ### Candlestick graphing UML sequence diagram
 ![Candlestick graphing UML sequence diagram](1_deliverables/Candlestick_graphing_UML_sequence_diagram.jpg)
+
+### Orders approval system UML sequence diagram
+![Orders approval system UML sequence diagram](1_delivarables/orders_approval_system-uml-sequence-diagram.jpg)

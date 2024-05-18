@@ -26,4 +26,4 @@ Install my-project with npm
 
 ## UML sequence diagrams
 
-![Candlestick graphing - UML sequence diagram](./1_deliverables/Candlestick graphing - UML sequence diagram)
+![Candlestick graphing UML sequence diagram](1_deliverables/Candlestick graphing - UML sequence diagram.jpg)

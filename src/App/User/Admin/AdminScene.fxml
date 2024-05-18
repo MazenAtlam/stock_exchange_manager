@@ -31,7 +31,7 @@
          </font>
       </Text>
       <Button fx:id="retrieveUser" layoutX="423.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Retreive User" />
-      <Button fx:id="delete" layoutX="67.0" layoutY="313.0" mnemonicParsing="false" stylesheets="@Mazen.css" text="Delete selected" />
+      <Button fx:id="delete" layoutX="67.0" layoutY="313.0" mnemonicParsing="false" onAction="#DeleteSelected" stylesheets="@Mazen.css" text="Delete selected" />
       <TitledPane layoutX="14.0" layoutY="61.0" prefHeight="230.0" prefWidth="151.0" text="Select Admin">
          <content>
             <ListView fx:id="admins" editable="true" prefHeight="203.0" prefWidth="150.0" styleClass="profile" stylesheets="@../../Mazen.css" />
@@ -42,7 +42,7 @@
             <ListView fx:id="users" editable="true" prefHeight="210.0" prefWidth="150.0" styleClass="profile" stylesheets="@../../Mazen.css" />
          </content>
       </TitledPane>
-      <TitledPane layoutX="349.6" layoutY="67.0" prefHeight="245.0" prefWidth="251.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="4.0">
+      <TitledPane fx:id="viewProfile" layoutX="349.6" layoutY="67.0" prefHeight="245.0" prefWidth="251.0" stylesheets="@Mazen.css" text="View Profile" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="4.0">
          <content>
             <AnchorPane prefHeight="242.0" prefWidth="246.0" styleClass="profile" stylesheets="@Mazen.css">
                <children>

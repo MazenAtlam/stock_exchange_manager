@@ -86,6 +86,7 @@ public class Normal_User_Scene extends Controller implements Initializable {
     public void changeToMarket(ActionEvent event) throws IOException{
 //        ShowStage("Market.fxml",event);
         display("Market.fxml");
+        Controller.currStage.show();
     }
     @FXML
     public void changeToAccount(ActionEvent event) throws IOException{

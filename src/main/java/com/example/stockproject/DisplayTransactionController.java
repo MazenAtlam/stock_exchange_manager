@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 public class DisplayTransactionController extends Controller implements Initializable {
     @FXML
     private TitledPane profileVeiw;
+
     @FXML
     private Label usernameField , UserId;
 

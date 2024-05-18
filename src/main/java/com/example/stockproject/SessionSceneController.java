@@ -1,19 +1,23 @@
 package com.example.stockproject;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
+import javafx.stage.Stage;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SessionSceneController extends Controller  {
+public class SessionSceneController extends Controller implements Initializable {
 
     @FXML
     private RadioButton candleId,lineId;
@@ -25,18 +29,34 @@ public class SessionSceneController extends Controller  {
     @FXML
     private Label usernameField , UserId , checkerLabel;
 
+    private String selectedItem;
 
-    public void initialize() {
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        companyList.getItems().addAll(Data.stockData.keySet());
+        companyList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                selectedItem = companyList.getSelectionModel().getSelectedItem();
+
+            }
+        });
         profileVeiw.setExpanded(false);
         checkerLabel.setVisible(false);
         setInformation();
     }
 
     public void displayChart(ActionEvent event) {
-        if (candleId.isSelected()){
+        if (candleId.isSelected() && selectedItem!=null){
+          CandlestickGraph graph = new CandlestickGraph(selectedItem,Data.CSVDirectory, 1700,700);
 
+            Scene scene =new Scene( graph.graph(), 1100,700);
+            Controller.currStage.setScene(scene);
+            Controller.currStage.show();
         }
-        else if (lineId.isSelected()){
+        else if (lineId.isSelected() && selectedItem!=null){
 
         }
         else

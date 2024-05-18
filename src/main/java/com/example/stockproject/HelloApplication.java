@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
 //        Scene scene = new Scene(root, 600, 400);
 //        stage.setScene(scene);
 //        stage.show();
+
         HelloApplication.stage = stage;
         ChangeSceneController controller1 = new ChangeSceneController();
         controller1.display("hello-view.fxml");
@@ -28,6 +29,13 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args)
     {
+        try{
+            Data.initStockData();
+        } catch (Exception e){
+            System.out.println("Error initing stocks data");
+            System.out.println(e);
+        }
+
         temp.setUsername("mazenatef");
         temp.setPassword("11111111");
         temp1.setUsername("sherifelgendy");

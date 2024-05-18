@@ -8,45 +8,45 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" styleClass="root" stylesheets="@mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
    <children>
-      <ToolBar layoutX="6.0" layoutY="6.0" prefHeight="47.0" prefWidth="586.0" styleClass="login_toolbar" stylesheets="@Mazen.css" />
-      <Label fx:id="LabelField" layoutX="183.0" layoutY="19.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Welcome to Stock world">
+      <ToolBar layoutX="6.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="469.0" style="-fx-pref-width: 468;" styleClass="login_toolbar" stylesheets="@Mazen.css" />
+      <Label fx:id="LabelField" layoutX="127.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Welcome To Stock World">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <PasswordField fx:id="PasswordField" layoutX="238.0" layoutY="206.0" prefHeight="21.0" prefWidth="149.0" styleClass="fields" stylesheets="@Mazen.css">
+      <PasswordField fx:id="PasswordField" layoutX="238.0" layoutY="185.0" prefHeight="21.0" prefWidth="149.0" styleClass="fields" stylesheets="@Mazen.css">
          <font>
             <Font size="10.0" />
          </font>
       </PasswordField>
-      <Label layoutX="99.0" layoutY="202.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Password:">
+      <Label layoutX="99.0" layoutY="182.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Password:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="126.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Username:">
+      <Label layoutX="98.0" layoutY="112.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Username:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="262.0" layoutY="308.0" mnemonicParsing="false" onAction="#LogIn" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Login">
+      <Button layoutX="205.0" layoutY="308.0" mnemonicParsing="false" onAction="#LogIn" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Login">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="45.0" layoutY="308.0" mnemonicParsing="false" onAction="#CreateNewAccount" stylesheets="@Mazen.css" text="create new account">
+      <Button layoutX="40.0" layoutY="308.0" mnemonicParsing="false" onAction="#CreateNewAccount" stylesheets="@Mazen.css" text="Create New Account">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="UserNameField" layoutX="238.0" layoutY="127.0" prefHeight="21.0" prefWidth="149.0" styleClass="fields" stylesheets="@Mazen.css" />
-      <Label layoutX="191.0" layoutY="264.0" stylesheets="@Mazen.css" text="Pattern must be 8 characters or more">
+      <TextField fx:id="UserNameField" layoutX="238.0" layoutY="115.0" prefHeight="21.0" prefWidth="149.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <Label layoutX="133.0" layoutY="268.0" stylesheets="@Mazen.css" text="Pattern must be 8 characters or more">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="453.0" layoutY="308.0" mnemonicParsing="false" onAction="#AfterCancel" styleClass="newadmin-but" stylesheets="@Mazen.css" text="back" />
+      <Button layoutX="340.0" layoutY="308.0" mnemonicParsing="false" onAction="#AfterCancel" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Back" />
    </children>
 </Pane>

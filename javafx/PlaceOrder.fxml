@@ -24,24 +24,24 @@
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="130.0" layoutY="287.0" mnemonicParsing="false" onMousePressed="#GeneralValidation" onMouseReleased="#addOrder" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Confirm" />
+      <Button layoutX="225.0" layoutY="19.0" mnemonicParsing="false" onMousePressed="#GeneralValidation" onMouseReleased="#addOrder" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Confirm" />
       <TextField fx:id="stockAmountTextField" layoutX="189.0" layoutY="251.0" onKeyTyped="#validateStockAmount" promptText="Enter Stock Amount" styleClass="fields" stylesheets="@Mazen.css" />
-      <Label fx:id="errorMessage" layoutX="195.0" layoutY="133.0" textFill="RED">
+      <Label fx:id="errorMessage" layoutX="210.0" layoutY="123.0" prefHeight="15.0" prefWidth="94.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage1" layoutX="195.0" layoutY="213.0" textFill="RED">
+      <Label fx:id="errorMessage1" layoutX="47.0" layoutY="125.0" prefHeight="15.0" prefWidth="94.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage3" layoutX="51.0" layoutY="271.0" textFill="RED">
+      <Label fx:id="errorMessage3" layoutX="53.0" layoutY="284.0" prefHeight="15.0" prefWidth="80.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage2" layoutX="346.0" layoutY="271.0" textFill="RED">
+      <Label fx:id="errorMessage2" layoutX="214.0" layoutY="284.0" prefHeight="15.0" prefWidth="94.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>

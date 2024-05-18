@@ -25,5 +25,5 @@ Install my-project with npm
 - Validate cash deposits and withdrawls for users.
 
 ## UML sequence diagrams
-
-![Candlestick graphing UML sequence diagram](1_deliverables/Candlestick graphing - UML sequence diagram.jpg)
+### Candlestick graphing UML sequence diagram
+![Candlestick graphing UML sequence diagram](1_deliverables/Candlestick_graphing_UML_sequence_diagram.jpg)

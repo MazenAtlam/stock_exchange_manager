@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 
 public class AdminSceneController extends Controller implements Initializable{
-    public static String selectedItem;
     private String selectedUser;
     private String selectedAdmin;
     public ArrayList<String> UsersTemp = new ArrayList<>();
@@ -73,7 +72,7 @@ public class AdminSceneController extends Controller implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        adminGenerator = new Admin();
+        adminGenerator = AdminGenerator.getAdminGenerator();
         currAdmin = Data.Admins.get(Data.getAdminIndex());
     }
 
@@ -114,6 +113,7 @@ public class AdminSceneController extends Controller implements Initializable{
         });
         // delete user
         adminGenerator.deleteAdmin(selectedAdmin);
+        currAdmin.deleteUser(selectedUser)
     }
 
     // public void CreateNewAdmin(ActionEvent e) throws IOException {

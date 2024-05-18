@@ -1,10 +1,10 @@
 .root
 {
--fx-background-color:#66a5ad;
+-fx-background-color:#279c94;
 -fx-border-color: #f1f1f2;
 -fx-border-width: 5px;
 }
-.start_toolbar,.login_toolbar{
+.start_toolbar,.login_toolbar,.order-toolbar{
 -fx-pref-width:590px;
 -fx-background-color:#003448;
 }
@@ -27,7 +27,6 @@
   -fx-text-alignment: center;
   -fx-background-radius: 40px;
   -fx-font-weight: bold;
-  
 }
 .button:hover {
   -fx-background-color: #344c64;
@@ -47,7 +46,7 @@
 .profile{
 -fx-background-color:#90afc5;
 -fx-border-color: #763626;
--fx-border-width: 5px;
+-fx-border-width: 2px;
 }
 .view{
 -fx-background-color:#763626;
@@ -78,4 +77,17 @@
 }
 .orders-but{
 -fx-pref-width:70px;
+}
+.about-but{
+-fx-pref-width:120px;
+-fx-font-size: 14px;
+}
+.exit-but{
+-fx-pref-width: 80px;
+}
+.order-toolbar{
+-fx-pref-width: 670px;
+}
+.tablecolumn{
+-fx-border-color:#2196f3;
 }

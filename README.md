@@ -14,15 +14,22 @@ Install my-project with npm
     
 ## Features
 
-### Company Features
-- Publishing its stocks in the market
 ### Trader Features
 - Buying and selling stocks.
 - Managing portfolio.
-- Analyzing market data through graphs and charts.
+- Analyzing market data through candlestick charts and line charts.
+- Exporting stock history to CSV files
+- Subscribe for notifications on stock price changes (*premium feature*)
+- Show line charts for specific stocks (*premium feature*)
+
 ### Admin Features
 - Publish Company stocks in market.
 - Validate cash deposits and withdrawls for users.
+- Initiate and close trading sessions.
+- Listing stock orders filtered by the stock label.
+
+### Company Features
+- Publishing its stocks in the market
 
 ## UML sequence diagrams
 ### Candlestick graphing UML sequence diagram

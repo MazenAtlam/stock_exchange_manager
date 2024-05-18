@@ -23,3 +23,7 @@ Install my-project with npm
 ### Admin Features
 - Publish Company stocks in market.
 - Validate cash deposits and withdrawls for users.
+
+## UML sequence diagrams
+
+![Candlestick graphing - UML sequence diagram](./1_deliverables/Candlestick graphing - UML sequence diagram)

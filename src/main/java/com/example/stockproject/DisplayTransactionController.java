@@ -2,71 +2,40 @@ package com.example.stockproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
-
+import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SessionSceneController extends Controller  {
-
-    @FXML
-    private RadioButton candleId,lineId;
+public class DisplayTransactionController extends Controller implements Initializable {
     @FXML
     private TitledPane profileVeiw;
-
     @FXML
-    private ListView <String> companyList;
-    @FXML
-    private Label usernameField , UserId , checkerLabel;
+    private Label usernameField , UserId;
 
-
-    public void initialize() {
+//    public void initialize() {
+//        profileVeiw.setExpanded(false);
+//        setInformation();
+//    }
+@Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         profileVeiw.setExpanded(false);
-        checkerLabel.setVisible(false);
         setInformation();
     }
-
-    public void displayChart(ActionEvent event) {
-        if (candleId.isSelected()){
-
-        }
-        else if (lineId.isSelected()){
-
-        }
-        else
-        {
-            checkerLabel.setVisible(true);
-        }
-    }
-
-//    private void ShowStage(String name ,ActionEvent event  ) throws IOException {
-//        root = (FXMLLoader.load(getClass().getResource(name)));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
 
     public void setInformation(){
         usernameField.setText(Data.Users.get(Data.getUserIndex()).username);  ;
         UserId.setText(String.valueOf((Data.Users.get(Data.getUserIndex()).getId())));
     }
 
-
-
     @FXML
     public void changeName(ActionEvent event) throws IOException {
 //        ShowStage("ChangeName.fxml", event);
         display("ChangeName.fxml");
     }
-
 
 
     @FXML
@@ -85,7 +54,5 @@ public class SessionSceneController extends Controller  {
         display("ChangePassword.fxml");
 
     }
-
-
 
 }

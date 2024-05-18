@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
         temp.setUsername("mazenatef");
         temp.setPassword("11111111");
         temp1.setUsername("sherifelgendy");
-        temp1.setPassword("11111111");
+        temp1.setPassword("sherifelgendy");
         Data.Admins.add(temp);
         Data.Users.add(temp1);
        launch(args);

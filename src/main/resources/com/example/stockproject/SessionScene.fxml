@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -40,11 +41,15 @@
          </font>
       </Label>
       <Label layoutX="38.0" layoutY="79.0" text="choose company:" />
-      <Button layoutX="135.0" layoutY="332.0" mnemonicParsing="false" text="Display chart" />
+      <Button layoutX="135.0" layoutY="332.0" mnemonicParsing="false" onAction="#displayChart" text="Display chart" />
       <Button layoutX="386.0" layoutY="332.0" mnemonicParsing="false" text="Place order" />
-      <RadioButton layoutX="155.0" layoutY="283.0" mnemonicParsing="false" text="candle stick" />
-      <RadioButton layoutX="285.0" layoutY="283.0" mnemonicParsing="false" text="line chart" />
+      <RadioButton fx:id="candleId" layoutX="155.0" layoutY="283.0" mnemonicParsing="false" text="candle stick">
+         <toggleGroup>
+            <ToggleGroup fx:id="chart" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="lineId" layoutX="285.0" layoutY="283.0" mnemonicParsing="false" text="line chart" toggleGroup="$chart" />
       <Label layoutX="36.0" layoutY="283.0" text="choose draw type:" />
       <ListView fx:id="companyList" editable="true" layoutX="146.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="checkerLabel" layoutX="220.0" layoutY="311.0" text="choose one first" />
    </children>
 </AnchorPane>

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import App.Data;
 import App.User.User;
 import javafx.beans.value.ChangeListener;
@@ -57,46 +56,34 @@ public class AdminSceneController extends Controller implements Initializable{
     private Label username;
     @FXML
     private Label adminID;
-    // @FXML
-    // private Label gender;
 
-    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         viewProfile.setExpanded(false);
         // Temp();
         // users.getItems().addAll(UsersTemp);
         // admins.getItems().addAll(AdminsTemp);
+        add_items(Data.Admins, admins);
+        add_items(Data.Users, users);
         try {
             DeleteSelected(null);
         } catch (IOException e) {
             e.printStackTrace();
         }
         adminGenerator = AdminGenerator.getAdminGenerator();
-        currAdmin = Data.Admins.get(Data.getAdminIndex());
+        currAdmin = (Admin) Data.Admins.get(Data.getAdminIndex());
     }
 
     public void LogOut(ActionEvent e) throws IOException {
         display("hello-view.fxml");
     }
 
-    // public void RetrieveUser(ActionEvent e) throws IOException {
-    //     String usernameRetrieve = nameToRetrieve.getText();
+    public void RetrieveUser(ActionEvent e) throws IOException {
+        String usernameRetrieve = nameToRetrieve.getText();
 
-    //     if (usernameRetrieve == null || usernameRetrieve.equals("")) {
-    //         // warning: Please enter a name
-    //     } else {
-    //         for (User item : Data.deletedUsers) {
-    //             if (item.equals(usernameRetrieve)) {
-    //                 Data.deletedUsers.remove(item);
-    //                 Data.Users.add(item);
-    //                 users.getItems().add(item.userName);
-    //                 return;
-    //             }
-    //         }
-    //         // Warning: This user is not deleted or not found
-    //     }
-    // }
+        User newUser = currAdmin.retrieveUser(usernameRetrieve);
+        users.getItems().add(newUser.getUsername());
+    }
 
     public void DeleteSelected(ActionEvent e) throws IOException {
         users.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -111,56 +98,43 @@ public class AdminSceneController extends Controller implements Initializable{
                 selectedAdmin =  admins.getSelectionModel().getSelectedItem();
             }
         });
-        // delete user
-        adminGenerator.deleteAdmin(selectedAdmin);
-        currAdmin.deleteUser(selectedUser)
+        User admin = getAdmin(selectedAdmin);
+        adminGenerator.remove_admin(admin);
+        currAdmin.deleteUser(selectedUser);
     }
 
-    // public void CreateNewAdmin(ActionEvent e) throws IOException {
-    //     display("AdminCreation.fxml");
-    // }
+    private User getAdmin(String username) {
+        for (User admin : Data.Admins) {
+            if (admin.getUsername().equals(username)) {
+                return admin;
+            }
+        }
+        return null;
+    }
 
-    // public void CreateNewUser(ActionEvent e) throws IOException {
-    //     display("AdminToCreateNewUser.fxml");
-    // }
+    public void CreateNewAdmin(ActionEvent e) throws IOException {
+        display("AdminCreation.fxml");
+    }
 
-    // public void ChangeName(ActionEvent e) throws IOException {
-    //     display("ChangeName.fxml");
-    // }
+    public void CreateNewUser(ActionEvent e) throws IOException {
+        display("AdminToCreateNewUser.fxml");
+    }
 
-    // public void ChangeGender(ActionEvent e) throws IOException {
-    //     if (currUser.gender == MALE);
-    // }
+    public void ChangeName(ActionEvent e) throws IOException {
+        display("ChangeName.fxml");
+    }
 
-    // public void ChangePassword(ActionEvent e) throws IOException {
-    //     display("ChangePassword.fxml");
-    // }
+    public void ChangePassword(ActionEvent e) throws IOException {
+        display("ChangePassword.fxml");
+    }
 
-    // public void StartSession(ActionEvent e) throws IOException {
-    //     display("Session.fxml");
-    // }
+    public void StartSession(ActionEvent e) throws IOException {
+        display("Session.fxml");
+    }
 
-    // public void add_items(ArrayList<User> list, ListView<String> listView) {
-    //     for (User item : list) {
-    //         listView.getItems().add(item.userName);
-    //     }
-    // }
-
-    // public void Temp() {
-    //     UsersTemp.add("Mazen");
-    //     UsersTemp.add("Sherif");
-    //     UsersTemp.add("Anas");
-    //     UsersTemp.add("Gad");
-    //     UsersTemp.add("Abdelghaffar");
-    //     UsersTemp.add("Mazen2");
-    //     UsersTemp.add("Sherif2");
-    //     UsersTemp.add("Anas2");
-    //     UsersTemp.add("Gad2");
-    //     UsersTemp.add("Abdelghaffar2");
-    //     AdminsTemp.add("Mazen");
-    //     AdminsTemp.add("Sherif");
-    //     AdminsTemp.add("Anas");
-    //     AdminsTemp.add("Gad");
-    //     AdminsTemp.add("Abdelghaffar");
-    // }
+    public void add_items(ArrayList<User> list, ListView<String> listView) {
+        for (User item : list) {
+            listView.getItems().add(item.getUsername());
+        }
+    }
 }

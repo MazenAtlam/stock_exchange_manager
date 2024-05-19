@@ -31,7 +31,7 @@ import App.User.User;
         if (admin == null)
             System.out.println("null passed in add_admin");
         else
-            Data.admins.add(admin);
+            Data.Admins.add(admin);
     }
 
     /**
@@ -42,6 +42,6 @@ import App.User.User;
         if (admin == null)
             System.out.println("null passed in remove_admin");
         else
-            Data.admins.remove(admin);
+            Data.Admins.remove(admin);
     }
 }

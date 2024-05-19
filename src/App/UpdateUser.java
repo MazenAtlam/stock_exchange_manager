@@ -1,7 +1,5 @@
 package App;
 
-import App.User.User;
-
 /**
  * A class that allows an admin to change a user premium status
  *
@@ -15,14 +13,14 @@ public class UpdateUser {
      * This method is used to update a user to premium tier
      * @param user
      */
-    public void add_premium_user(User user) {
+    public void add_premium_user(NormalUser user) {
         if (user == null)
             System.out.println("null passed in add_premium_user");
-        else if (user.premium) {
+        else if (user.isPremium()) {
             // show message "This user is already subscribed to premium"
         } else {
-            user.premium = true;
-            Data.premium_users.add(user);
+            user.setPremium(true);
+            Data.PremiumUsers.add(user);
         }
     }
 
@@ -30,14 +28,14 @@ public class UpdateUser {
      * This method is used to REMOVE a user from premium tier
      * @param user
      */
-    public void remove_premium_user(User user) {
+    public void remove_premium_user(NormalUser user) {
         if (user == null)
             System.out.println("null passed in remove_premium_user");
-        else if (!user.premium) {
+        else if (!user.isPremium()) {
             // show message "This user is already not subscribed to premium"
         } else {
-            user.premium = false;
-            Data.premium_users.remove(user);
+            user.setPremium(false);
+            Data.PremiumUsers.remove(user);
         }
     }
 }

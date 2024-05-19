@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="485.0" stylesheets="@../../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="485.0" stylesheets="@../../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.User.Admin.AdminGeneratorController">
    <children>
       <ToolBar layoutX="5.0" layoutY="6.0" minWidth="-Infinity" prefHeight="48.0" prefWidth="465.0" style="-fx-background-color: #003448;" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" />
       <Label fx:id="LabelField" layoutX="152.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New Admin ">
@@ -31,18 +31,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordField" layoutX="264.0" layoutY="162.0" styleClass="fields" stylesheets="@Mazen.css" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="265.0" layoutY="211.0" styleClass="fields" stylesheets="@Mazen.css">
+      <PasswordField fx:id="password" layoutX="264.0" layoutY="162.0" promptText="Enter Password" styleClass="fields" stylesheets="@Mazen.css" />
+      <PasswordField fx:id="confirmPassword" layoutX="265.0" layoutY="211.0" promptText="Confirm Password" styleClass="fields" stylesheets="@Mazen.css">
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-      <TextField fx:id="usernameField" layoutX="264.0" layoutY="114.0" styleClass="fields" stylesheets="@Mazen.css" />
-      <Button fx:id="create" layoutX="88.0" layoutY="324.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Create">
+      <TextField fx:id="username" layoutX="264.0" layoutY="114.0" promptText="Enter Username" styleClass="fields" stylesheets="@Mazen.css" />
+      <Button fx:id="create" layoutX="88.0" layoutY="324.0" mnemonicParsing="false" onAction="#Create" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancel" layoutX="295.0" layoutY="325.0" mnemonicParsing="false" onAction="#T" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Cancel">
+      <Button fx:id="cancel" layoutX="295.0" layoutY="325.0" mnemonicParsing="false" onAction="#Cancel" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>

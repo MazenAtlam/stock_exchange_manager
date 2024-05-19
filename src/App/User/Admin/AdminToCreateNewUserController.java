@@ -7,8 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AdminGeneratorController extends Controller{
-    private AdminGenerator adminGenerator;
+public class AdminToCreateNewUserController extends Controller{
+    private Admin currAdmin;
 
     @FXML
     private Button create;
@@ -22,7 +22,7 @@ public class AdminGeneratorController extends Controller{
     private TextField ConfirmPassword;
 
     public void initialize() {
-        adminGenerator = AdminGenerator.getAdminGenerator();
+        currAdmin = (Admin) Data.Admins.get(Data.getAdminIndex());
     }
     public void Create(ActionEvent e) {
         String name = Username.getText();
@@ -32,8 +32,8 @@ public class AdminGeneratorController extends Controller{
         final boolean checkPassword = Pattern.matches("\\w{8,}",pass);
 
         if (checkUsername && checkPassword && pass.equals(confirmPass) &&
-        Data.AdminNameIsAvailable(name)) {
-            adminGenerator.add_admin(new Admin(name, pass));
+        Data.UsernameIsAvailable(name)) {
+            currAdmin.addUser(name, pass);
         }
     }
     public void Cancel(ActionEvent e) {

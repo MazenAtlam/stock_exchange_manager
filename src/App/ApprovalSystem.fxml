@@ -17,8 +17,8 @@
    <children>
       <ToolBar layoutX="6.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="588.0" style="-fx-background-color: #003448;">
          <items>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #a34fd8;" styleClass="orders-but" stylesheets="@Mazen.css" text="Back" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: GREEN;" styleClass="orders-but" stylesheets="@Mazen.css" text="Approve" textFill="WHITE" />
+            <Button fx:id="back" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #a34fd8;" styleClass="orders-but" stylesheets="@Mazen.css" text="Back" textFill="WHITE" />
+            <Button fx:id="approve" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: GREEN;" styleClass="orders-but" stylesheets="@Mazen.css" text="Approve" textFill="WHITE" />
          </items></ToolBar>
       <TitledPane layoutX="387.0" layoutY="76.0" prefHeight="174.0" prefWidth="173.0" stylesheets="@Mazen.css" text="View Profile">
          <content>
@@ -27,11 +27,11 @@
                   <ToolBar layoutX="5.0" layoutY="100.0" prefHeight="20.0" prefWidth="64.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="5.0" layoutY="73.0" prefHeight="20.0" prefWidth="64.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="5.0" layoutY="21.0" prefHeight="20.0" prefWidth="64.0" style="-fx-background-color: #763626;" />
-                  <Label fx:id="adminId" layoutX="75.0" layoutY="103.0" text="adminID" />
+                  <Label fx:id="adminID" layoutX="75.0" layoutY="103.0" text="adminID" />
                   <SplitMenuButton layoutX="11.0" layoutY="151.0" mnemonicParsing="false" text="Edit Profile">
                      <items>
                         <MenuItem fx:id="changeName" mnemonicParsing="false" text="Change Username" />
-                        <MenuItem fx:id="changePass" mnemonicParsing="false" text="Change Password" />
+                        <MenuItem fx:id="changePassword" mnemonicParsing="false" text="Change Password" />
                      </items>
                   </SplitMenuButton>
                   <Label fx:id="username" layoutX="77.0" layoutY="23.0" text="username" />
@@ -45,7 +45,7 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#ab1c1c" />
+      <Button fx:id="reject" layoutX="161.0" layoutY="26.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: RED;" styleClass="orders-but" stylesheets="@Mazen.css" text="Reject" textFill="#ab1c1c" />
       <Text fill="WHITE" layoutX="276.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="changing-head" text="Orders">
          <font>
             <Font size="24.0" />
@@ -56,11 +56,11 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TableView editable="true" layoutX="56.0" layoutY="126.0" prefHeight="234.0" prefWidth="291.0">
+      <TableView fx:id="orders" editable="true" layoutX="56.0" layoutY="126.0" prefHeight="234.0" prefWidth="291.0">
         <columns>
-          <TableColumn fx:id="usernameTableColumn" prefWidth="138.4000244140625" text="User" />
-          <TableColumn fx:id="typeTableColumn" prefWidth="84.0" text="Request Type" />
-            <TableColumn fx:id="amountTableColumn" prefWidth="67.199951171875" text="Amount" />
+          <TableColumn fx:id="usernameList" prefWidth="138.4000244140625" text="User" />
+          <TableColumn fx:id="type" prefWidth="84.0" text="Request Type" />
+            <TableColumn fx:id="amount" prefWidth="67.199951171875" text="Amount" />
         </columns>
       </TableView>
    </children>

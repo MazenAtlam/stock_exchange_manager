@@ -5,6 +5,7 @@ import App.Data;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AdminGeneratorController extends Controller{
@@ -17,11 +18,12 @@ public class AdminGeneratorController extends Controller{
     @FXML
     private TextField Username;
     @FXML
-    private TextField Password;
+    private PasswordField Password;
     @FXML
     private TextField ConfirmPassword;
 
     public void initialize() {
+        currUser = Data.Admins.get(Data.TempID);
         adminGenerator = AdminGenerator.getAdminGenerator();
     }
     public void Create(ActionEvent e) {
@@ -37,19 +39,6 @@ public class AdminGeneratorController extends Controller{
         }
     }
     public void Cancel(ActionEvent e) {
-        display("AdminScene.fxml");
+        display(currUser, "AdminScene.fxml");
     }
-
-    // private boolean isEmpty(TextField field, String fieldValue) {
-    //     if (fieldValue == null || fieldValue == "") {
-    //         try {
-    //             WarningMessage.show(fieldValue, "Please, " + field.getPromptText());
-    //         } catch (IOException e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    //         return true;
-    //     }
-    //     return false;
-    // }
 }

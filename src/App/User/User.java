@@ -24,8 +24,11 @@ public abstract class User {
         throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
     }
 
-    public void setId(int id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -6,6 +6,7 @@ import java.util.*;
 import App.User.User;
 
 public abstract class Data {
+    public static int TempID;
     public static String CSVDirectory =  "src/main/CSV data";
     public static UserFactory userFactory = new UserFactory();
     public static ArrayList <User> Users = new ArrayList<>();
@@ -185,15 +186,6 @@ public abstract class Data {
             }
         }
         return null;
-    }
-
-    public static boolean IsAdmin(User user){
-        for (User value : Admins) {
-            if (Objects.equals(user,value)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static void setUsers(String username , String password){

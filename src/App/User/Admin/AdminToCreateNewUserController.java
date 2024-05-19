@@ -5,11 +5,10 @@ import App.Data;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AdminToCreateNewUserController extends Controller{
-    private Admin currAdmin;
-
     @FXML
     private Button create;
     @FXML
@@ -17,12 +16,12 @@ public class AdminToCreateNewUserController extends Controller{
     @FXML
     private TextField Username;
     @FXML
-    private TextField Password;
+    private PasswordField Password;
     @FXML
-    private TextField ConfirmPassword;
+    private PasswordField ConfirmPassword;
 
     public void initialize() {
-        currAdmin = (Admin) Data.Admins.get(Data.getAdminIndex());
+        currUser = Data.Admins.get(Data.TempID);
     }
     public void Create(ActionEvent e) {
         String name = Username.getText();
@@ -33,23 +32,11 @@ public class AdminToCreateNewUserController extends Controller{
 
         if (checkUsername && checkPassword && pass.equals(confirmPass) &&
         Data.UsernameIsAvailable(name)) {
+            Admin currAdmin = (Admin) currUser;
             currAdmin.addUser(name, pass);
         }
     }
     public void Cancel(ActionEvent e) {
-        display("AdminScene.fxml");
+        display(currUser, "AdminScene.fxml");
     }
-
-    // private boolean isEmpty(TextField field, String fieldValue) {
-    //     if (fieldValue == null || fieldValue == "") {
-    //         try {
-    //             WarningMessage.show(fieldValue, "Please, " + field.getPromptText());
-    //         } catch (IOException e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    //         return true;
-    //     }
-    //     return false;
-    // }
 }

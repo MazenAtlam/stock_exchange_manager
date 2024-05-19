@@ -14,43 +14,43 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.YourTimeHasCome.StockManagementController">
    <children>
-      <ListView layoutX="14.0" layoutY="91.0" prefHeight="200.0" prefWidth="162.0" styleClass="orderlist" stylesheets="@Mazen.css" />
+      <ListView fx:id="company" layoutX="14.0" layoutY="91.0" prefHeight="200.0" prefWidth="162.0" styleClass="orderlist" stylesheets="@Mazen.css" />
       <Label layoutX="18.0" layoutY="65.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Choose Company">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView layoutX="206.0" layoutY="91.0" prefHeight="200.0" prefWidth="161.0" styleClass="orderlist" stylesheets="@Mazen.css" />
+      <ListView fx:id="parmeter" layoutX="206.0" layoutY="91.0" prefHeight="200.0" prefWidth="161.0" styleClass="orderlist" stylesheets="@Mazen.css" />
       <Label layoutX="208.0" layoutY="66.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Choose parameter">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <ToolBar layoutX="4.0" layoutY="7.0" prefHeight="40.0" prefWidth="600.0" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button layoutX="29.0" layoutY="14.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
-      <Button layoutX="439.0" layoutY="343.0" mnemonicParsing="false" text="Create New Stocks" />
-      <Button layoutX="329.0" layoutY="343.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Edit" />
+      <Button fx:id="back" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
+      <Button fx:id="createNewStocks" layoutX="439.0" layoutY="343.0" mnemonicParsing="false" text="Create New Stocks" />
+      <Button fx:id="edit" layoutX="329.0" layoutY="343.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Edit" />
       <Label alignment="CENTER" layoutX="195.0" layoutY="8.0" prefHeight="35.0" prefWidth="210.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Stock Management">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="154.0" layoutY="342.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <TextField fx:id="value" layoutX="154.0" layoutY="342.0" styleClass="fields" stylesheets="@Mazen.css" />
       <Label layoutX="15.0" layoutY="344.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Enter the value:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TitledPane layoutX="396.0" layoutY="47.0" prefHeight="200.0" prefWidth="181.0" stylesheets="@Mazen.css" text="View Profile">
+      <TitledPane fx:id="viewProfile" layoutX="396.0" layoutY="47.0" prefHeight="200.0" prefWidth="181.0" stylesheets="@Mazen.css" text="View Profile">
          <content>
             <AnchorPane prefHeight="239.0" prefWidth="229.0" styleClass="profile" stylesheets="@Mazen.css">
                <children>
                   <ToolBar layoutX="2.0" layoutY="84.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="2.0" layoutY="15.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
                   <ToolBar layoutX="2.0" layoutY="50.0" prefHeight="22.0" prefWidth="80.0" style="-fx-background-color: #763626;" />
-                  <Label fx:id="adminID" layoutX="93.0" layoutY="87.0" stylesheets="@Mazen.css" text="adminID" />
+                  <Label fx:id="adminId" layoutX="93.0" layoutY="87.0" stylesheets="@Mazen.css" text="adminID" />
                   <SplitMenuButton layoutX="20.0" layoutY="131.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="159.0" styleClass="menu" stylesheets="@Mazen.css" text="Edit Profile" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="121.0">
                      <items>
                         <MenuItem fx:id="changeName" mnemonicParsing="false" text="Change Username" />

@@ -13,6 +13,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Main.currStage = primaryStage;
         AdminSceneController adminSceneController = new AdminSceneController();
-        adminSceneController.display("AdminScene.fxml");
+        adminSceneController.display("hello-view.fxml");
     }
 }

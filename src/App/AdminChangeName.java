@@ -1,18 +1,15 @@
 package App;
 
-import App.User.User;
-import App.User.Admin.Admin;
 import App.User.Admin.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import java.util.regex.Pattern;
 
-public class AdminChangeNameController extends Controller{
-    private User currAdmin;
-
+public class AdminChangeName extends Controller{
     @FXML
     private Button change;
     @FXML
@@ -22,13 +19,13 @@ public class AdminChangeNameController extends Controller{
     @FXML
     private TextField newName;
     @FXML
-    private TextField password;
+    private PasswordField password;
     @FXML
-    private TextField ConfirmName;
+    private PasswordField ConfirmName;
 
     public void initialize() {
-        currAdmin = (Admin) Data.Admins.get(Data.getAdminIndex());
-        currName.setText(currAdmin.getUsername());
+        currUser = Data.Users.get(Data.TempID);
+        currName.setText(currUser.getUsername());
     }
 
     public void Change(ActionEvent e) {
@@ -37,14 +34,12 @@ public class AdminChangeNameController extends Controller{
         String confirmName = ConfirmName.getText();
         final boolean checkUsername = Pattern.matches("[A-Za-z]{8,}",name);
 
-        // change NAME
-            // if (checkUsername && checkPassword && pass.equals(confirmPass) &&
-            // Data.UsernameIsAvailable(name)) {
-            //     currAdmin.addUser(name, pass);
-            // }
+        if (checkUsername && name.equals(confirmName) && Data.VerifyLogin(currUser.getUsername(), pass)) {
+            currUser.setUsername(name);
+        }
     }
 
     public void Cancel(ActionEvent e) {
-        display("AdminLogin.fxml");
+        display(currUser, "AdminLogin.fxml");
     }
 }

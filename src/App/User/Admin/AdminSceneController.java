@@ -3,6 +3,7 @@ package App.User.Admin;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import App.Data;
 import App.User.User;
@@ -23,8 +24,8 @@ public class AdminSceneController extends Controller implements Initializable{
     private String selectedAdmin;
     public ArrayList<String> UsersTemp = new ArrayList<>();
     public ArrayList<String> AdminsTemp = new ArrayList<>();
-    private Admin currAdmin;
     private AdminGenerator adminGenerator;
+    private Admin currAdmin;
 
     @FXML
     private TitledPane viewProfile;
@@ -59,10 +60,11 @@ public class AdminSceneController extends Controller implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        currUser = Data.Admins.get(Data.TempID);
+        currAdmin = (Admin) currUser;
+        username.setText(currUser.getUsername());
+        adminID.setText(Objects.toString(currUser.getId()));
         viewProfile.setExpanded(false);
-        // Temp();
-        // users.getItems().addAll(UsersTemp);
-        // admins.getItems().addAll(AdminsTemp);
         add_items(Data.Admins, admins);
         add_items(Data.Users, users);
         try {
@@ -71,16 +73,14 @@ public class AdminSceneController extends Controller implements Initializable{
             e.printStackTrace();
         }
         adminGenerator = AdminGenerator.getAdminGenerator();
-        currAdmin = (Admin) Data.Admins.get(Data.getAdminIndex());
     }
 
     public void LogOut(ActionEvent e) throws IOException {
-        display("hello-view.fxml");
+        display(currUser, "hello-view.fxml");
     }
 
     public void RetrieveUser(ActionEvent e) throws IOException {
         String usernameRetrieve = nameToRetrieve.getText();
-
         User newUser = currAdmin.retrieveUser(usernameRetrieve);
         users.getItems().add(newUser.getUsername());
     }
@@ -113,23 +113,23 @@ public class AdminSceneController extends Controller implements Initializable{
     }
 
     public void CreateNewAdmin(ActionEvent e) throws IOException {
-        display("AdminCreation.fxml");
+        display(currUser, "AdminCreation.fxml");
     }
 
     public void CreateNewUser(ActionEvent e) throws IOException {
-        display("AdminToCreateNewUser.fxml");
+        display(currUser, "AdminToCreateNewUser.fxml");
     }
 
     public void ChangeName(ActionEvent e) throws IOException {
-        display("ChangeName.fxml");
+        display(currUser, "ChangeName.fxml");
     }
 
     public void ChangePassword(ActionEvent e) throws IOException {
-        display("ChangePassword.fxml");
+        display(currUser, "ChangePassword.fxml");
     }
 
     public void StartSession(ActionEvent e) throws IOException {
-        display("Session.fxml");
+        display(currUser, "Session.fxml");
     }
 
     public void add_items(ArrayList<User> list, ListView<String> listView) {

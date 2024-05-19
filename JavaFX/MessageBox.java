@@ -95,7 +95,7 @@ public class MessageBox {
                 } catch (NumberFormatException _) {
                     errorMessage.setText("Invalid Amount");
                 } catch (NegativeNumberException _) {
-                    errorMessage.setText("Negative Number Not Allowedx`");
+                    errorMessage.setText("Negative Number Not Allowed");
                 }
         }
         else {
@@ -107,9 +107,7 @@ public class MessageBox {
 
     private void checkBalance() throws IOException {
             flag = true;
-            if (AccountController.withdraw_deposit) {
             NumberValidator.validateAmountWithdrawn(Double.parseDouble(amount.getText()));
-            }
     }
 
     @FXML

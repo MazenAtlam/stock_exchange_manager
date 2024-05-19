@@ -6,13 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.random.RandomGenerator;
 
 /**
  *
@@ -24,21 +18,6 @@ public class Market {
     private final IntegerProperty numStocks = new SimpleIntegerProperty();
     public final static ObservableList<String> companySymbolList = FXCollections.observableArrayList();
 
-        /*************************/
-    private final String[] popularSymbols = new String[]{"AAPL", "GOOGL", "MSFT", "AMZN", "FB", "TESLA", "NVDA", "NFLX",
-            "BABA", "V", "JNJ", "JPM", "WMT", "PG"};
-
-    public final static Map<String, double[]> stockData = new HashMap<>();
-
-    private final double[] initialValues = new double[]{0.0, 0.0, 0.0, 0.0};
-
-    private   void loadSymbols() {
-        for (String symbol : popularSymbols) {
-            stockData.put(symbol, initialValues);
-        }
-    }
-        /***********************/
-
 
     public void setNumStocks(int numStocks) {
         this.numStocks.set(numStocks);
@@ -47,7 +26,7 @@ public class Market {
     /**
      * @return
      */
-    public int getNumStocks() {
+    public Integer getNumStocks() {
         return numStocks.get();
     }
 
@@ -95,7 +74,6 @@ public class Market {
      * @param numStocks
      */
     public Market(String companySymbol, double pricePerStock, int numStocks) {
-        loadSymbols();
         for (String companyName : companySymbolList) {
             if (companyName.equals(companySymbol)) {
                 return;
@@ -141,14 +119,18 @@ public class Market {
 
 
     /**
+     * @param market
+     */
+    public static void returnAssetsToMarket(Market market) {}
+
+    /**
      *
      */
-    private static void updateMarket() {
+    public static void updateMarket() {
         for (Market market : MarketController.stockList) {
             if (market.getNumStocks() == 0) {
                 removeCompany(market.getCompanySymbol());
             }
         }
     }
-
 }

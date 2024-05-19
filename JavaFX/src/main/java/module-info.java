@@ -4,6 +4,7 @@ module com.example.javafx {
 
     requires com.dlsc.formsfx;
     requires java.desktop;
+    requires jdk.unsupported.desktop;
 
     opens com.example.javafx to javafx.fxml;
     exports com.example.javafx;

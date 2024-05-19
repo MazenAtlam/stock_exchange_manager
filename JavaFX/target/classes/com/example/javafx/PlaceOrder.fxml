@@ -8,47 +8,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AccountController">
+<AnchorPane prefHeight="327.0" prefWidth="415.0" style="-fx-pref-width: 300px;" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AccountController">
    <children>
-      <ToolBar prefHeight="29.0" prefWidth="600.0">
-        <items>
-          <Button fx:id="backButton" mnemonicParsing="false" onMouseClicked="#setPreviousScene" text="Back" />
-        </items>
-      </ToolBar>
-      <ChoiceBox fx:id="orderType" layoutX="195.0" layoutY="106.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="companySymbolChoiceBox" layoutX="195.0" layoutY="187.0" prefWidth="150.0" />
-      <TextField fx:id="priceTextField" layoutX="45.0" layoutY="244.0" onKeyTyped="#validatePrice" promptText="Enter Preferable Price" />
-      <Label layoutX="196.0" layoutY="84.0" prefHeight="22.0" prefWidth="150.0" text="Select Order Type : " textAlignment="CENTER">
+      <ToolBar layoutX="6.0" layoutY="7.0" prefHeight="48.0" prefWidth="404.0" style="-fx-pref-width: 200px;" styleClass="login_toolbar" stylesheets="@Mazen.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ChoiceBox fx:id="orderType" layoutX="25.0" layoutY="90.0" prefWidth="150.0" stylesheets="@Mazen.css" />
+      <ChoiceBox fx:id="companySymbolChoiceBox" layoutX="188.0" layoutY="90.0" prefWidth="150.0" stylesheets="@Mazen.css" />
+      <TextField fx:id="priceTextField" layoutX="25.0" layoutY="251.0" onKeyTyped="#validatePrice" promptText="Enter Preferable Price" styleClass="fields" stylesheets="@Mazen.css" />
+      <Label alignment="CENTER" layoutX="27.0" layoutY="64.0" prefHeight="22.0" prefWidth="150.0" style="-fx-text-fill: #763626;" stylesheets="@Mazen.css" text="Select Order Type " textAlignment="CENTER">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="196.0" layoutY="164.0" prefHeight="22.0" prefWidth="150.0" text="Select Symbol : " textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="188.0" layoutY="66.0" prefHeight="22.0" prefWidth="150.0" style="-fx-text-fill: #763626;" stylesheets="@Mazen.css" text="Select Symbol " textAlignment="CENTER">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="446.0" layoutY="320.0" mnemonicParsing="false" onMousePressed="#GeneralValidation" onMouseReleased="#addOrder" text="Confirm" />
-      <TextField fx:id="stockAmountTextField" layoutX="345.0" layoutY="244.0" onKeyTyped="#validateStockAmount" promptText="Stock Amount" />
-      <Label fx:id="errorMessage" layoutX="195.0" layoutY="133.0" textFill="RED">
+      <Button layoutX="225.0" layoutY="19.0" mnemonicParsing="false" onMousePressed="#GeneralValidation" onMouseReleased="#addOrder" styleClass="newadmin-but" stylesheets="@Mazen.css" text="Confirm" />
+      <TextField fx:id="stockAmountTextField" layoutX="189.0" layoutY="251.0" onKeyTyped="#validateStockAmount" promptText="Enter Stock Amount" styleClass="fields" stylesheets="@Mazen.css" />
+      <Label fx:id="errorMessage" layoutX="27.0" layoutY="113.0" prefHeight="15.0" prefWidth="115.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage1" layoutX="195.0" layoutY="213.0" textFill="RED">
+      <Label fx:id="errorMessage1" layoutX="189.0" layoutY="113.0" prefHeight="15.0" prefWidth="115.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage3" layoutX="51.0" layoutY="271.0" textFill="RED">
+      <Label fx:id="errorMessage2" layoutX="189.0" layoutY="276.0" prefHeight="15.0" prefWidth="115.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage2" layoutX="346.0" layoutY="271.0" textFill="RED">
+      <Label fx:id="errorMessage3" layoutX="27.0" layoutY="276.0" prefHeight="15.0" prefWidth="115.0" textFill="RED">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
+    <Button fx:id="backButton" layoutX="25.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#setPreviousScene" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
    </children>
 </AnchorPane>

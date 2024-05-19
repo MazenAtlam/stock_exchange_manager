@@ -4,6 +4,8 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import java.io.IOException;
@@ -20,6 +22,7 @@ public class Account {
     private static int id = 0;
     private final int accountId;
     private static final List<Account> accountList = new ArrayList<>();
+    private final List<Order> accountAssets = new ArrayList<>();
 
 
     public int getAccountId() {
@@ -39,6 +42,42 @@ public class Account {
     }
 
 
+    public Integer getAvailableStockAssets(String companySymbol) {
+        for (Order order : this.accountAssets) {
+            System.out.println(order.getOwnedCompanySymbols() + "23");
+            if (order.getOwnedCompanySymbols().equals(companySymbol)) {
+                return (order.getNumberOfOwnedStocks());
+            }
+        }
+        //Never Reached
+        return (0);
+    }
+
+    public void updateAccountAssets(Order order) {
+            this.accountAssets.add(order);
+    }
+
+    public void updateAccountAssets(String companySymbol, Integer numberOfStocks) {
+        for (Order ownedAsset : this.accountAssets) {
+            if (companySymbol.equals(ownedAsset.getOwnedCompanySymbols())) {
+                ownedAsset.setNumberOfOwnedStocks(ownedAsset.getNumberOfOwnedStocks() - numberOfStocks);
+            }
+        }
+        updateAccountAssets();
+    }
+
+    public void updateAccountAssets() {
+        OrderController.ownedAssetsObservableList.removeIf(ownedAsset -> ownedAsset.getNumberOfOwnedStocks().equals(0));
+        this.accountAssets.removeIf(ownedAssets -> ownedAssets.getNumberOfOwnedStocks().equals(0));
+    }
+
+    public ObservableList<String> retreiveAccountAssets() {
+        ObservableList<String> ownedSymbols = FXCollections.observableArrayList();
+        for (Order order : this.accountAssets) {
+            ownedSymbols.add(order.getOwnedCompanySymbols());
+        }
+        return (ownedSymbols);
+    }
 
     /**
      * @param balance
@@ -89,15 +128,17 @@ public class Account {
      * @param userIndex
      */
     public static void setUserAccount(int userIndex) {
-        if (Account.id < userIndex) {
-            new Account();
-        } else {
-            AccountController.account = Account.accountList.get(userIndex - 1);
-        }
+            if (Account.accountList.get(userIndex) == null) {
+               Account.accountList.add(new Account());
+            } else {
+                AccountController.account = Account.accountList.get(userIndex);
+            }
+
+        //        if (Account.id < userIndex) {
+//            new Account();
+//        } else {
+//            AccountController.account = Account.accountList.get(userIndex - 1);
+//        }
     }
-
-}
-
-class Asset extends Account {
 
 }

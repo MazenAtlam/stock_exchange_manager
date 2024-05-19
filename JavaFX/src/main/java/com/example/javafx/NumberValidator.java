@@ -51,11 +51,32 @@ public class NumberValidator {
         }
     }
 
+    public static void validateAmountWithdrawn(double amount) throws IOException {
+        if (amount > AccountController.account.getBalance()) {
+            MessageBox.show("Warning", "Insufficient Account Balance");
+            MessageBox.flag = false;
+        }
+    }
+
+    /**
+     * @param requestedStockAmount
+     * @param companySymbol
+     * @param errorMessage
+     * @throws IOException
+     */
     public static void validateMarketStocksAvailability(int requestedStockAmount, String companySymbol, Label errorMessage) throws IOException {
         if (requestedStockAmount > Market.getInstance(companySymbol).getNumStocks()) {
                 MessageBox.show("Warning", "Specified Stock Amount Not Available");
                 errorMessage.setText("");
                 errorMessage.setVisible(true);
+        }
+    }
+
+    public static void validateAssetsStocksAvailability(int ownedStocksAmount, int requestedSellAmount, Label errorMessage) throws IOException {
+        if (ownedStocksAmount < requestedSellAmount) {
+            MessageBox.show("Warning", "Specified Stock Amount Not Available");
+            errorMessage.setText("");
+            errorMessage.setVisible(true);
         }
     }
 }

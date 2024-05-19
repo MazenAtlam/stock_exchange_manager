@@ -14,16 +14,21 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         stage.setTitle("Market");
-        stage.setScene(Market.getMarketScene());
+        stage.setScene(Account.getAccountScene());
         stage.setResizable(false);
         stage.show();
 
+        OrderController orderController = new OrderController();
+        orderController.setPrimaryStage(stage);
         AccountController accountController =  new AccountController();
         accountController.setPrimaryStage(stage);
 
     }
 
     public static void main(String[] args) {
+        new Account(200);
+        new Market("AAPL", 1, 20);
+        new Market("GOOGL", 20, 20);
         launch(args);
     }
 }

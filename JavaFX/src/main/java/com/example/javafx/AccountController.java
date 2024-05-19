@@ -1,7 +1,5 @@
 package com.example.javafx;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -24,10 +22,12 @@ public class AccountController {
     public static Account account;
 
 
+    public static boolean withdraw_deposit;
+
     @FXML
     TextField priceTextField;
 
-
+    public static double enteredAmount;
     @FXML
     Label errorMessage;
 
@@ -52,21 +52,14 @@ public class AccountController {
     @FXML
     Label balanceLabel;
     private static int flag = 0;
-    private static Stage stage;
+    protected static Stage stage;
 
     /**
      *
      */
     public void initialize() {
-        if (flag == 0)
-        {
-        new Account(400);
-        new Market("AAPL", 20.0, 3);
-        new Market("Ahmed", 4321, 3224);
-        flag++;
-        }
 
-
+        Market.updateMarket();
         //For Original Scene
         try {
         balanceLabel.textProperty().bind(account.balanceProperty().asString("Balance: $%.2f"));
@@ -74,15 +67,22 @@ public class AccountController {
         //For PlaceOrder Scene
         try {
             orderType.getItems().addAll("Buy", "Sell");
-            companySymbolChoiceBox.getItems().addAll(Market.companySymbolList);
             errorMessage.setVisible(false); errorMessage1.setVisible(false); errorMessage2.setVisible(false); errorMessage3.setVisible(false);
             orderType.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue<? extends Number> observableValue, Number index, Number newIndex) {
+                    if (newIndex.intValue() == 0) {
+                        companySymbolChoiceBox.getItems().addAll(Market.companySymbolList);
+                    }
                     errorMessage.setVisible(false);
                     priceTextField.setDisable(newIndex.intValue() == 0);
                     priceTextField.clear();
                     errorMessage3.setVisible(false);
+                    if (newIndex.intValue() == 1) {
+                        System.out.println("A");
+                        companySymbolChoiceBox.setItems(account.retreiveAccountAssets());
+                        System.out.println(account.retreiveAccountAssets());
+                    }
                 }
             });
             companySymbolChoiceBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> errorMessage1.setVisible(false));
@@ -94,6 +94,7 @@ public class AccountController {
     /**
      * @throws IOException
      */
+
     @FXML
     public void setPreviousScene() throws IOException {
         AccountController.stage.setScene(Account.getAccountScene());
@@ -249,6 +250,10 @@ public class AccountController {
              NumberValidator.validatePriceAvailability(calculateTotalPrice(), account, errorMessage3);
              NumberValidator.validateMarketStocksAvailability(getStockAmount(), getChosenSymbol(), errorMessage3);
              }
+             if (getChosenType().contains("Sell")) {
+                 System.out.println(getChosenSymbol());
+                 NumberValidator.validateAssetsStocksAvailability(account.getAvailableStockAssets(getChosenSymbol()), getStockAmount(), errorMessage3);
+             }
          } catch (IllegalArgumentException | IOException _) {}
 
     }
@@ -262,7 +267,6 @@ public class AccountController {
             executeBuyOrder();
             executeSellOrder();
             // To Update Market
-            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() - getStockAmount());
             setPreviousScene();
         }
     }
@@ -272,17 +276,61 @@ public class AccountController {
     }
 
     private void executeBuyOrder() {
-        if (getChosenType().equals("Buy")) {
+        if (getChosenType().equals("Buy") && getStockAmount() > 0) {
             account.setBalance(account.getBalance() - calculateTotalPrice());
+            new Order(getChosenSymbol(), getStockAmount(), "Buy Order");
+            account.updateAccountAssets(new Order(getChosenSymbol(), getStockAmount()));
+            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() - getStockAmount());
             account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
         }
     }
 
     private void executeSellOrder() {
-        if (getChosenSymbol().equals("Sell")) {
+        if (getChosenType().equals("Sell") && getStockAmount() > 0) {
+            Market.returnAssetsToMarket(new Market(getChosenSymbol(), getPrice(), getStockAmount()));
             account.setBalance(account.getBalance() + calculateTotalPrice());
+            new Order(getChosenSymbol(), getStockAmount(), "Sell Order");
+            account.updateAccountAssets(getChosenSymbol(), getStockAmount());
+            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() + getStockAmount());
             account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
         }
+    }
+
+    @FXML
+    public void Withdraw() throws IOException {
+        //Wether User Entered  0 or closed it would the order shouldnt be added to the tableview and orderlist
+        MessageBox.showAndHandleInput("Withdraw");
+        if (MessageBox.enteredAmount != 0) {
+            System.out.println(MessageBox.enteredAmount);
+            Order.flag = 1;
+            withdraw_deposit = true;
+//            AccountController.account.setBalance(MessageBox.enteredAmount - account.getBalance());
+            new Order(MessageBox.enteredAmount);
+        }
+    }
+
+    @FXML
+    public void Deposit() throws IOException {
+        //Wether User Entered  0 or closed it would the order shouldnt be added to the tableview and orderlist
+        MessageBox.showAndHandleInput("Deposit");
+        if (MessageBox.enteredAmount != 0) {
+            System.out.println(MessageBox.enteredAmount);
+            Order.flag = 0;
+            withdraw_deposit = false;
+            new Order(MessageBox.enteredAmount);
+        }
+    }
+
+    @FXML
+    public void changeToOrderScene() throws IOException {
+            stage.setScene(Order.getOrderScene());
+            stage.setTitle("Orders History & Assets");
+    }
+
+    @FXML
+    public void changeToMarketScene() throws IOException {
+        stage.setScene(Market.getMarketScene());
+        stage.setTitle("Market");
     }
 
 }

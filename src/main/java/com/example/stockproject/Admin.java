@@ -1,6 +1,7 @@
 package com.example.stockproject;
 
 public class Admin extends User{
+
 //    @Override
 //    public void DisplayTransactionHistory() {
 //

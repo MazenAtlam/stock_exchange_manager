@@ -2,6 +2,7 @@ package com.example.stockproject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,11 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 
-public class ChangeSceneController extends Controller {
+public class ChangeSceneController extends Controller implements Initializable {
+
+
     boolean CheckerUsername, CheckerPassword ;
     @FXML
     private TextField UserNameField;
@@ -35,12 +40,15 @@ public class ChangeSceneController extends Controller {
     public String TempForPassword,TempForCurrentPassword;
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        currUser = Data.Users.get(Data.TempID);
+    }
 
 
 
     @FXML
     public void SwitchToUserLogin(ActionEvent event) throws IOException {
-
         display("LoginScene.fxml");
     }
 
@@ -58,8 +66,9 @@ public class ChangeSceneController extends Controller {
         TempForPassword = PasswordField.getText();
         CheckerPassword = Pattern.matches("\\w{8,}",TempForPassword);
         if (CheckerUsername && CheckerPassword) {
-            if ( Data.VerifyLogin(TempForUsername, TempForPassword)) {
-                display("NormalUserScene.fxml");
+            currUser = Data.VerifyLogin(TempForUsername, TempForPassword);
+            if (currUser != null ) {
+                display(currUser,"NormalUserScene.fxml");
             } else {
                 LabelField.setText("Invalid User name or password ");
             }
@@ -84,16 +93,16 @@ public class ChangeSceneController extends Controller {
         TempForUsername = UserNameField.getText();
         CheckerUsername = Pattern.matches("[A-Za-z]{8,}",TempForUsername);
         TempForPassword = PasswordField.getText();
-        CheckerPassword = Pattern.matches("\\w{8}",TempForPassword);
+        CheckerPassword = Pattern.matches("\\w{8,}",TempForPassword);
         if (CheckerUsername && CheckerPassword && TempForPassword.equals(ConfirmPasswordField.getText())) {
         if (Data.UsernameIsAvailable(TempForUsername)) {
             Data.setUsers(TempForUsername, TempForPassword);
-
             display("LoginScene.fxml");
         } else {
             LabelField.setText("Invalid User name Please Try Again");
         }
-    } else {
+        }
+        else {
         LabelField.setText("username 8 or more characters only password 8 or more characters or numbers");
     }
 
@@ -112,11 +121,11 @@ public class ChangeSceneController extends Controller {
         TempForUsername = UserNameField.getText();
         CheckerUsername = Pattern.matches("[A-Za-z]{8,}",TempForUsername);
         TempForPassword = PasswordField.getText();
-        CheckerPassword = Pattern.matches("\\w{8}",TempForPassword);
+        CheckerPassword = Pattern.matches("\\w{8,}",TempForPassword);
         if (CheckerUsername && CheckerPassword) {
-            if (Data.VerifyAdminLogin(TempForUsername, TempForPassword)) {
-
-                display("AdminScene.fxml");
+            currUser = Data.VerifyAdminLogin(TempForUsername, TempForPassword);
+            if (currUser!=null) {
+                display(currUser,"AdminScene.fxml");
             }
         }
         else{
@@ -126,14 +135,14 @@ public class ChangeSceneController extends Controller {
 
     @FXML
     public void ShowNameForAdmin(){
-        LabelField.setText(Data.Admins.get(Data.getAdminIndex()).username);
+        LabelField.setText(Data.Admins.get(Data.TempID).GetUsername());
     }
     @FXML
     public  void change_name(ActionEvent event) throws IOException {
         TempForUsername = UserNameField.getText();
         CheckerUsername = Pattern.matches("[A-Za-z]{8,}",TempForUsername);
         TempForPassword = PasswordField.getText();
-        if (Objects.equals(TempForPassword , Data.Users.get(Data.getUserIndex()).password)){
+        if (Objects.equals(TempForPassword , Data.Users.get(Data.TempID).getPassword())){
             if (Objects.equals(TempForUsername,confirmUsernameField.getText()) && CheckerUsername){
                 User.ChangeUsername(TempForUsername,"normal");
 
@@ -151,8 +160,8 @@ public class ChangeSceneController extends Controller {
     public void change_password(ActionEvent event) throws IOException{
         TempForCurrentPassword = currentPasswordField.getText();
         TempForPassword = PasswordField.getText();
-        CheckerPassword = Pattern.matches("\\w{8}",TempForPassword);
-        if (Objects.equals(TempForCurrentPassword , Data.Users.get(Data.getUserIndex()).password)) {
+        CheckerPassword = Pattern.matches("\\w{8,}",TempForPassword);
+        if (Objects.equals(TempForCurrentPassword , Data.Users.get(Data.TempID).getPassword())) {
             if (Objects.equals(TempForPassword, ConfirmPasswordField.getText()) && CheckerPassword) {
                 User.ChangePassword(TempForCurrentPassword, TempForPassword, "normal");
                 display("LoginScene.fxml");
@@ -166,7 +175,7 @@ public class ChangeSceneController extends Controller {
         }
     }
     public void back(ActionEvent event) throws IOException{
-        display("NormalUserScene.fxml");
+        display(currUser,"NormalUserScene.fxml");
     }
 
 

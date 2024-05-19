@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.MessageBox">
+   <children>
+      <TextField fx:id="amount" layoutX="75.0" layoutY="34.0" onKeyTyped="#validateAmount" promptText="Enter Amount" />
+      <Label fx:id="errorMessage" layoutX="67.0" layoutY="60.0" prefHeight="19.0" prefWidth="234.0" text="Empty Field" textFill="#e70000">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="234.0" layoutY="80.0" mnemonicParsing="false" onMousePressed="#checkEmptyField" onMouseReleased="#confirmOrder" text="Confirm" />
+   </children>
+</AnchorPane>

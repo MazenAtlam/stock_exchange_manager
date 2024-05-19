@@ -28,31 +28,31 @@ public class DisplayTransactionController extends Controller implements Initiali
     }
 
     public void setInformation(){
-        usernameField.setText(Data.Users.get(Data.getUserIndex()).username);  ;
-        UserId.setText(String.valueOf((Data.Users.get(Data.getUserIndex()).getId())));
+        usernameField.setText(Data.Users.get(Data.TempID).username);  ;
+        UserId.setText(String.valueOf((Data.Users.get(Data.TempID).getId())));
     }
 
     @FXML
     public void changeName(ActionEvent event) throws IOException {
 //        ShowStage("ChangeName.fxml", event);
-        display("ChangeName.fxml");
+        display(currUser,"ChangeName.fxml");
     }
 
 
     @FXML
     public void changeToAccount(ActionEvent event) throws IOException {
 //        ShowStage("Market.fxml",event);
-        display("Market.fxml");
+        display(currUser,"Market.fxml");
     }
     @FXML
     public void back(ActionEvent event) throws IOException{
 //        ShowStage("NormalUserScene.fxml",event);
-        display("NormalUserScene.fxml");
+        display(currUser,"NormalUserScene.fxml");
     }
     @FXML
     public void changePassword(ActionEvent event) throws IOException{
 //        ShowStage("ChangePassword.fxml",event);
-        display("ChangePassword.fxml");
+        display(currUser,"ChangePassword.fxml");
 
     }
 

@@ -8,37 +8,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
    <children>
-      <ToolBar layoutX="6.0" layoutY="5.0" prefHeight="52.0" prefWidth="604.0" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="353.0" AnchorPane.rightAnchor="1.0" />
-      <Label fx:id="LabelField" layoutX="230.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Admin Login">
+      <ToolBar layoutX="6.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="604.0" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" />
+      <Label fx:id="LabelField" layoutX="172.0" layoutY="19.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Admin Login">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="108.0" layoutY="119.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Username:">
+      <Label layoutX="108.0" layoutY="139.0" styleClass="changing-text" stylesheets="@Mazen.css" text="Username:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="108.0" layoutY="192.0" styleClass="text" stylesheets="@Mazen.css" text="Password:">
+      <Label layoutX="108.0" layoutY="194.0" styleClass="text" stylesheets="@Mazen.css" text="Password:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <PasswordField fx:id="PasswordField" layoutX="225.0" layoutY="193.0" styleClass="fields" stylesheets="@Mazen.css" />
-      <TextField fx:id="UserNameField" layoutX="226.0" layoutY="122.0" styleClass="fields" stylesheets="@Mazen.css" />
-      <Button layoutX="121.0" layoutY="338.0" mnemonicParsing="false" onAction="#AdminLogin" styleClass="about-but" stylesheets="@Mazen.css" text="Login">
+      <PasswordField fx:id="PasswordField" layoutX="226.0" layoutY="195.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <TextField fx:id="UserNameField" layoutX="226.0" layoutY="141.0" styleClass="fields" stylesheets="@Mazen.css" />
+      <Button layoutX="86.0" layoutY="324.0" mnemonicParsing="false" onAction="#AdminLogin" styleClass="about-but" stylesheets="@Mazen.css" text="Login">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="360.0" layoutY="339.0" mnemonicParsing="false" onAction="#AfterCancel" styleClass="about-but" stylesheets="@Mazen.css" text="Cancel">
+      <Button layoutX="279.0" layoutY="325.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AfterCancel" prefHeight="26.0" prefWidth="95.0" styleClass="about-but" stylesheets="@Mazen.css" text="Cancel">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="194.0" layoutY="294.0" stylesheets="@Mazen.css" text="Pattern must be 8 characters or more">
+      <Label layoutX="133.0" layoutY="265.0" stylesheets="@Mazen.css" text="Pattern must be 8 characters or more">
          <font>
             <Font size="20.0" />
          </font>

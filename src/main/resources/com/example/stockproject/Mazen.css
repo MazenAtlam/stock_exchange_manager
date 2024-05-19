@@ -4,7 +4,7 @@
 -fx-border-color: #f1f1f2;
 -fx-border-width: 5px;
 }
-.start_toolbar,.login_toolbar{
+.start_toolbar,.login_toolbar,.order-toolbar{
 -fx-pref-width:590px;
 -fx-background-color:#003448;
 }
@@ -27,16 +27,12 @@
   -fx-text-alignment: center;
   -fx-background-radius: 40px;
   -fx-font-weight: bold;
-  -fx-border-width:1px;
-  -fx-border-color:#003448;
-  -fx-border-radius: 40px;
 }
 .button:hover {
   -fx-background-color: #344c64;
   -fx-text-fill: #2196f3;
   -fx-scale-X: 1.1;
   -fx-scale-y: 1.1;
-  -fx-border-color:#2196f3;
 }
 .logout_but{
   -fx-pref-width: 80px;
@@ -50,7 +46,7 @@
 .profile{
 -fx-background-color:#90afc5;
 -fx-border-color: #763626;
--fx-border-width: 5px;
+-fx-border-width: 2px;
 }
 .view{
 -fx-background-color:#763626;
@@ -88,8 +84,14 @@
 }
 .exit-but{
 -fx-pref-width: 80px;
--fx-border-width:0px;
 }
+.order-toolbar{
+-fx-pref-width: 670px;
+}
+.tablecolumn{
+-fx-border-color:#2196f3;
+}
+
 
 
 

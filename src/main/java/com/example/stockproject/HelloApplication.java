@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     static User temp = Data.userFactory.GetUser(UserFactory.ADMIN);
-    static User temp1 = Data.userFactory.GetUser(UserFactory.NORMAL);
+//    static User temp1 = Data.userFactory.GetUser(UserFactory.NORMAL);
     public static Stage stage;
-    static HelloController controller ;
+//    static HelloController controller ;
     Stock mystock = new Stock();
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
         ChangeSceneController controller1 = new ChangeSceneController();
         controller1.display("hello-view.fxml");
 
-//        draw_chart(mystock,stage);
+//        draw_chart(mystock,stage); sherifelgendy
     }
 
     public static void main(String[] args)
@@ -35,13 +35,12 @@ public class HelloApplication extends Application {
             System.out.println("Error initing stocks data");
             System.out.println(e);
         }
-
         temp.setUsername("mazenatef");
-        temp.setPassword("11111111");
-        temp1.setUsername("sherifelgendy");
-        temp1.setPassword("sherifelgendy");
-        Data.Admins.add(temp);
-        Data.Users.add(temp1);
+        temp.setPassword("mazenatef");
+        Data.Admins.put(1,temp);
+
+//        temp1.setUsername("sherifelgendy");
+//        temp1.setPassword("sherifelgendy");
        launch(args);
     }
 

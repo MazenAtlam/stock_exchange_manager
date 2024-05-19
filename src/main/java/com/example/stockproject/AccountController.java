@@ -2,9 +2,11 @@ package com.example.stockproject;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -12,12 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 /**
  *
  */
-public class AccountController {
+public class AccountController extends Controller {
 
     public static Account account;
 
@@ -56,6 +60,7 @@ public class AccountController {
      *
      */
     public void initialize() {
+        currUser = Data.Users.get(Data.TempID);
         if (flag == 0)
         {
         new Account(400);
@@ -311,5 +316,13 @@ public class AccountController {
             stage.setScene(Order.getOrderScene());
             stage.setTitle("Orders History & Assets");
     }
+
+    @FXML
+    public void back(ActionEvent event) throws IOException{
+//        ShowStage("NormalUserScene.fxml",event);
+        display(currUser,"NormalUserScene.fxml");
+
+    }
+
 
 }

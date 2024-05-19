@@ -35,6 +35,7 @@ public class SessionSceneController extends Controller implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        currUser = Data.Users.get(Data.TempID);
         companyList.getItems().addAll(Data.stockData.keySet());
         companyList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -50,14 +51,14 @@ public class SessionSceneController extends Controller implements Initializable 
 
     public void displayChart(ActionEvent event) {
         if (candleId.isSelected() && selectedItem!=null){
-          CandlestickGraph graph = new CandlestickGraph(selectedItem,Data.CSVDirectory, 1700,700);
+          CandlestickGraph graph = new CandlestickGraph(selectedItem,Data.CSVDirectory, 1200,700);
 
-            Scene scene =new Scene( graph.graph(), 1100,700);
+            Scene scene =new Scene( graph.graph(), 1000,700);
             Controller.currStage.setScene(scene);
             Controller.currStage.show();
         }
         else if (lineId.isSelected() && selectedItem!=null){
-
+            checkerLabel.setVisible(true);
         }
         else
         {
@@ -75,8 +76,8 @@ public class SessionSceneController extends Controller implements Initializable 
 
 
     public void setInformation(){
-        usernameField.setText(Data.Users.get(Data.getUserIndex()).username);  ;
-        UserId.setText(String.valueOf((Data.Users.get(Data.getUserIndex()).getId())));
+        usernameField.setText(Data.Users.get(Data.TempID).username);  ;
+        UserId.setText(String.valueOf((Data.Users.get(Data.TempID).getId())));
     }
 
 
@@ -84,7 +85,7 @@ public class SessionSceneController extends Controller implements Initializable 
     @FXML
     public void changeName(ActionEvent event) throws IOException {
 //        ShowStage("ChangeName.fxml", event);
-        display("ChangeName.fxml");
+        display(currUser,"ChangeName.fxml");
     }
 
 
@@ -92,17 +93,17 @@ public class SessionSceneController extends Controller implements Initializable 
     @FXML
     public void changeToAccount(ActionEvent event) throws IOException {
 //        ShowStage("Market.fxml",event);
-        display("Market.fxml");
+        display(currUser,"Market.fxml");
     }
     @FXML
     public void back(ActionEvent event) throws IOException{
 //        ShowStage("NormalUserScene.fxml",event);
-        display("NormalUserScene.fxml");
+        display(currUser,"NormalUserScene.fxml");
     }
     @FXML
     public void changePassword(ActionEvent event) throws IOException{
 //        ShowStage("ChangePassword.fxml",event);
-        display("ChangePassword.fxml");
+        display(currUser,"ChangePassword.fxml");
 
     }
 

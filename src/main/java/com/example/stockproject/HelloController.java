@@ -18,7 +18,6 @@ public class HelloController implements Initializable {
     Stock mystock ;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         TimeZone.setDefault(TimeZone.getTimeZone("EET"));
         SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy"+"\n "+" hh:mm:ss");
         Date date = new Date();

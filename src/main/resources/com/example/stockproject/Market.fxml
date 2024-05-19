@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.MarketController">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="402.0" style="-fx-background-color: #279c94;" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.MarketController">
    <children>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="300.0" layoutY="60.0" text="Market" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="347.2" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="268.4" AnchorPane.topAnchor="27.2">
-         <font>
-            <Font name="Comic Sans MS Bold" size="18.0" />
-         </font>
-         <effect>
-            <Blend />
-         </effect>
-      </Label>
-      <TableView fx:id="tableView" editable="true" layoutX="300.0" layoutY="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="100.0">
+      <ToolBar layoutY="12.0" prefHeight="40.0" prefWidth="594.0" styleClass="start_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <TableView fx:id="tableView" editable="true" layoutX="67.0" layoutY="103.0" prefHeight="244.0" prefWidth="263.0" style="-fx-background-color: #279c94;" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="103.0">
          <columns>
             <TableColumn fx:id="companyNameColumn" prefWidth="83.20001220703125" text="Company" />
             <TableColumn fx:id="numStockColumn" prefWidth="67.20001220703125" text="Stock" />
-            <TableColumn fx:id="pricePerStockColumn" prefWidth="83.20000305175782" text="Price/Stock" />
+            <TableColumn fx:id="pricePerStockColumn" prefWidth="71.0" text="Price/Stock" />
          </columns>
       </TableView>
+      <Label layoutX="167.0" layoutY="13.0" styleClass="changing-head" stylesheets="@Mazen.css" text="Market" />
+    <Button layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onAction="#back" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
    </children>
 </AnchorPane>

@@ -4,16 +4,22 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public abstract class Data {
+    public static int TempID;
     public static String CSVDirectory =  "src/main/CSV data";
     public static UserFactory userFactory = new UserFactory();
-    public static ArrayList <User> Users = new ArrayList<>();
-    public static ArrayList <User> Admins = new ArrayList<>();
-    public static ArrayList <User> DeletedUsers = new ArrayList<>();
-    public static ArrayList <User> PremiumUsers =new ArrayList<>();
-//    private static Market market; // until market class created
-    private static int AdminIndex;
-    private static int UserIndex;
-    private static int Id ;
+    public static Map<Integer,User> Users = new HashMap<>();
+    public static Map<Integer,User> Admins = new HashMap<>();
+    public static Map<Integer,User> DeletedUsers = new HashMap<>();
+    public static Map<Integer,User> PremiumUser = new HashMap<>();
+//    public static ArrayList <User> Users = new ArrayList<>();
+//    public static ArrayList <User> Admins = new ArrayList<>();
+//    public static ArrayList <User> DeletedUsers = new ArrayList<>();
+//    public static ArrayList <User> PremiumUsers =new ArrayList<>();
+////    private static Market market; // until market class created
+//    private static int AdminIndex;
+//    private static int UserIndex;
+//    private static int Id ;
+    public static int temp_id;
 
     public static Map<String, double[]> loadCSVFilesToHashMap(String directoryPath) throws IOException {
         Map<String, double[]> map = new HashMap<>();
@@ -126,19 +132,19 @@ public abstract class Data {
 
 
     public static boolean UsernameIsAvailable(String username){
-        for (User value : Users) {
-            if (Objects.equals(username, value.username)) {
 
+        for (User value : Users.values()) {
+            if (Objects.equals(username, value.GetUsername())) {
                 return false;
             }
         }
-        Id++;
+//        Id++;
         return true;
     }
 
     public static boolean AdminNameIsAvailable(String username){
-        for (User admin : Admins){
-            if (Objects.equals(admin.username , username)){
+        for (User admin : Admins.values()){
+            if (Objects.equals(admin.GetUsername() , username)){
                 return false;
             }
         }
@@ -146,61 +152,61 @@ public abstract class Data {
         return true;
     }
 
-    public static boolean VerifyLogin(String username , String password){
-            for (User value : Users) {
-                if (Objects.equals(username, value.username) && Objects.equals(password, value.password)) {
-                    UserIndex = Users.indexOf(value);
-                    return true;
+    public static User VerifyLogin(String username , String password){
+            for (User value : Users.values()) {
+                if (Objects.equals(username, value.GetUsername()) && Objects.equals(password, value.getPassword())) {
+//                    UserIndex = Users.indexOf(value);
+                    return value;
                 }
             }
-        return false;
+        return null;
     }
 
-    public static boolean VerifyAdminLogin(String username , String password){
+    public static User VerifyAdminLogin(String username , String password){
 
         System.out.println(Admins);
-        for (User value : Admins) {
-            if (Objects.equals(username, value.username) && Objects.equals(password, value.password)) {
-                AdminIndex = Admins.indexOf(value);
-                return true;
+        for (User value : Admins.values()) {
+            if (Objects.equals(username, value.GetUsername()) && Objects.equals(password, value.getPassword())) {
+//                AdminIndex = Admins.indexOf(value);
+                return value;
             }
         }
-        return false;
+        return null;
     }
 
-    public static int getUserIndex() {
-        return UserIndex;
-    }
+//    public static int getUserIndex() {
+//        return UserIndex;
+//    }
+//
+//    public static int getAdminIndex() {
+//        return AdminIndex;
+//    }
 
-    public static int getAdminIndex() {
-        return AdminIndex;
-    }
 
     public static User isInList(String username, ArrayList<User> usersList) {
         for (User user : usersList) {
-            if (user.username.equals(username)) {
+            if (user.GetUsername().equals(username)) {
                 return user;
             }
         }
         return null;
     }
 
-    public static boolean IsAdmin(User user){
-        for (User value : Admins) {
-            if (Objects.equals(user,value)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public static boolean IsAdmin(User user){
+//        for (User value : Admins.values()) {
+//            if (Objects.equals(user,value)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public static void setUsers(String username , String password){
-        User user = userFactory.GetUser(userFactory.NORMAL);
-        Users.add(user);
-
+        User user = userFactory.GetUser(UserFactory.NORMAL);
         user.setUsername(username);
         user.setPassword(password);
-        user.setId(Id);
+//        user.setId(Id);
+        Users.put(user.getId(),user);
         System.out.println(Users);
     }
 

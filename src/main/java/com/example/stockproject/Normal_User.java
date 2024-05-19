@@ -16,6 +16,10 @@ import java.util.ResourceBundle;
 
 public class Normal_User extends User   {
 
+    public Normal_User(){
+        Normal_User.id_counter++;
+        this.id = id_counter;
+    }
 //
 //    public void  DisplayTransactionHistory() {
 //

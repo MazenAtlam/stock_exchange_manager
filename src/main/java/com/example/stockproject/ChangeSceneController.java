@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 
 public class ChangeSceneController extends Controller implements Initializable {
+    AccountController accountController=new AccountController();
+    OrderController orderController = new OrderController();
 
 
     boolean CheckerUsername, CheckerPassword ;
@@ -49,12 +51,13 @@ public class ChangeSceneController extends Controller implements Initializable {
 
     @FXML
     public void SwitchToUserLogin(ActionEvent event) throws IOException {
+        accountController.setPrimaryStage();
+        orderController.setPrimaryStage();
         display("LoginScene.fxml");
     }
 
     @FXML
     public void SwitchToAdminLogin(ActionEvent event) throws IOException {
-
         display("AdminLogin.fxml");
     }
 
@@ -69,12 +72,14 @@ public class ChangeSceneController extends Controller implements Initializable {
             currUser = Data.VerifyLogin(TempForUsername, TempForPassword);
             if (currUser != null ) {
                 display(currUser,"NormalUserScene.fxml");
+                Account.setUserAccount(currUser.id);
             } else {
                 LabelField.setText("Invalid User name or password ");
             }
         } else {
             LabelField.setText("username 8 or more characters only password 8 or more character or numbers");
         }
+
     }
 
 

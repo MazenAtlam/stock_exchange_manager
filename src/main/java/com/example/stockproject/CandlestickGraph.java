@@ -11,10 +11,12 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
-public class CandlestickGraph {
+public class CandlestickGraph extends Controller{
     int canvasHeight = 600;
     int canvasWidth = 1300;
 
@@ -35,7 +37,7 @@ public class CandlestickGraph {
         this.canvasHeight = canvasHeight;
     }
 
-    public Group graph() {
+    public VBox graph() {
         ArrayList<Candlestick> candlesticks = new ArrayList<>();
 
         HashMap<String, double[]> candlestickData = populateHashMapFromCSV(symbol, directoryPath);
@@ -60,12 +62,31 @@ public class CandlestickGraph {
 
         // Draw each Candlestick object and add it to the Group
         addAxes(root, candlesticks.size(), candlestickData.keySet());
+//        Button button = new Button(1);
+//        button.set
+
         for (Candlestick candlestick : candlesticks) {
             root.getChildren().add(candlestick.show());
         }
 
         // Create the scene with the root Group
-        return root;
+//        return root;
+
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            try {
+//                Normal_User_Scene.getNormalScene();
+                display("NormalUserScene.fxml");
+
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        VBox vbox = new VBox(backButton, root);
+
+        // Create the scene with the VBox containing the button and the root Group
+        return vbox;
     }
 
     public HashMap<String, double[]> populateHashMapFromCSV( String symbol, String directoryPath) {

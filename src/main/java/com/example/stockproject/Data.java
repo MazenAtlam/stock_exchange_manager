@@ -82,6 +82,7 @@ public abstract class Data {
         stockData=loadCSVFilesToHashMap(CSVDirectory);
     }
     public void addSymbol(String symbol,double initialPrice){
+        // min, max, opening, closing, initialPrice
          stockData.put(symbol, new double[]{initialPrice, initialPrice, initialPrice, initialPrice, initialPrice});
     }
 

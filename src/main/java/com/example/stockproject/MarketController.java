@@ -36,8 +36,6 @@ public class MarketController extends Controller  {
     public void initialize() {
 
         currUser = Data.Users.get(Data.TempID);
-        new Market("AAPL", 20.0, 12);
-        new Market("Ahmed", 4321, 3224);
 
         companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("companySymbol"));
         pricePerStockColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerStock"));
@@ -46,10 +44,15 @@ public class MarketController extends Controller  {
         tableView.setItems(stockList);
     }
 
+//    @FXML
+//    public void back(ActionEvent event) throws IOException {
+////        ShowStage("NormalUserScene.fxml",event);
+//        display(currUser,"NormalUserScene.fxml");
+//    }
     @FXML
-    public void back(ActionEvent event) throws IOException {
-//        ShowStage("NormalUserScene.fxml",event);
-        display(currUser,"NormalUserScene.fxml");
+    public void setPreviousScene() throws IOException {
+        AccountController.stage.setScene(Normal_User_Scene.getNormalScene());
+        AccountController.stage.setTitle("Normal user");
     }
 
 

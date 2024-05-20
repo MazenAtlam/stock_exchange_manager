@@ -2,29 +2,29 @@ package com.example.stockproject;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Arrays;
 
 
 /**
  *
  */
-public class AccountController extends Controller {
+public class AccountController  extends Controller{
 
     public static Account account;
 
+
+    public static boolean withdraw_deposit;
 
     @FXML
     TextField priceTextField;
@@ -50,42 +50,56 @@ public class AccountController extends Controller {
 
     @FXML
     ChoiceBox<String> companySymbolChoiceBox;
-
+    @FXML
+    Button backButton , BackButton1;
     @FXML
     Label balanceLabel;
     private static int flag = 0;
-    private static Stage stage;
+    protected static Stage stage ;
 
     /**
      *
      */
     public void initialize() {
         currUser = Data.Users.get(Data.TempID);
-        if (flag == 0)
-        {
-        new Account(400);
-        new Market("AAPL", 20.0, 3);
-        new Market("Ahmed", 4321, 3224);
-        flag++;
-        }
-
-
+        Market.updateMarket();
         //For Original Scene
         try {
-        balanceLabel.textProperty().bind(account.balanceProperty().asString("Balance: $%.2f"));
+            BackButton1.setOnAction(event -> {
+                try {
+                    setPreviousScene(Normal_User_Scene.getNormalScene(),"Normal scene");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            balanceLabel.textProperty().bind(account.balanceProperty().asString("Balance: $%.2f"));
         } catch (Exception _) {}
         //For PlaceOrder Scene
         try {
+            backButton.setOnAction(event -> {
+                try {
+                    setPreviousScene(Account.getAccountScene(),"My Account");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             orderType.getItems().addAll("Buy", "Sell");
-            companySymbolChoiceBox.getItems().addAll(Market.companySymbolList);
             errorMessage.setVisible(false); errorMessage1.setVisible(false); errorMessage2.setVisible(false); errorMessage3.setVisible(false);
             orderType.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue<? extends Number> observableValue, Number index, Number newIndex) {
+                    if (newIndex.intValue() == 0) {
+                        companySymbolChoiceBox.getItems().addAll(Market.companySymbolList);
+                    }
                     errorMessage.setVisible(false);
                     priceTextField.setDisable(newIndex.intValue() == 0);
                     priceTextField.clear();
                     errorMessage3.setVisible(false);
+                    if (newIndex.intValue() == 1) {
+                        System.out.println("A");
+                        companySymbolChoiceBox.setItems(account.retreiveAccountAssets());
+                        System.out.println(account.retreiveAccountAssets());
+                    }
                 }
             });
             companySymbolChoiceBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> errorMessage1.setVisible(false));
@@ -98,11 +112,12 @@ public class AccountController extends Controller {
      * @throws IOException
      */
 
-    @FXML
-    public void setPreviousScene() throws IOException {
-        AccountController.stage.setScene(Account.getAccountScene());
-        AccountController.stage.setTitle("Account");
+    public void setPreviousScene(Scene previousScene ,String title) throws IOException {
+        AccountController.stage.setScene(previousScene);
+        AccountController.stage.setTitle(title);
+//        display(currUser,"Account.fxml");
     }
+
 
     /**
      * @throws IOException
@@ -111,13 +126,13 @@ public class AccountController extends Controller {
     public void placeOrderScene() throws IOException {
         AccountController.stage.setScene(new Scene(new FXMLLoader(AccountController.class.getResource("PlaceOrder.fxml")).load()));
         AccountController.stage.setTitle("PlaceOrder");
+//        display(currUser,"PlaceOrder.fxml");
     }
 
     /**
-     * @param stage
      */
-    public void setPrimaryStage(Stage stage) {
-        AccountController.stage = stage;
+    public void setPrimaryStage() {
+        AccountController.stage = currStage;
     }
 
     /**
@@ -165,17 +180,17 @@ public class AccountController extends Controller {
      */
     public boolean isPositiveInt(TextField textField, Label errorMessage2) {
         if (!textField.getText().isBlank()) {
-                    try {
-                        NumberValidator.validateNumber(NumberValidator.validateInteger(Double.parseDouble(textField.getText())));
-                        return (true);
-                    } catch (NumberFormatException _) {
-                        errorMessage2.setText("Invalid Amount");
-                    } catch (NegativeNumberException _) {
-                        errorMessage2.setText("Negative Number Not Allowed");
+            try {
+                NumberValidator.validateNumber(NumberValidator.validateInteger(Double.parseDouble(textField.getText())));
+                return (true);
+            } catch (NumberFormatException _) {
+                errorMessage2.setText("Invalid Amount");
+            } catch (NegativeNumberException _) {
+                errorMessage2.setText("Negative Number Not Allowed");
 
-                    } catch (NotAnIntegerException _) {
-                        errorMessage2.setText("Only Integer Allowed");
-                    }
+            } catch (NotAnIntegerException _) {
+                errorMessage2.setText("Only Integer Allowed");
+            }
         }
         return (false);
     }
@@ -205,8 +220,8 @@ public class AccountController extends Controller {
     @FXML
     public boolean validatePrice() {
         if (!priceTextField.isDisabled()) {
-        errorMessage3.setVisible(!isPositiveDouble(priceTextField, errorMessage3));
-        return !isPositiveDouble(priceTextField, errorMessage3);
+            errorMessage3.setVisible(!isPositiveDouble(priceTextField, errorMessage3));
+            return !isPositiveDouble(priceTextField, errorMessage3);
         }
         return (false);
     }
@@ -247,13 +262,17 @@ public class AccountController extends Controller {
      */
     @FXML
     public void GeneralValidation() {
-         emptyFieldValidation();
-         try {
-             if (getChosenType().contains("Buy")) {
-             NumberValidator.validatePriceAvailability(calculateTotalPrice(), account, errorMessage3);
-             NumberValidator.validateMarketStocksAvailability(getStockAmount(), getChosenSymbol(), errorMessage3);
-             }
-         } catch (IllegalArgumentException | IOException _) {}
+        emptyFieldValidation();
+        try {
+            if (getChosenType().contains("Buy")) {
+                NumberValidator.validatePriceAvailability(calculateTotalPrice(), account, errorMessage3);
+                NumberValidator.validateMarketStocksAvailability(getStockAmount(), getChosenSymbol(), errorMessage3);
+            }
+            if (getChosenType().contains("Sell")) {
+                System.out.println(getChosenSymbol());
+                NumberValidator.validateAssetsStocksAvailability(account.getAvailableStockAssets(getChosenSymbol()), getStockAmount(), errorMessage3);
+            }
+        } catch (IllegalArgumentException | IOException _) {}
 
     }
 
@@ -266,8 +285,7 @@ public class AccountController extends Controller {
             executeBuyOrder();
             executeSellOrder();
             // To Update Market
-            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() - getStockAmount());
-            setPreviousScene();
+            setPreviousScene(Account.getAccountScene(),"My account");
         }
     }
 
@@ -276,16 +294,32 @@ public class AccountController extends Controller {
     }
 
     private void executeBuyOrder() {
-        if (getChosenType().equals("Buy")) {
+        if (getChosenType().equals("Buy") && getStockAmount() > 0) {
             account.setBalance(account.getBalance() - calculateTotalPrice());
+            new Order(getChosenSymbol(), getStockAmount(), "Buy Order");
+            account.updateAccountAssets(new Order(getChosenSymbol(), getStockAmount()));
+            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() - getStockAmount());
             account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
+
         }
     }
 
     private void executeSellOrder() {
-        if (getChosenSymbol().equals("Sell")) {
+        if (getChosenType().equals("Sell") && getStockAmount() > 0) {
+            Market.returnAssetsToMarket(new Market(getChosenSymbol(), getPrice(), getStockAmount()));
             account.setBalance(account.getBalance() + calculateTotalPrice());
+            new Order(getChosenSymbol(), getStockAmount(), "Sell Order");
+            account.updateAccountAssets(getChosenSymbol(), getStockAmount());
+            Market.getInstance(getChosenSymbol()).setNumStocks(Market.getInstance(getChosenSymbol()).getNumStocks() + getStockAmount());
             account.setNumberOfOrders((account.getNumberOfOrders()) + 1);
+            double[] symbolValues = Data.stockData.get(getChosenSymbol());
+            if(getPrice()<symbolValues[0]){
+                symbolValues[0]=getPrice();
+            }else if (getPrice()>symbolValues[1]){
+                symbolValues[1]=getPrice();
+            }
+            symbolValues[3]=getPrice();
+            System.out.println(Arrays.toString(symbolValues));
         }
     }
 
@@ -296,6 +330,8 @@ public class AccountController extends Controller {
         if (MessageBox.enteredAmount != 0) {
             System.out.println(MessageBox.enteredAmount);
             Order.flag = 1;
+            withdraw_deposit = true;
+//            AccountController.account.setBalance(MessageBox.enteredAmount - account.getBalance());
             new Order(MessageBox.enteredAmount);
         }
     }
@@ -307,22 +343,27 @@ public class AccountController extends Controller {
         if (MessageBox.enteredAmount != 0) {
             System.out.println(MessageBox.enteredAmount);
             Order.flag = 0;
+            withdraw_deposit = false;
             new Order(MessageBox.enteredAmount);
         }
     }
 
     @FXML
     public void changeToOrderScene() throws IOException {
-            stage.setScene(Order.getOrderScene());
-            stage.setTitle("Orders History & Assets");
+        stage.setScene(Order.getOrderScene());
+        stage.setTitle("Orders History & Assets");
+//        display(currUser,"Order.fxml");
     }
 
     @FXML
-    public void back(ActionEvent event) throws IOException{
-//        ShowStage("NormalUserScene.fxml",event);
-        display(currUser,"NormalUserScene.fxml");
-
+    public void changeToMarketScene() throws IOException {
+        stage.setScene(Market.getMarketScene());
+        stage.setTitle("Market");
+//        display(currUser,"Market.fxml");
     }
+
+
+
 
 
 }

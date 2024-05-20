@@ -1,5 +1,4 @@
 package com.example.stockproject;
-
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +25,7 @@ public class Market {
     /**
      * @return
      */
-    public int getNumStocks() {
+    public Integer getNumStocks() {
         return numStocks.get();
     }
 
@@ -119,9 +118,14 @@ public class Market {
 
 
     /**
+     * @param market
+     */
+    public static void returnAssetsToMarket(Market market) {}
+
+    /**
      *
      */
-    private static void updateMarket() {
+    public static void updateMarket() {
         for (Market market : MarketController.stockList) {
             if (market.getNumStocks() == 0) {
                 removeCompany(market.getCompanySymbol());

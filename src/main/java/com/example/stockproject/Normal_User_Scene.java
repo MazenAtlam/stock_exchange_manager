@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class Normal_User_Scene extends Controller implements Initializable {
+public class Normal_User_Scene extends Controller  {
     @FXML
     private TitledPane profileVeiw;
     @FXML
@@ -39,13 +39,18 @@ public class Normal_User_Scene extends Controller implements Initializable {
     //     private Account account ;   //until Account class created
     @FXML
     private Button bePremium;
-    private boolean premium;
+    private static boolean premium = false;
     // private ArrayList<Order> transactions = new ArrayList<Order>(); until order class created
 //    StockSubject stocksubject;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    public void initialize() {
         currUser = Data.Users.get(Data.TempID);
+        if (Data.PremiumUser.containsValue(currUser)){
+            bePremium.setText("unsubscribe");
+        }
+//        bePremium.setOnAction(event -> bePremium());
+
         LabelField.setVisible(false);
     }
 
@@ -84,17 +89,23 @@ public class Normal_User_Scene extends Controller implements Initializable {
 //
 //
 
-    @FXML
-     public void bePremium() {
-        if (premium){
-            premium = false;
-            LabelField.setVisible(false);
-            bePremium.setText("be premium 10$");
-        }
-        else {
+
+     public void bePremium(ActionEvent event)throws IOException {
+
+        if (!premium  && Account.getUserBalanceUsingIndex(currUser.id) > 10 ){
             premium = true;
             LabelField.setVisible(true);
             bePremium.setText("unsubscribe");
+            Account.setUserBalanceUsingIndex(currUser.id);
+           Data.PremiumUser.put(currUser.id,currUser);
+
+        }
+
+        else if (Data.PremiumUser.containsValue(currUser))  {
+            Data.PremiumUser.remove(currUser.id);
+            premium = false;
+            LabelField.setVisible(false);
+            bePremium.setText("be premium 10$");
         }
     }
 
@@ -109,6 +120,7 @@ public class Normal_User_Scene extends Controller implements Initializable {
     public void changeToAccount(ActionEvent event) throws IOException{
 //        ShowStage("Market.fxml",event);
 //        display("Market.fxml");
+
         Controller.currStage.setScene((Account.getAccountScene()));
     }
 
@@ -128,4 +140,10 @@ public class Normal_User_Scene extends Controller implements Initializable {
 //        ShowStage("SessionScene.fxml",event);
         display(currUser,"SessionScene.fxml");
     }
+
+    public static Scene getNormalScene() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Normal_User_Scene.class.getResource("NormalUserScene.fxml"));
+        return (new Scene(fxmlLoader.load()));
+    }
+
 }

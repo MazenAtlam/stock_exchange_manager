@@ -1,24 +1,24 @@
 package com.example.stockproject;
-
-import javafx.beans.Observable;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.PipedReader;
 
-public class OrderController {
-
-
-    private static Stage stage;
+public class OrderController extends Controller{
 
 
-    public static ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
+    private static Stage stage ;
+
+
+    public static final ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
+
+    public static final ObservableList<Order> ownedAssetsObservableList = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<Order, String> orderTypeColumn;
@@ -28,11 +28,18 @@ public class OrderController {
     @FXML
     private TableColumn<Order, Integer> numberOfOrderedStocksColumn;
 
-    @FXML
-    private TableColumn<Order, Integer> amountDepositedOrWithdrawnColumn;
 
     @FXML
-    private TableColumn<Order, String> currentOrderStateColumn;
+    private TableColumn<Order, String> ownedCompanySymbolColumn;
+
+    @FXML
+    private TableColumn<Order, Integer> numberOfOwnedStocksColumn;
+
+    @FXML
+    private TableColumn<Order, Double> amountDepositedOrWithdrawnColumn;
+
+    @FXML
+    private TableColumn<Order, StringProperty> currentOrderStateColumn;
 
     @FXML
     private TableView<Order> tableViewOrders;
@@ -40,21 +47,31 @@ public class OrderController {
     @FXML
     private TableView<Order> tableViewOwnedAssets;
 
-//    public void initialize() {
-//
-//        companySymbolColumn.setCellValueFactory("companySymbol");
-//
-//    }
+    public void initialize() {
+        currUser = Data.Users.get(Data.TempID);
+        companySymbolColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("companySymbol"));
+        orderTypeColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("orderType"));
+        numberOfOrderedStocksColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("numberOfOrderedStocks"));
+        amountDepositedOrWithdrawnColumn.setCellValueFactory(new PropertyValueFactory<Order, Double>("amountDepositedOrWithdrawn"));
+        currentOrderStateColumn.setCellValueFactory(new PropertyValueFactory<Order, StringProperty>("currentOrderState"));
+        ownedCompanySymbolColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("ownedCompanySymbols"));
+        numberOfOwnedStocksColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("numberOfOwnedStocks"));
 
 
-    public void setPrimaryStage(Stage stage) {
-        OrderController.stage = stage;
+        tableViewOrders.setItems(orderObservableList);
+        tableViewOwnedAssets.setItems(ownedAssetsObservableList);
+    }
+
+
+    public void setPrimaryStage() {
+        OrderController.stage = currStage;
     }
 
     @FXML
     public void setPreviousScene() throws IOException {
         OrderController.stage.setScene(Account.getAccountScene());
         OrderController.stage.setTitle("Account");
+//        display(currUser,"Account.fxml");
     }
 
 

@@ -43,14 +43,14 @@ public class MessageBox {
             btnOK.setOnAction(e -> stageAlert.close());
         } catch (Exception _) {}
         try {
-                errorMessage.setVisible(false);
+            errorMessage.setVisible(false);
         } catch (Exception _) {}
     }
 
     public static void show(String title, String message) throws IOException {
-                MessageBox.stageAlert = new Stage();
-                MessageBox.title = title;
-                MessageBox.message = message;
+        MessageBox.stageAlert = new Stage();
+        MessageBox.title = title;
+        MessageBox.message = message;
 
         stageAlert.setMinWidth(300);
         stageAlert.setMinHeight(120);
@@ -58,8 +58,8 @@ public class MessageBox {
         stageAlert.setTitle(title);
         stageAlert.setResizable(false);
 
-                FXMLLoader fxmlLoader = new FXMLLoader(MessageBox.class.getResource("messageBox.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(MessageBox.class.getResource("messageBox.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
 
         stageAlert.setScene(scene);
         stageAlert.showAndWait();
@@ -90,24 +90,26 @@ public class MessageBox {
     public boolean isPositiveDouble(TextField textField, Label errorMessage) throws IOException {
         if (!textField.getText().isBlank()) {
             try {
-                    NumberValidator.validateNumber(Double.parseDouble(textField.getText()));
-                    return true;
-                } catch (NumberFormatException _) {
-                    errorMessage.setText("Invalid Amount");
-                } catch (NegativeNumberException _) {
-                    errorMessage.setText("Negative Number Not Allowed");
-                }
+                NumberValidator.validateNumber(Double.parseDouble(textField.getText()));
+                return true;
+            } catch (NumberFormatException _) {
+                errorMessage.setText("Invalid Amount");
+            } catch (NegativeNumberException _) {
+                errorMessage.setText("Negative Number Not Allowedx`");
+            }
         }
         else {
             errorMessage.setText("Empty Field");
             errorMessage.setVisible(true);
         }
-            return (false);
+        return (false);
     }
 
     private void checkBalance() throws IOException {
-            flag = true;
+        flag = true;
+        if (AccountController.withdraw_deposit) {
             NumberValidator.validateAmountWithdrawn(Double.parseDouble(amount.getText()));
+        }
     }
 
     @FXML

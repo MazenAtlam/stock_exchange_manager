@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -21,8 +22,8 @@
       </TableView>
       <TableView fx:id="tableViewOwnedAssets" layoutX="447.0" layoutY="118.0" prefHeight="242.0" prefWidth="200.0" styleClass="orderlist" stylesheets="@Mazen.css">
         <columns>
-          <TableColumn prefWidth="91.20001220703125" styleClass="tablecolumn" text="Symbol" />
-          <TableColumn prefWidth="107.99993896484375" styleClass="tablecolumn" text="No. Of Stocks" />
+          <TableColumn fx:id="ownedCompanySymbolColumn" prefWidth="91.20001220703125" styleClass="tablecolumn" text="Symbol" />
+          <TableColumn fx:id="numberOfOwnedStocksColumn" prefWidth="107.99993896484375" styleClass="tablecolumn" text="No. Of Stocks" />
         </columns>
       </TableView>
       <Label layoutX="281.0" layoutY="21.0" styleClass="changing-head" stylesheets="@Mazen.css" text="Order ">
@@ -32,5 +33,6 @@
       </Label>
       <Label layoutX="470.0" layoutY="88.0" style="-fx-text-fill: #763626; -fx-font-size: 20px;" styleClass="changing-head" stylesheets="@Mazen.css" text="Owned Assets" />
       <Label layoutX="130.0" layoutY="80.0" style="-fx-text-fill: #763626;" styleClass="changing-head" stylesheets="@Mazen.css" text="Order History" />
+      <Button layoutX="37.0" layoutY="21.0" mnemonicParsing="false" onAction="#setPreviousScene" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
    </children>
 </AnchorPane>

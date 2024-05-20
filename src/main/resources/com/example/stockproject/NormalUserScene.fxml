@@ -36,7 +36,7 @@
          </font>
       </Button>
       <Button layoutX="62.0" layoutY="210.0" mnemonicParsing="false" onAction="#JoinSession" styleClass="about-but" stylesheets="@Mazen.css" text="Join Session" />
-      <Button fx:id="bePremium" layoutX="327.0" layoutY="138.0" mnemonicParsing="false" onMousePressed="#bePremium" text="be premium 10$" />
+      <Button fx:id="bePremium" layoutX="327.0" layoutY="138.0" mnemonicParsing="false" onAction="#bePremium" text="be premium 10$" />
       <Label fx:id="LabelField" layoutX="97.0" layoutY="107.0" text="you are now subscribed 10$ taken from your balance" />
     </children>
 </AnchorPane>

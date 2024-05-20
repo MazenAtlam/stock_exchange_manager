@@ -1,5 +1,6 @@
 package com.example.stockproject;
 
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 
@@ -58,11 +59,25 @@ public class NumberValidator {
         }
     }
 
+    /**
+     * @param requestedStockAmount
+     * @param companySymbol
+     * @param errorMessage
+     * @throws IOException
+     */
     public static void validateMarketStocksAvailability(int requestedStockAmount, String companySymbol, Label errorMessage) throws IOException {
         if (requestedStockAmount > Market.getInstance(companySymbol).getNumStocks()) {
-                MessageBox.show("Warning", "Specified Stock Amount Not Available");
-                errorMessage.setText("");
-                errorMessage.setVisible(true);
+            MessageBox.show("Warning", "Specified Stock Amount Not Available");
+            errorMessage.setText("");
+            errorMessage.setVisible(true);
+        }
+    }
+
+    public static void validateAssetsStocksAvailability(int ownedStocksAmount, int requestedSellAmount, Label errorMessage) throws IOException {
+        if (ownedStocksAmount < requestedSellAmount) {
+            MessageBox.show("Warning", "Specified Stock Amount Not Available");
+            errorMessage.setText("");
+            errorMessage.setVisible(true);
         }
     }
 }

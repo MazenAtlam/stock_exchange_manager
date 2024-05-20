@@ -1,92 +1,49 @@
-package com.example.stockproject;
+package App;
 
-public class Admin extends User{
+import java.io.IOException;
+import java.util.Map;
 
-//    @Override
-//    public void DisplayTransactionHistory() {
-//
-//    }
-//
-//
-//
-//    @Override
-//    public void ExportStockHistory() {
-//
-//    }
-//
-//    @Override
-//    public void UpdateOrder() {
-//
-//    }
-//
+public class Admin extends User {
+    User userTemp;
 
-//    @Override
-//    public void RetrieveUser(String username) {
-//
-//    }
-//
-//    @Override
-//    public void UpdateUser(User user) {
-//
-//    }
-//
-//    @Override
-//    public void DeleteUser(User user) {
-//
-//    }
-//
-//    @Override
-//    public void CreateStock() {
-//
-//    }
-//
-//    @Override
-//    public void RetrieveStock() {
-//
-//    }
-//
-//    @Override
-//    public void UpdateStock() {
-//
-//    }
-//
-//    @Override
-//    public void DeleteStock() {
-//
-//    }
-//
-//    @Override
-//    public void UpdateStockPrice(double price) {
-//
-//    }
-//
-//    @Override
-//    public void UpdateLabel() {
-//
-//    }
-//
-//    @Override
-//    public void DefineDividend() {
-//
-//    }
-//
-//    @Override
-//    public void ApprovalSystem() {
-//
-//    }
-//
-//    @Override
-//    public void InitiateTradingSession() {
-//
-//    }
-//
-//    @Override
-//    public void CloseTradingSession() {
-//
-//    }
-//
-//    @Override
-//    public void MovingToNextDay() {
-//
-//    }
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
+        Admin.id_count++;
+        this.id = id_count;
+    }
+
+    public void addUser(String username, String password) {
+        Data.setUsers(username, password);
+    }
+
+    public User retrieveUser(String username) throws IOException {
+        try {
+            if (username == null || username.equals("")) {
+                    WarningMessage.show("EmptyField", "Please enter a name");
+                    return null;    
+            }
+            for (Map.Entry<Integer, User> set : Data.DeletedUsers.entrySet()) {
+                if (set.getValue().getUsername().equals(username)) {
+                    Data.DeletedUsers.remove(set.getKey());
+                    Data.Users.put(set.getKey(), set.getValue());
+                    return set.getValue();
+                }
+            }
+            WarningMessage.show("UserNotFound", "User is not deleted or not found");
+        } catch (IOException e) {
+            WarningMessage.show("Error", "Error while retrieving user");
+        }
+        return null;
+    }
+
+    public void deleteUser(String username) throws IOException {
+        userTemp = Data.isInUsers(username);
+        if (userTemp != null) {
+            Data.DeletedUsers.put(userTemp.getId(), userTemp);
+            Data.Users.remove(userTemp.getId());
+        } else {
+            WarningMessage.show("UserNotFound", "User is not found");
+        }
+    }
 }

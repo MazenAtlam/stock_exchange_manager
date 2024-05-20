@@ -1,4 +1,4 @@
-package com.example.stockproject;
+package App;
 import java.util.HashMap;
 public class Company {
     private String name, industry ;
@@ -27,4 +27,3 @@ public class Company {
 
 
 }
-

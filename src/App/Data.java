@@ -1,4 +1,5 @@
-package com.example.stockproject;
+package App;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -7,19 +8,10 @@ public abstract class Data {
     public static int TempID;
     public static String CSVDirectory =  "src/main/CSV data";
     public static UserFactory userFactory = new UserFactory();
-    public static Map<Integer,User> Users = new HashMap<>();
-    public static Map<Integer,User> Admins = new HashMap<>();
-    public static Map<Integer,User> DeletedUsers = new HashMap<>();
-    public static Map<Integer,User> PremiumUser = new HashMap<>();
-//    public static ArrayList <User> Users = new ArrayList<>();
-//    public static ArrayList <User> Admins = new ArrayList<>();
-//    public static ArrayList <User> DeletedUsers = new ArrayList<>();
-//    public static ArrayList <User> PremiumUsers =new ArrayList<>();
-////    private static Market market; // until market class created
-//    private static int AdminIndex;
-//    private static int UserIndex;
-//    private static int Id ;
-    public static int temp_id;
+    public static Map<Integer, User> Users = new HashMap<>();
+    public static Map<Integer, User> Admins = new HashMap<>();
+    public static Map<Integer, User> DeletedUsers = new HashMap<>();
+    public static Map<Integer, User> PremiumUsers =new HashMap<>();
 
     public static Map<String, double[]> loadCSVFilesToHashMap(String directoryPath) throws IOException {
         Map<String, double[]> map = new HashMap<>();
@@ -81,28 +73,20 @@ public abstract class Data {
     public static void initStockData() throws IOException {
         stockData=loadCSVFilesToHashMap(CSVDirectory);
     }
+
     public void addSymbol(String symbol,double initialPrice){
         // min, max, opening, closing, initialPrice
+
          stockData.put(symbol, new double[]{initialPrice, initialPrice, initialPrice, initialPrice, initialPrice});
     }
 
 
-
-//    private final static double[] initialValues = new double[]{0.0, 0.0, 0.0, 0.0};
-
-    // Call Function At start To Load the Data
-//    private void loadSymbols() throws IOException {
-//        for (String symbol : popularSymbols) {
-//            stockData.put(symbol, initialValues);
-//        }
-//        exportToCSV(stockData);
-//    }
-    /***********************/
     public static void exportToCSV(Map<String, double[]> map) throws IOException {
         // Get the current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         for (Map.Entry<String, double[]> entry : map.entrySet()) {
+
             String key = entry.getKey();
             double[] values = entry.getValue();
 
@@ -126,26 +110,26 @@ public abstract class Data {
                 // Remove the trailing comma
                 writer.flush();
             } catch (IOException e) {
-                System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
+                WarningMessage.show("Exporting CSV", "Error writing to file " + filePath + ": " + e.getMessage());
+                // System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
             }
         }
     }
 
 
     public static boolean UsernameIsAvailable(String username){
+        for (Map.Entry<Integer, User> set : Users.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername())) {
 
-        for (User value : Users.values()) {
-            if (Objects.equals(username, value.GetUsername())) {
                 return false;
             }
         }
-//        Id++;
         return true;
     }
 
     public static boolean AdminNameIsAvailable(String username){
-        for (User admin : Admins.values()){
-            if (Objects.equals(admin.GetUsername() , username)){
+        for (Map.Entry<Integer, User> set : Admins.entrySet()){
+            if (Objects.equals(username, set.getValue().getUsername())){
                 return false;
             }
         }
@@ -153,62 +137,42 @@ public abstract class Data {
         return true;
     }
 
-    public static User VerifyLogin(String username , String password){
-            for (User value : Users.values()) {
-                if (Objects.equals(username, value.GetUsername()) && Objects.equals(password, value.getPassword())) {
-//                    UserIndex = Users.indexOf(value);
-                    return value;
+
+    public static boolean VerifyLogin(String username , String password){
+            for (Map.Entry<Integer, User> set : Users.entrySet()) {
+                if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
+                    return true;
                 }
             }
-        return null;
+        return false;
     }
 
-    public static User VerifyAdminLogin(String username , String password){
+    public static boolean VerifyAdminLogin(String username , String password){
 
-        System.out.println(Admins);
-        for (User value : Admins.values()) {
-            if (Objects.equals(username, value.GetUsername()) && Objects.equals(password, value.getPassword())) {
-//                AdminIndex = Admins.indexOf(value);
-                return value;
+        // System.out.println(Admins);
+        for (Map.Entry<Integer, User> set : Admins.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static User isInUsers(String username){
+        for (Map.Entry<Integer, User> set : Users.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername())) {
+
+                return set.getValue();
             }
         }
         return null;
     }
 
-//    public static int getUserIndex() {
-//        return UserIndex;
-//    }
-//
-//    public static int getAdminIndex() {
-//        return AdminIndex;
-//    }
-
-
-    public static User isInList(String username, ArrayList<User> usersList) {
-        for (User user : usersList) {
-            if (user.GetUsername().equals(username)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-//    public static boolean IsAdmin(User user){
-//        for (User value : Admins.values()) {
-//            if (Objects.equals(user,value)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     public static void setUsers(String username , String password){
-        User user = userFactory.GetUser(UserFactory.NORMAL);
-        user.setUsername(username);
-        user.setPassword(password);
-//        user.setId(Id);
-        Users.put(user.getId(),user);
-        System.out.println(Users);
+        User user = userFactory.GetUser(UserFactory.NORMAL, username, password);
+        Users.put(user.getId(), user);
+
     }
 
 }

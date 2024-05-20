@@ -1,4 +1,5 @@
-package com.example.stockproject;
+package App;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,22 +17,9 @@ import java.util.ResourceBundle;
 
 public class Normal_User extends User   {
 
-    public Normal_User(){
-        Normal_User.id_counter++;
-        this.id = id_counter;
+    public Normal_User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.id = ++id_count;
     }
-//
-//    public void  DisplayTransactionHistory() {
-//
-//    }
-//
-//    public void ExportStockHistory(){ //Stock class parameter
-//
-//    }
-//
-//
-//   public void UpdateOrder() {
-//
-//   }
-
 }

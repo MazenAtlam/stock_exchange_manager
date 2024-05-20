@@ -1,4 +1,6 @@
-package com.example.stockproject;
+
+package App;
+
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +22,7 @@ public class OrderController extends Controller{
     public static final ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
 
     public static final ObservableList<Order> ownedAssetsObservableList = FXCollections.observableArrayList();
+
 
     @FXML
     private TableColumn<Order, String> orderTypeColumn;
@@ -48,6 +52,7 @@ public class OrderController extends Controller{
     private TableView<Order> tableViewOwnedAssets;
 
     public void initialize() {
+
         currUser = Data.Users.get(Data.TempID);
         companySymbolColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("companySymbol"));
         orderTypeColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("orderType"));

@@ -1,56 +1,52 @@
-package com.example.stockproject;
-import java.io.IOException;
+package App;
 
-//import App.Data;
-//import App.User.User;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public abstract class Controller {
-        protected static final Stage currStage = HelloApplication.stage;
-        protected Scene currScene;
-        protected Parent root;
-        protected User currUser;
-        // protected static Image image;
 
-        public int display(User user, String sceneName) {
-                Data.TempID = user.getId();
+    protected final Stage currStage = Main.currStage;
+    protected Scene currScene;
+    protected Parent root;
+    protected User currUser;
+    protected static String prevTitle;
+    protected static String currTitle;
 
-                try {
-                        root = FXMLLoader.load(getClass().getResource(sceneName));
-                } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                }
-                currScene = new Scene(root);
+    public void display(User user, String sceneName) throws IOException {
+        Data.TempID = user.getId();
 
-                String[] title = sceneName.split("\\.", 2);
-                currStage.setTitle(title[0]);
-                // currStage.getIcons().add(image);
-                currStage.setScene(currScene);
-                currStage.setResizable(false);
-                currStage.show();
-                return Data.TempID;
+        try {
+            root = FXMLLoader.load(getClass().getResource(sceneName));
+        } catch (IOException e) {
+            WarningMessage.show("Error", "FXML root File Exception");
         }
+        currScene = new Scene(root);
 
-        public void display(String sceneName) {
-                try {
-                        root = FXMLLoader.load(getClass().getResource(sceneName));
-                } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                }
-                currScene = new Scene(root);
+        String[] title = sceneName.split("\\.", 2);
+        currStage.setTitle(title[0]);
+        // currStage.getIcons().add(image);
+        currStage.setScene(currScene);
+        currStage.setResizable(false);
+        currStage.show();
+    }
 
-                String[] title = sceneName.split("\\.", 2);
-                currStage.setTitle(title[0]);
-                // currStage.getIcons().add(image);
-                currStage.setScene(currScene);
-                currStage.setResizable(false);
-                currStage.show();
+    public void display(String sceneName) throws IOException {
+        try {
+            root = FXMLLoader.load(getClass().getResource(sceneName));
+        } catch (IOException e) {
+            WarningMessage.show("Error", "FXML root File Exception");
         }
+        currScene = new Scene(root);
+
+        String[] title = sceneName.split("\\.", 2);
+        currStage.setTitle(title[0]);
+        // currStage.getIcons().add(image);
+        currStage.setScene(currScene);
+        currStage.setResizable(false);
+        currStage.show();
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.example.stockproject;
+package App;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -147,4 +147,3 @@ public class Account {
     }
 
 }
-

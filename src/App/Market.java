@@ -1,4 +1,5 @@
-package com.example.stockproject;
+package App;
+
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -122,9 +123,6 @@ public class Market {
      */
     public static void returnAssetsToMarket(Market market) {}
 
-    /**
-     *
-     */
     public static void updateMarket() {
         for (Market market : MarketController.stockList) {
             if (market.getNumStocks() == 0) {

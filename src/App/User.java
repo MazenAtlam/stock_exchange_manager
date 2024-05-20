@@ -1,4 +1,5 @@
-package com.example.stockproject;
+
+package App;
 import java.util.Objects;
 
 
@@ -7,8 +8,6 @@ public abstract class User {
     protected String password;
     protected static int id_counter;
     protected int  id ;
-
-
 
     public void setUsername(String username){
         this.username = username;
@@ -80,5 +79,4 @@ public abstract class User {
 
 
 }
-
 

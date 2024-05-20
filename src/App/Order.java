@@ -1,9 +1,10 @@
-package com.example.stockproject;
+
+package App;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import java.io.IOException;
 
 public class Order {
@@ -42,7 +43,6 @@ public class Order {
     public String getCompanySymbol() {
         return companySymbol;
     }
-
     public String getOrderType() {
         return orderType;
     }
@@ -51,7 +51,6 @@ public class Order {
         return amountDepositedOrWithdrawn;
     }
 
-
     public String getCurrentOrderState() {
         return currentOrderState.get();
     }
@@ -59,8 +58,6 @@ public class Order {
     public StringProperty currentOrderStateProperty() {
         return currentOrderState;
     }
-
-
 
     public Order(double amountDepositedOrWithdrawn) {
         if (flag == 1) {
@@ -76,6 +73,7 @@ public class Order {
     //Should Be Executed if numberOfOrderedStocks > 0
     public Order(String companySymbol, Integer numberOfOrderedStocks, String orderType) {
         this.companySymbol = companySymbol;
+
         this.numberOfOrderedStocks = numberOfOrderedStocks;
         this.orderType = orderType;
         this.currentOrderState.setValue("Approved");
@@ -91,6 +89,7 @@ public class Order {
         this.numberOfOwnedStocks = numberOfOwnedStocks;
         OrderController.ownedAssetsObservableList.add(this);
     }
+
 
     public static Scene getOrderScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(OrderController.class.getResource("Order.fxml"));

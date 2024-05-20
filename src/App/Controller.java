@@ -1,13 +1,13 @@
 package App;
 
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public abstract class Controller {
+
     protected final Stage currStage = Main.currStage;
     protected Scene currScene;
     protected Parent root;
@@ -48,4 +48,5 @@ public abstract class Controller {
         currStage.setResizable(false);
         currStage.show();
     }
+
 }

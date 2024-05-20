@@ -1,5 +1,11 @@
+
 package App;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,8 +13,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MarketController extends Controller{
+public class MarketController extends Controller  {
 
     @FXML
     public AnchorPane mainAnchorPane;
@@ -27,9 +36,10 @@ public class MarketController extends Controller{
      *
      */
     public void initialize() {
-        Controller.currTitle = currStage.getTitle();
-        new Market("AAPL", 20.0, 12);
-        new Market("Ahmed", 4321, 3224);
+
+
+        currUser = Data.Users.get(Data.TempID);
+
 
         companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("companySymbol"));
         pricePerStockColumn.setCellValueFactory(new PropertyValueFactory<>("pricePerStock"));
@@ -37,5 +47,17 @@ public class MarketController extends Controller{
 
         tableView.setItems(stockList);
     }
+
+//    @FXML
+//    public void back(ActionEvent event) throws IOException {
+////        ShowStage("NormalUserScene.fxml",event);
+//        display(currUser,"NormalUserScene.fxml");
+//    }
+    @FXML
+    public void setPreviousScene() throws IOException {
+        AccountController.stage.setScene(Normal_User_Scene.getNormalScene());
+        AccountController.stage.setTitle("Normal user");
+    }
+
 
 }

@@ -1,4 +1,5 @@
 package App;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -72,27 +73,20 @@ public abstract class Data {
     public static void initStockData() throws IOException {
         stockData=loadCSVFilesToHashMap(CSVDirectory);
     }
-    public static void addSymbol(String symbol,double initialPrice){
+
+    public void addSymbol(String symbol,double initialPrice){
+        // min, max, opening, closing, initialPrice
+
          stockData.put(symbol, new double[]{initialPrice, initialPrice, initialPrice, initialPrice, initialPrice});
     }
 
 
-
-//    private final static double[] initialValues = new double[]{0.0, 0.0, 0.0, 0.0};
-
-    // Call Function At start To Load the Data
-//    private void loadSymbols() throws IOException {
-//        for (String symbol : popularSymbols) {
-//            stockData.put(symbol, initialValues);
-//        }
-//        exportToCSV(stockData);
-//    }
-    /***********************/
-    public static void exportToCSV() throws IOException {
+    public static void exportToCSV(Map<String, double[]> map) throws IOException {
         // Get the current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-        for (Map.Entry<String, double[]> entry : stockData.entrySet()) {
+        for (Map.Entry<String, double[]> entry : map.entrySet()) {
+
             String key = entry.getKey();
             double[] values = entry.getValue();
 
@@ -143,6 +137,7 @@ public abstract class Data {
         return true;
     }
 
+
     public static boolean VerifyLogin(String username , String password){
             for (Map.Entry<Integer, User> set : Users.entrySet()) {
                 if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
@@ -173,13 +168,11 @@ public abstract class Data {
         return null;
     }
 
+
     public static void setUsers(String username , String password){
         User user = userFactory.GetUser(UserFactory.NORMAL, username, password);
         Users.put(user.getId(), user);
 
-        // user.setUsername(username);
-        // user.setPassword(password);
-        // System.out.println(Users);
     }
 
 }

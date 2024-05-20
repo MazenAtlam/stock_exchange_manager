@@ -1,3 +1,4 @@
+
 package App;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -7,14 +8,35 @@ import javafx.scene.Scene;
 import java.io.IOException;
 
 public class Order {
+
     private String companySymbol = "-";
     private String orderType;
-    private String numberOfOrderedStocks = "-";
+    private Integer numberOfOrderedStocks;
     private Double amountDepositedOrWithdrawn;
     private final StringProperty currentOrderState = new SimpleStringProperty("Pending");
+    private String ownedCompanySymbols;
+    private Integer numberOfOwnedStocks;
     public static int flag;
 
-    public String getNumberOfOrderedStocks() {
+
+    public Integer getNumberOfOwnedStocks() {
+        return numberOfOwnedStocks;
+    }
+
+    public void setNumberOfOwnedStocks(Integer numberOfOwnedStocks) {
+        this.numberOfOwnedStocks = numberOfOwnedStocks;
+    }
+
+    public String getOwnedCompanySymbols() {
+        return ownedCompanySymbols;
+    }
+
+
+    public void setNumberOfOrderedStocks(Integer numberOfOrderedStocks) {
+        this.numberOfOrderedStocks = numberOfOrderedStocks;
+    }
+
+    public Integer getNumberOfOrderedStocks() {
         return numberOfOrderedStocks;
     }
 
@@ -46,16 +68,28 @@ public class Order {
         }
         this.amountDepositedOrWithdrawn = amountDepositedOrWithdrawn;
         OrderController.orderObservableList.add(this);
-        ApprovalSystemController.OrderOL.add(this);
     }
 
     //Should Be Executed if numberOfOrderedStocks > 0
     public Order(String companySymbol, Integer numberOfOrderedStocks, String orderType) {
         this.companySymbol = companySymbol;
-        this.numberOfOrderedStocks = numberOfOrderedStocks.toString();
+
+        this.numberOfOrderedStocks = numberOfOrderedStocks;
         this.orderType = orderType;
+        this.currentOrderState.setValue("Approved");
         OrderController.orderObservableList.add(this);
     }
+
+    /**
+     * @param companySymbol
+     * @param numberOfOwnedStocks
+     */
+    public Order(String companySymbol, Integer numberOfOwnedStocks) {
+        this.ownedCompanySymbols = companySymbol;
+        this.numberOfOwnedStocks = numberOfOwnedStocks;
+        OrderController.ownedAssetsObservableList.add(this);
+    }
+
 
     public static Scene getOrderScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(OrderController.class.getResource("Order.fxml"));

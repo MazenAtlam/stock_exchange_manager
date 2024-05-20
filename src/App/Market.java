@@ -119,8 +119,10 @@ public class Market {
 
 
     /**
-     *
+     * @param market
      */
+    public static void returnAssetsToMarket(Market market) {}
+
     public static void updateMarket() {
         for (Market market : MarketController.stockList) {
             if (market.getNumStocks() == 0) {

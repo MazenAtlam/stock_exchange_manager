@@ -45,4 +45,4 @@ We offer two main graphing tools for stock Performance visualization; Candlestic
 ![Candlestick chart](1_deliverables/candlestickChart.png)
 
 ### Line Chart
-![Line Chart](1_deliverables/LineChart.png)
+![Line Chart](1_deliverables/LineChart.jpg)

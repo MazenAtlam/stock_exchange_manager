@@ -9,8 +9,8 @@ public class Admin extends User {
     public Admin(String username, String password) {
         this.username = username;
         this.password = password;
-        Admin.id_count++;
-        this.id = id_count;
+        Admin.id_counter++;
+        this.id = id_counter;
     }
 
     public void addUser(String username, String password) {
@@ -24,7 +24,7 @@ public class Admin extends User {
                     return null;    
             }
             for (Map.Entry<Integer, User> set : Data.DeletedUsers.entrySet()) {
-                if (set.getValue().getUsername().equals(username)) {
+                if (set.getValue().GetUsername().equals(username)) {
                     Data.DeletedUsers.remove(set.getKey());
                     Data.Users.put(set.getKey(), set.getValue());
                     return set.getValue();

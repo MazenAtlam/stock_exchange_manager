@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.Normal_User_Scene">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Normal_User_Scene">
     <children>
       <ToolBar layoutX="6.0" layoutY="25.0" prefHeight="34.0" prefWidth="588.0" styleClass="login_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <Label fx:id="LabelField" layoutX="153.0" layoutY="21.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Normal User Scene">
+        <Label layoutX="153.0" layoutY="21.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Normal User Scene">
             <font>
                 <Font size="20.0" />
             </font>

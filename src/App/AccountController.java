@@ -1,9 +1,8 @@
-package com.example.stockproject;
+package App;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,10 +10,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Arrays;
-
 
 /**
  *
@@ -54,7 +51,6 @@ public class AccountController  extends Controller{
     Button backButton , BackButton1;
     @FXML
     Label balanceLabel;
-    private static int flag = 0;
     protected static Stage stage ;
 
     /**
@@ -73,7 +69,7 @@ public class AccountController  extends Controller{
                 }
             });
             balanceLabel.textProperty().bind(account.balanceProperty().asString("Balance: $%.2f"));
-        } catch (Exception _) {}
+        } catch (Exception exception) {}
         //For PlaceOrder Scene
         try {
             backButton.setOnAction(event -> {
@@ -103,7 +99,7 @@ public class AccountController  extends Controller{
                 }
             });
             companySymbolChoiceBox.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> errorMessage1.setVisible(false));
-        } catch (Exception _) {}
+        } catch (Exception exception) {}
     }
 
 
@@ -183,12 +179,12 @@ public class AccountController  extends Controller{
             try {
                 NumberValidator.validateNumber(NumberValidator.validateInteger(Double.parseDouble(textField.getText())));
                 return (true);
-            } catch (NumberFormatException _) {
+            } catch (NumberFormatException exception) {
                 errorMessage2.setText("Invalid Amount");
-            } catch (NegativeNumberException _) {
+            } catch (NegativeNumberException exception) {
                 errorMessage2.setText("Negative Number Not Allowed");
 
-            } catch (NotAnIntegerException _) {
+            } catch (NotAnIntegerException exception) {
                 errorMessage2.setText("Only Integer Allowed");
             }
         }
@@ -205,9 +201,9 @@ public class AccountController  extends Controller{
             try {
                 NumberValidator.validateNumber(Double.parseDouble(textField.getText()));
                 return true;
-            } catch (NumberFormatException _) {
+            } catch (NumberFormatException exception) {
                 errorMessage3.setText("Invalid Amount");
-            } catch (NegativeNumberException _) {
+            } catch (NegativeNumberException exception) {
                 errorMessage3.setText("Negative Number Not Allowed");
             }
         }
@@ -240,14 +236,14 @@ public class AccountController  extends Controller{
         try {
             getChosenType();
             errorMessage.setVisible(false);
-        } catch (IllegalArgumentException _) {
+        } catch (IllegalArgumentException exception) {
             errorMessage.setText("Empty Field");
             errorMessage.setVisible(true);
         }
         try {
             getChosenSymbol();
             errorMessage1.setVisible(false);
-        } catch (IllegalArgumentException _) {
+        } catch (IllegalArgumentException exception) {
             errorMessage1.setText("Empty Field");
             errorMessage1.setVisible(true);
         }
@@ -272,7 +268,7 @@ public class AccountController  extends Controller{
                 System.out.println(getChosenSymbol());
                 NumberValidator.validateAssetsStocksAvailability(account.getAvailableStockAssets(getChosenSymbol()), getStockAmount(), errorMessage3);
             }
-        } catch (IllegalArgumentException | IOException _) {}
+        } catch (IllegalArgumentException | IOException exception) {}
 
     }
 

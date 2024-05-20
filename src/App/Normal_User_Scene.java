@@ -1,20 +1,13 @@
-package com.example.stockproject;
+package App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
-import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 
 public class Normal_User_Scene extends Controller  {
@@ -46,7 +39,7 @@ public class Normal_User_Scene extends Controller  {
 
     public void initialize() {
         currUser = Data.Users.get(Data.TempID);
-        if (Data.PremiumUser.containsValue(currUser)){
+        if (Data.PremiumUsers.containsValue(currUser)){
             bePremium.setText("unsubscribe");
         }
 //        bePremium.setOnAction(event -> bePremium());
@@ -97,12 +90,12 @@ public class Normal_User_Scene extends Controller  {
             LabelField.setVisible(true);
             bePremium.setText("unsubscribe");
             Account.setUserBalanceUsingIndex(currUser.id);
-           Data.PremiumUser.put(currUser.id,currUser);
+           Data.PremiumUsers.put(currUser.id,currUser);
 
         }
 
-        else if (Data.PremiumUser.containsValue(currUser))  {
-            Data.PremiumUser.remove(currUser.id);
+        else if (Data.PremiumUsers.containsValue(currUser))  {
+            Data.PremiumUsers.remove(currUser.id);
             premium = false;
             LabelField.setVisible(false);
             bePremium.setText("be premium 10$");
@@ -113,7 +106,7 @@ public class Normal_User_Scene extends Controller  {
     public void changeToMarket(ActionEvent event) throws IOException{
 //        ShowStage("Market.fxml",event);
 //        display("Market.fxml");
-        Controller.currStage.setScene(Market.getMarketScene());
+        currStage.setScene(Market.getMarketScene());
 
     }
     @FXML
@@ -121,7 +114,7 @@ public class Normal_User_Scene extends Controller  {
 //        ShowStage("Market.fxml",event);
 //        display("Market.fxml");
 
-        Controller.currStage.setScene((Account.getAccountScene()));
+        currStage.setScene((Account.getAccountScene()));
     }
 
     @FXML

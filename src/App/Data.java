@@ -6,7 +6,7 @@ import java.util.*;
 
 public abstract class Data {
     public static int TempID;
-    public static String CSVDirectory =  "src/main/CSV data";
+    public static String CSVDirectory =  "src\\CSV data";
     public static UserFactory userFactory = new UserFactory();
     public static Map<Integer, User> Users = new HashMap<>();
     public static Map<Integer, User> Admins = new HashMap<>();
@@ -74,23 +74,28 @@ public abstract class Data {
         stockData=loadCSVFilesToHashMap(CSVDirectory);
     }
 
-    public void addSymbol(String symbol,double initialPrice){
+    public static void addSymbol(String symbol,double initialPrice){
         // min, max, opening, closing, initialPrice
 
          stockData.put(symbol, new double[]{initialPrice, initialPrice, initialPrice, initialPrice, initialPrice});
     }
 
 
-    public static void exportToCSV(Map<String, double[]> map) throws IOException {
+    public static void exportToCSV(String directoryPath) throws IOException {
         // Get the current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-        for (Map.Entry<String, double[]> entry : map.entrySet()) {
+        // Ensure the directory exists, create if it doesn't
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
 
+        for (Map.Entry<String, double[]> entry : stockData.entrySet()) {
             String key = entry.getKey();
             double[] values = entry.getValue();
 
-            String filePath = key + ".csv";
+            String filePath = directoryPath + File.separator + key + ".csv";
             File file = new File(filePath);
             boolean fileExists = file.exists();
 
@@ -110,8 +115,7 @@ public abstract class Data {
                 // Remove the trailing comma
                 writer.flush();
             } catch (IOException e) {
-                WarningMessage.show("Exporting CSV", "Error writing to file " + filePath + ": " + e.getMessage());
-                // System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
+                System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
             }
         }
     }
@@ -119,7 +123,7 @@ public abstract class Data {
 
     public static boolean UsernameIsAvailable(String username){
         for (Map.Entry<Integer, User> set : Users.entrySet()) {
-            if (Objects.equals(username, set.getValue().getUsername())) {
+            if (Objects.equals(username, set.getValue().GetUsername())) {
 
                 return false;
             }
@@ -129,7 +133,7 @@ public abstract class Data {
 
     public static boolean AdminNameIsAvailable(String username){
         for (Map.Entry<Integer, User> set : Admins.entrySet()){
-            if (Objects.equals(username, set.getValue().getUsername())){
+            if (Objects.equals(username, set.getValue().GetUsername())){
                 return false;
             }
         }
@@ -138,29 +142,40 @@ public abstract class Data {
     }
 
 
-    public static boolean VerifyLogin(String username , String password){
+    public static User VerifyLogin(String username , String password){
             for (Map.Entry<Integer, User> set : Users.entrySet()) {
-                if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
-                    return true;
+                if (Objects.equals(username, set.getValue().GetUsername()) && Objects.equals(password, set.getValue().getPassword())) {
+                    return set.getValue();
                 }
             }
-        return false;
+        return null;
     }
 
-    public static boolean VerifyAdminLogin(String username , String password){
+    public static boolean Verify_AdminLogin(String username , String password){
 
         // System.out.println(Admins);
         for (Map.Entry<Integer, User> set : Admins.entrySet()) {
-            if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
+            if (Objects.equals(username, set.getValue().GetUsername()) && Objects.equals(password, set.getValue().getPassword())) {
                 return true;
             }
         }
         return false;
     }
 
+    public static User VerifyAdminLogin(String username , String password){
+
+        // System.out.println(Admins);
+        for (Map.Entry<Integer, User> set : Admins.entrySet()) {
+            if (Objects.equals(username, set.getValue().GetUsername()) && Objects.equals(password, set.getValue().getPassword())) {
+                return set.getValue();
+            }
+        }
+        return null;
+    }
+
     public static User isInUsers(String username){
         for (Map.Entry<Integer, User> set : Users.entrySet()) {
-            if (Objects.equals(username, set.getValue().getUsername())) {
+            if (Objects.equals(username, set.getValue().GetUsername())) {
 
                 return set.getValue();
             }

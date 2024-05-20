@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="327.0" prefWidth="415.0" style="-fx-pref-width: 300px;" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.AccountController">
+<AnchorPane prefHeight="327.0" prefWidth="415.0" style="-fx-pref-width: 300px;" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.AccountController">
    <children>
       <ToolBar layoutX="6.0" layoutY="7.0" prefHeight="48.0" prefWidth="404.0" style="-fx-pref-width: 200px;" styleClass="login_toolbar" stylesheets="@Mazen.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <ChoiceBox fx:id="orderType" layoutX="25.0" layoutY="90.0" prefWidth="150.0" stylesheets="@Mazen.css" />
@@ -46,6 +46,6 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-    <Button fx:id="backButton" layoutX="25.0" layoutY="19.0" mnemonicParsing="false"  styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
+    <Button fx:id="backButton" layoutX="25.0" layoutY="19.0" mnemonicParsing="false" styleClass="exit-but" stylesheets="@Mazen.css" text="Back" />
    </children>
 </AnchorPane>

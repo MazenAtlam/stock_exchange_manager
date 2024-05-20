@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.ChangeSceneController">
    <children>
       <ToolBar layoutX="6.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="469.0" style="-fx-pref-width: 468;" styleClass="login_toolbar" stylesheets="@Mazen.css" />
       <Label fx:id="LabelField" layoutX="127.0" layoutY="18.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Welcome To Stock World">

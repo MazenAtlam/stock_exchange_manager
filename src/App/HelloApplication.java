@@ -1,16 +1,13 @@
-package com.example.stockproject;
+package App;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
 //    AccountController accountController=new AccountController();
 //    OrderController orderController = new OrderController();
-    static User temp = Data.userFactory.GetUser(UserFactory.ADMIN);
+
 //    static User temp1 = Data.userFactory.GetUser(UserFactory.NORMAL);
     public static Stage stage;
 //    static HelloController controller ;
@@ -47,9 +44,6 @@ public class HelloApplication extends Application {
             System.out.println("Error initing stocks data");
             System.out.println(e);
         }
-        temp.setUsername("mazenatef");
-        temp.setPassword("mazenatef");
-        Data.Admins.put(1,temp);
 
 //        temp1.setUsername("sherifelgendy");
 //        temp1.setPassword("sherifelgendy");

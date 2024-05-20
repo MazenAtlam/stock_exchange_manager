@@ -1,4 +1,4 @@
-package com.example.stockproject;
+package App;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,10 +41,10 @@ public class MessageBox {
         try {
             label.setText(message);
             btnOK.setOnAction(e -> stageAlert.close());
-        } catch (Exception _) {}
+        } catch (Exception exception) {}
         try {
             errorMessage.setVisible(false);
-        } catch (Exception _) {}
+        } catch (Exception exception) {}
     }
 
     public static void show(String title, String message) throws IOException {
@@ -92,9 +92,9 @@ public class MessageBox {
             try {
                 NumberValidator.validateNumber(Double.parseDouble(textField.getText()));
                 return true;
-            } catch (NumberFormatException _) {
+            } catch (NumberFormatException exception) {
                 errorMessage.setText("Invalid Amount");
-            } catch (NegativeNumberException _) {
+            } catch (NegativeNumberException exception) {
                 errorMessage.setText("Negative Number Not Allowedx`");
             }
         }

@@ -1,7 +1,6 @@
 package App;
 import java.util.HashMap;
 public class Company {
-    private String name, industry ;
     private static HashMap<String,Stock> company_map = new HashMap<>();
     private int stock_price;
     int size;

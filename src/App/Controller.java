@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public abstract class Controller {
 
-    protected final Stage currStage = Main.currStage;
+    protected final Stage currStage = HelloApplication.stage;
     protected Scene currScene;
     protected Parent root;
     protected User currUser;

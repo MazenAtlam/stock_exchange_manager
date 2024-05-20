@@ -26,7 +26,7 @@ public class AdminChangeName extends Controller{
     public void initialize() {
         Controller.currTitle = currStage.getTitle();
         currUser = Data.Admins.get(Data.TempID);
-        currName.setText(currUser.getUsername());
+        currName.setText(currUser.GetUsername());
     }
 
     public void Change(ActionEvent e) throws IOException {
@@ -38,7 +38,7 @@ public class AdminChangeName extends Controller{
         // System.out.println(checkUsername);
         // System.out.println(name.equals(confirmName));
         // System.out.println(Data.VerifyAdminLogin(currUser.getUsername(), pass));
-        if (checkUsername && name.equals(confirmName) && Data.VerifyAdminLogin(currUser.getUsername(), pass)) {
+        if (checkUsername && name.equals(confirmName) && Data.Verify_AdminLogin(currUser.GetUsername(), pass)) {
             currUser.setUsername(name);
             display(currUser, Controller.prevTitle + ".fxml");
             Controller.prevTitle = Controller.currTitle;

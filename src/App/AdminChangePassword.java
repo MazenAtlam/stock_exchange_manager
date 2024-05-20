@@ -26,7 +26,7 @@ public class AdminChangePassword extends Controller{
     public void initialize() {
         Controller.currTitle = currStage.getTitle();
         currUser = Data.Admins.get(Data.TempID);
-        currName.setText(currUser.getUsername());
+        currName.setText(currUser.GetUsername());
     }
 
     public void Change(ActionEvent e) throws IOException {
@@ -36,7 +36,7 @@ public class AdminChangePassword extends Controller{
         final boolean check1 = Pattern.matches("\\w{8,}",o_pass);
         final boolean check2 = Pattern.matches("\\w{8,}",n_pass);
 
-        if (check1 && check2 && n_pass.equals(confirmPass) && !o_pass.equals(n_pass) && Data.VerifyAdminLogin(currUser.getUsername(), o_pass)) {
+        if (check1 && check2 && n_pass.equals(confirmPass) && !o_pass.equals(n_pass) && Data.Verify_AdminLogin(currUser.GetUsername(), o_pass)) {
             currUser.setPassword(n_pass);
             // System.out.println(currUser.getPassword());
             display(currUser, Controller.prevTitle + ".fxml");

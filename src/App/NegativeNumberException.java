@@ -1,4 +1,3 @@
-package com.example.stockproject;
+package App;
 
 public class NegativeNumberException extends ArithmeticException{}
-

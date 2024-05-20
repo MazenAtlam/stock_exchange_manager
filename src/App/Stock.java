@@ -1,13 +1,10 @@
-package com.example.stockproject;
+package App;
 
 import java.util.ArrayList;
     public class Stock {
         private ArrayList <Integer> price_history= new ArrayList<>();
-        private ArrayList <String> label= new ArrayList<>();
         private int available_stocks;
-        private float opening_price,closing_price,price;
-        private float min_price,max_price,profit_loss_percentage;
-        private boolean specific;
+        private float price;
         public Company total_price = new Company();
         private float Calc_value = total_price.req_value();
         public float  get_price (){

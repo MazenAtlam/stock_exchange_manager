@@ -1,15 +1,9 @@
-package com.example.stockproject;
+package App;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +16,7 @@ public class LineGraph implements Initializable {
     @FXML
     private Button plot;
     Stock mystock ;
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TimeZone.setDefault(TimeZone.getTimeZone("EET"));

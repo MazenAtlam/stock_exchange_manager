@@ -1,9 +1,6 @@
-package com.example.stockproject;
+package App;
 
-
-import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
-
 import java.io.IOException;
 
 /**
@@ -11,7 +8,6 @@ import java.io.IOException;
  */
 public class NumberValidator {
 
-    private static final double EPSILON = 0.00001;
     /**
      * @param number
      * @throws NegativeNumberException

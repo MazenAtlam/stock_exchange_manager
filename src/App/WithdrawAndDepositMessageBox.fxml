@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.MessageBox">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.MessageBox">
    <children>
       <TextField fx:id="amount" layoutX="21.0" layoutY="36.0" onKeyTyped="#validateAmount" promptText="Enter Amount" styleClass="fields" stylesheets="@Mazen.css" />
       <Label fx:id="errorMessage" layoutX="27.0" layoutY="68.0" prefHeight="19.0" prefWidth="234.0" style="-fx-font-size: 13px;" stylesheets="@Mazen.css" text="Empty Field" textFill="#e70000">

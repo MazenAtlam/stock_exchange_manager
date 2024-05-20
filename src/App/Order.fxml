@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="657.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.OrderController">
+<AnchorPane prefHeight="480.0" prefWidth="657.0" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.OrderController">
    <children>
       <ToolBar layoutX="-3.0" layoutY="9.0" prefHeight="40.0" prefWidth="664.0" styleClass="order-toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <TableView fx:id="tableViewOrders" layoutX="17.0" layoutY="119.0" prefHeight="242.0" prefWidth="390.0" styleClass="orderlist" stylesheets="@Mazen.css">

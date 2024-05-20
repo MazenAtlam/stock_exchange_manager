@@ -61,7 +61,7 @@ public class AdminSceneController extends Controller implements Initializable{
         Controller.currTitle = currStage.getTitle();
         currUser = Data.Admins.get(Data.TempID);
         currAdmin = (Admin) currUser;
-        username.setText(currUser.getUsername());
+        username.setText(currUser.GetUsername());
         adminID.setText(Objects.toString(currUser.getId()));
         viewProfile.setExpanded(false);
         add_items(Data.Admins, admins);
@@ -88,7 +88,7 @@ public class AdminSceneController extends Controller implements Initializable{
 
         String usernameRetrieve = nameToRetrieve.getText();
         User OldUser = currAdmin.retrieveUser(usernameRetrieve);
-        users.getItems().add(OldUser.getUsername());
+        users.getItems().add(OldUser.GetUsername());
 
         // System.out.println(Data.Users.size());
     }
@@ -113,8 +113,8 @@ public class AdminSceneController extends Controller implements Initializable{
             admins.getItems().remove(selectedAdmin);
             if (Data.Admins.size() == 0) {
                 WarningMessage.show("LastAdmin", "Create at least one Admin");
-                // display("hello-view.fxml");
-                display("Temp.fxml");
+                display("hello-view.fxml");
+                // display("Temp.fxml");
             }
         }
         if (selectedUser != null) {
@@ -126,7 +126,7 @@ public class AdminSceneController extends Controller implements Initializable{
 
     private User getAdmin(String username) {
         for (Map.Entry<Integer, User> set : Data.Admins.entrySet()) {
-            if (set.getValue().getUsername().equals(username)) {
+            if (set.getValue().GetUsername().equals(username)) {
                 return set.getValue();
             }
         }
@@ -166,7 +166,7 @@ public class AdminSceneController extends Controller implements Initializable{
 
     public void add_items(Map<Integer, User> list, ListView<String> listView) {
         for (Map.Entry<Integer, User> set : list.entrySet()) {
-            listView.getItems().add(set.getValue().getUsername());
+            listView.getItems().add(set.getValue().GetUsername());
         }
     }
 }

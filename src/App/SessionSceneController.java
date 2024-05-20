@@ -1,4 +1,4 @@
-package com.example.stockproject;
+package App;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,9 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
-import javafx.stage.Stage;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,8 +51,8 @@ public class SessionSceneController extends Controller implements Initializable 
           CandlestickGraph graph = new CandlestickGraph(selectedItem,Data.CSVDirectory, 1200,700);
 
             Scene scene =new Scene( graph.graph(), 1000,700);
-            Controller.currStage.setScene(scene);
-            Controller.currStage.show();
+            currStage.setScene(scene);
+            currStage.show();
         }
         else if (lineId.isSelected() && selectedItem!=null){
             checkerLabel.setVisible(true);
@@ -66,13 +63,6 @@ public class SessionSceneController extends Controller implements Initializable 
         }
     }
 
-//    private void ShowStage(String name ,ActionEvent event  ) throws IOException {
-//        root = (FXMLLoader.load(getClass().getResource(name)));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
 
     public void setInformation(){
@@ -84,7 +74,6 @@ public class SessionSceneController extends Controller implements Initializable 
 
     @FXML
     public void changeName(ActionEvent event) throws IOException {
-//        ShowStage("ChangeName.fxml", event);
         display(currUser,"ChangeName.fxml");
     }
 

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" styleClass="root" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stockproject.ChangeSceneController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" styleClass="root" stylesheets="@Mazen.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.ChangeSceneController">
    <children>
       <ToolBar layoutX="5.0" layoutY="6.0" prefHeight="48.0" prefWidth="470.0" styleClass="login_toolbar" stylesheets="@Mazen.css" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label fx:id="LabelField" layoutX="148.0" layoutY="13.0" styleClass="newadmin-head" stylesheets="@Mazen.css" text="Create New Account ">

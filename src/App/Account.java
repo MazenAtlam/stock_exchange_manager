@@ -141,7 +141,7 @@ public class Account {
         try{
             AccountController.account = accountList.get(userIndex - 1);
         }
-        catch (Exception _ ){
+        catch (Exception e ){
             new Account(100);
         }
     }

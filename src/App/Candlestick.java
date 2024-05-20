@@ -1,4 +1,4 @@
-package com.example.stockproject;
+package App;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;

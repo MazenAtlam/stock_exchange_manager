@@ -40,7 +40,7 @@ public class SessionController extends Controller {
     public void initialize() {
         Controller.currTitle = currStage.getTitle();
         currUser = Data.Admins.get(Data.TempID);
-        username.setText(currUser.getUsername());
+        username.setText(currUser.GetUsername());
         adminId.setText(Objects.toString(currUser.getId()));
         viewProfile.setExpanded(false);
 

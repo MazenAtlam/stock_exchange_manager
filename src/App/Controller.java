@@ -1,9 +1,7 @@
-package App.User.Admin;
+package App;
 
 import java.io.IOException;
 
-import App.Data;
-import App.User.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,15 +12,16 @@ public abstract class Controller {
     protected Scene currScene;
     protected Parent root;
     protected User currUser;
+    protected static String prevTitle;
+    protected static String currTitle;
 
-    public void display(User user, String sceneName) {
+    public void display(User user, String sceneName) throws IOException {
         Data.TempID = user.getId();
 
         try {
             root = FXMLLoader.load(getClass().getResource(sceneName));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            WarningMessage.show("Error", "FXML root File Exception");
         }
         currScene = new Scene(root);
 
@@ -34,12 +33,11 @@ public abstract class Controller {
         currStage.show();
     }
 
-    public void display(String sceneName) {
+    public void display(String sceneName) throws IOException {
         try {
             root = FXMLLoader.load(getClass().getResource(sceneName));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            WarningMessage.show("Error", "FXML root File Exception");
         }
         currScene = new Scene(root);
 

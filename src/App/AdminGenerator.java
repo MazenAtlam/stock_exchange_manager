@@ -1,7 +1,4 @@
-package App.User.Admin;
-
-import App.Data;
-import App.User.User;
+package App;
 
 /**
  * A class that allows an admin to add a new admin
@@ -31,7 +28,7 @@ import App.User.User;
         if (admin == null)
             System.out.println("null passed in add_admin");
         else
-            Data.Admins.add(admin);
+            Data.Admins.put(admin.getId(), admin);
     }
 
     /**
@@ -39,9 +36,6 @@ import App.User.User;
      * @param admin
      */
     public void remove_admin(User admin) {
-        if (admin == null)
-            System.out.println("null passed in remove_admin");
-        else
-            Data.Admins.remove(admin);
+        Data.Admins.remove(admin.getId());
     }
 }

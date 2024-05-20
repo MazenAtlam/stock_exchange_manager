@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class OrderController {
+public class OrderController extends Controller{
     public static final ObservableList<Order> orderObservableList = FXCollections.observableArrayList();
 
     @FXML
@@ -27,6 +27,7 @@ public class OrderController {
     private TableView<Order> tableViewOwnedAssets;
 
     public void initialize() {
+        Controller.currTitle = currStage.getTitle();
         companySymbolColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("companySymbol"));
         orderTypeColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("orderType"));
         numberOfOrderedStocksColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("numberOfOrderedStocks"));

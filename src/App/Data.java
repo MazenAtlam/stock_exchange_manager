@@ -3,20 +3,14 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import App.User.User;
-
 public abstract class Data {
     public static int TempID;
     public static String CSVDirectory =  "src/main/CSV data";
     public static UserFactory userFactory = new UserFactory();
-    public static ArrayList <User> Users = new ArrayList<>();
-    public static ArrayList <User> Admins = new ArrayList<>();
-    public static ArrayList <User> DeletedUsers = new ArrayList<>();
-    public static ArrayList <User> PremiumUsers =new ArrayList<>();
-//    private static Market market; // until market class created
-    private static int AdminIndex;
-    private static int UserIndex;
-    private static int Id ;
+    public static Map<Integer, User> Users = new HashMap<>();
+    public static Map<Integer, User> Admins = new HashMap<>();
+    public static Map<Integer, User> DeletedUsers = new HashMap<>();
+    public static Map<Integer, User> PremiumUsers =new HashMap<>();
 
     public static Map<String, double[]> loadCSVFilesToHashMap(String directoryPath) throws IOException {
         Map<String, double[]> map = new HashMap<>();
@@ -78,7 +72,7 @@ public abstract class Data {
     public static void initStockData() throws IOException {
         stockData=loadCSVFilesToHashMap(CSVDirectory);
     }
-    public void addSymbol(String symbol,double initialPrice){
+    public static void addSymbol(String symbol,double initialPrice){
          stockData.put(symbol, new double[]{initialPrice, initialPrice, initialPrice, initialPrice, initialPrice});
     }
 
@@ -94,11 +88,11 @@ public abstract class Data {
 //        exportToCSV(stockData);
 //    }
     /***********************/
-    public static void exportToCSV(Map<String, double[]> map) throws IOException {
+    public static void exportToCSV() throws IOException {
         // Get the current date
         String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-        for (Map.Entry<String, double[]> entry : map.entrySet()) {
+        for (Map.Entry<String, double[]> entry : stockData.entrySet()) {
             String key = entry.getKey();
             double[] values = entry.getValue();
 
@@ -122,26 +116,26 @@ public abstract class Data {
                 // Remove the trailing comma
                 writer.flush();
             } catch (IOException e) {
-                System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
+                WarningMessage.show("Exporting CSV", "Error writing to file " + filePath + ": " + e.getMessage());
+                // System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
             }
         }
     }
 
 
     public static boolean UsernameIsAvailable(String username){
-        for (User value : Users) {
-            if (Objects.equals(username, value.getUsername())) {
+        for (Map.Entry<Integer, User> set : Users.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername())) {
 
                 return false;
             }
         }
-        Id++;
         return true;
     }
 
     public static boolean AdminNameIsAvailable(String username){
-        for (User admin : Admins){
-            if (Objects.equals(admin.getUsername() , username)){
+        for (Map.Entry<Integer, User> set : Admins.entrySet()){
+            if (Objects.equals(username, set.getValue().getUsername())){
                 return false;
             }
         }
@@ -150,9 +144,8 @@ public abstract class Data {
     }
 
     public static boolean VerifyLogin(String username , String password){
-            for (User value : Users) {
-                if (Objects.equals(username, value.getUsername()) && Objects.equals(password, value.getPassword())) {
-                    UserIndex = Users.indexOf(value);
+            for (Map.Entry<Integer, User> set : Users.entrySet()) {
+                if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
                     return true;
                 }
             }
@@ -161,41 +154,32 @@ public abstract class Data {
 
     public static boolean VerifyAdminLogin(String username , String password){
 
-        System.out.println(Admins);
-        for (User value : Admins) {
-            if (Objects.equals(username, value.getUsername()) && Objects.equals(password, value.getPassword())) {
-                AdminIndex = Admins.indexOf(value);
+        // System.out.println(Admins);
+        for (Map.Entry<Integer, User> set : Admins.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername()) && Objects.equals(password, set.getValue().getPassword())) {
                 return true;
             }
         }
         return false;
     }
 
-    public static int getUserIndex() {
-        return UserIndex;
-    }
+    public static User isInUsers(String username){
+        for (Map.Entry<Integer, User> set : Users.entrySet()) {
+            if (Objects.equals(username, set.getValue().getUsername())) {
 
-    public static int getAdminIndex() {
-        return AdminIndex;
-    }
-
-    public static User isInList(String username, ArrayList<User> usersList) {
-        for (User user : usersList) {
-            if (user.getUsername().equals(username)) {
-                return user;
+                return set.getValue();
             }
         }
         return null;
     }
 
     public static void setUsers(String username , String password){
-        User user = userFactory.GetUser(UserFactory.NORMAL);
-        Users.add(user);
+        User user = userFactory.GetUser(UserFactory.NORMAL, username, password);
+        Users.put(user.getId(), user);
 
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setId(Id);
-        System.out.println(Users);
+        // user.setUsername(username);
+        // user.setPassword(password);
+        // System.out.println(Users);
     }
 
 }

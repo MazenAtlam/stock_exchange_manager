@@ -1,12 +1,9 @@
-package App.User.Admin;
+package App;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import App.Data;
-import App.User.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,14 +15,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.stage.Stage;
+
+import java.util.Map;
 
 public class AdminSceneController extends Controller implements Initializable{
     private String selectedUser;
     private String selectedAdmin;
-    public ArrayList<String> UsersTemp = new ArrayList<>();
-    public ArrayList<String> AdminsTemp = new ArrayList<>();
     private AdminGenerator adminGenerator;
     private Admin currAdmin;
+    Stage user_stage;
 
     @FXML
     private TitledPane viewProfile;
@@ -46,8 +45,6 @@ public class AdminSceneController extends Controller implements Initializable{
     @FXML
     private MenuItem changePassword;
     @FXML
-    private MenuItem changeGender;
-    @FXML
     private TextField nameToRetrieve;
     @FXML
     private ListView<String> admins;
@@ -58,8 +55,10 @@ public class AdminSceneController extends Controller implements Initializable{
     @FXML
     private Label adminID;
 
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Controller.currTitle = currStage.getTitle();
         currUser = Data.Admins.get(Data.TempID);
         currAdmin = (Admin) currUser;
         username.setText(currUser.getUsername());
@@ -75,15 +74,25 @@ public class AdminSceneController extends Controller implements Initializable{
         adminGenerator = AdminGenerator.getAdminGenerator();
     }
 
+
     public void LogOut(ActionEvent e) throws IOException {
-        display(currUser, "hello-view.fxml");
+        // display("hello-view.fxml");
+        display("temp.fxml");
     }
 
+
     public void RetrieveUser(ActionEvent e) throws IOException {
+        // System.out.println(Data.Users.size());
+        // User deleted = new NormalUser("ahmed", "123456789");
+        // Data.DeletedUsers.put(deleted.getId(), deleted);
+
         String usernameRetrieve = nameToRetrieve.getText();
-        User newUser = currAdmin.retrieveUser(usernameRetrieve);
-        users.getItems().add(newUser.getUsername());
+        User OldUser = currAdmin.retrieveUser(usernameRetrieve);
+        users.getItems().add(OldUser.getUsername());
+
+        // System.out.println(Data.Users.size());
     }
+
 
     public void DeleteSelected(ActionEvent e) throws IOException {
         users.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -98,43 +107,66 @@ public class AdminSceneController extends Controller implements Initializable{
                 selectedAdmin =  admins.getSelectionModel().getSelectedItem();
             }
         });
-        User admin = getAdmin(selectedAdmin);
-        adminGenerator.remove_admin(admin);
-        currAdmin.deleteUser(selectedUser);
+        if (selectedAdmin != null) {
+            User admin = getAdmin(selectedAdmin);
+            adminGenerator.remove_admin(admin);
+            admins.getItems().remove(selectedAdmin);
+            if (Data.Admins.size() == 0) {
+                WarningMessage.show("LastAdmin", "Create at least one Admin");
+                // display("hello-view.fxml");
+                display("Temp.fxml");
+            }
+        }
+        if (selectedUser != null) {
+            currAdmin.deleteUser(selectedUser);
+            users.getItems().remove(selectedUser);
+        }
     }
 
+
     private User getAdmin(String username) {
-        for (User admin : Data.Admins) {
-            if (admin.getUsername().equals(username)) {
-                return admin;
+        for (Map.Entry<Integer, User> set : Data.Admins.entrySet()) {
+            if (set.getValue().getUsername().equals(username)) {
+                return set.getValue();
             }
         }
         return null;
     }
 
+
     public void CreateNewAdmin(ActionEvent e) throws IOException {
         display(currUser, "AdminCreation.fxml");
+        Controller.prevTitle = Controller.currTitle;
     }
+
 
     public void CreateNewUser(ActionEvent e) throws IOException {
         display(currUser, "AdminToCreateNewUser.fxml");
+        Controller.prevTitle = Controller.currTitle;
     }
+
 
     public void ChangeName(ActionEvent e) throws IOException {
-        display(currUser, "ChangeName.fxml");
+        display(currUser, "AdminChangeName.fxml");
+        Controller.prevTitle = Controller.currTitle;
     }
 
+
     public void ChangePassword(ActionEvent e) throws IOException {
-        display(currUser, "ChangePassword.fxml");
+        display(currUser, "AdminChangePassword.fxml");
+        Controller.prevTitle = Controller.currTitle;
     }
+
 
     public void StartSession(ActionEvent e) throws IOException {
         display(currUser, "Session.fxml");
+        Controller.prevTitle = Controller.currTitle;
     }
 
-    public void add_items(ArrayList<User> list, ListView<String> listView) {
-        for (User item : list) {
-            listView.getItems().add(item.getUsername());
+
+    public void add_items(Map<Integer, User> list, ListView<String> listView) {
+        for (Map.Entry<Integer, User> set : list.entrySet()) {
+            listView.getItems().add(set.getValue().getUsername());
         }
     }
 }

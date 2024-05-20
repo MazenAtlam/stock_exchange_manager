@@ -6,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import java.io.IOException;
 
-import App.YourTimeHasCome.ApprovalSystemController;
-
 public class Order {
     private String companySymbol = "-";
     private String orderType;

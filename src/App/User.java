@@ -1,4 +1,4 @@
-package App.User;
+package App;
 
 public abstract class User {
     protected String username;
@@ -14,14 +14,12 @@ public abstract class User {
         return password;
     }
 
-    public void setUsername(String username2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUsername'");
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setPassword(String password2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setId(int id) {

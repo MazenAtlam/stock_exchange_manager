@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
-public class MarketController {
+public class MarketController extends Controller{
 
     @FXML
     public AnchorPane mainAnchorPane;
@@ -27,8 +27,7 @@ public class MarketController {
      *
      */
     public void initialize() {
-
-
+        Controller.currTitle = currStage.getTitle();
         new Market("AAPL", 20.0, 12);
         new Market("Ahmed", 4321, 3224);
 

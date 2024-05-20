@@ -42,8 +42,7 @@ Install my-project with npm
 We offer two main graphing tools for stock Performance visualization; Candlestick graph and Line Chart
 
 ### Candlestick Chart
-![Candlestick graphing UML sequence diagram](1_deliverables/candlestickChart.png)
+![Candlestick chart](1_deliverables/candlestickChart.png)
 
 ### Line Chart
-
-## Design Decision
+![Line Chart](1_deliverables/LineChart.png)
